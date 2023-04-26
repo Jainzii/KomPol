@@ -43,34 +43,31 @@
       <!-- change details -->
       <div>
         <h1>Daten ändern</h1>
+        <form action="profileEdit.php" method="post">
+          <img
+            width="100"
+            height="100"
+            src="../../../media/site/avatarDummy.png"
+            alt = "Jetziger Avatar">
 
-        <div>
-          <form action="profileEdit.php" method="post">
-            <img
-              width="100"
-              height="100"
-              src="../../../media/site/avatarDummy.png"
-              alt = "Jetziger Avatar">
-
-            <input
-              type="file"
-              name="avatar"
-              accept="image/png, image/jpeg">
-              <label>
-                E-Mail:
-                <input type="text" name="e-mail">
-              </label>
-              <label>
-                Vorname:
-                <input type="text" name="firstName">
-              </label>
-              <label>
-                Nachname:
-                <input type="text" name="lastName">
-              </label>
-              <input type="submit" value="Daten ändern">
-            </form>
-        </div>
+          <input
+            type="file"
+            name="avatar"
+            accept="image/png, image/jpeg">
+          <label>
+            E-Mail:
+            <input type="text" name="e-mail">
+          </label>
+          <label>
+            Vorname:
+            <input type="text" name="firstName">
+          </label>
+          <label>
+            Nachname:
+            <input type="text" name="lastName">
+          </label>
+          <input type="submit" value="Daten ändern">
+        </form>
       </div>
 
       <!-- change password -->

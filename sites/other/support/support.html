@@ -39,9 +39,8 @@
 
     <!-- main content -->
     <main>
-
-      <!-- issue category -->
-      <div>
+      <form action="supportTicket.php" method="post">
+        <!-- issue category -->
         <label>
           Anliegen:
           <select name="anliegen">
@@ -50,16 +49,13 @@
             <option value="issue3">Anliegen 3</option>
           </select>
         </label>
-      </div>
-
-      <!-- support ticket  -->
-      <div>
+        <!-- support ticket  -->
         <label>
           Nachricht:
           <textarea name="nachricht" rows="20" cols="50"></textarea>
         </label>
         <input type="submit" value="Nachricht abschicken">
-      </div>
+      </form>
     </main>
 
     <!-- footer -->
