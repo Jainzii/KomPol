@@ -39,7 +39,53 @@
 
     <!-- main content -->
     <main>
-
+      <!-- search -->
+      <div>
+        <form action="forumSearch.php" method="get">
+          <label>
+            Name:
+            <input type="text" name="name">
+          </label>
+          <label>
+            Vor:
+            <input type="date" name="vor">
+          </label>
+          <label>
+            Nach:
+            <input type="date" name="nach">
+          </label>
+          <label>
+            Kategorie:
+            <select name="kategorie">
+              <option value="kommentar">Kommentar</option>
+              <option value="nachricht">Nachricht</option>
+              <option value="initiative">Initiative</option>
+            </select>
+          </label>
+        </form>
+      </div>
+      <!-- first example forum post -->
+      <div>
+        <div>
+          <div>
+            <h2>Titel des ersten Forumbeitrags</h2>
+            <p>Vorschau des Forumbeitragstexts</p>
+          </div>
+          <p>XXXX Likes | XXXX Dislikes</p>
+        </div>
+        <p>Kategorie</p>
+      </div>
+      <!-- second example forum post -->
+      <div>
+        <div>
+          <div>
+            <h2>Titel des ersten Forumbeitrags</h2>
+            <p>Vorschau des Forumbeitragstexts</p>
+          </div>
+          <p>XXXX Likes | XXXX Dislikes</p>
+        </div>
+        <p>Kategorie</p>
+      </div>
     </main>
 
     <!-- footer -->
@@ -47,7 +93,7 @@
       <nav>
         <a href="../../footer/imprint/imprint.html"> Impressum </a>
         <a href="../../footer/privacyPolicy/privacyPolicy.html"> Datenschutz </a>
-        <a href="../../footer/termsOfUse/termsOfViews.html"> Nutzungsbedingungen </a>
+        <a href="../../footer/termsOfUse/termsOfUse.html"> Nutzungsbedingungen </a>
         <a href="../../other/support/support.html"> Support </a>
       </nav>
     </footer>

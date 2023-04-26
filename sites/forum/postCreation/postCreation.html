@@ -39,7 +39,24 @@
 
     <!-- main content -->
     <main>
-
+      <form action="postCreation.php" method="post">
+        <label>
+          Titel:
+          <input type="text" name="titel">
+        </label>
+        <label>
+          Beitrag:
+          <textarea name="beitrag" rows="20" cols="50"></textarea>
+        </label>
+        <label>
+          Kategorie:
+          <select name="kategorie">
+            <option value="kommentar">Kommentar</option>
+            <option value="initiative">Initiative</option>
+          </select>
+        </label>
+        <input type="submit" value="Beitrag erstellen">
+      </form>
     </main>
 
     <!-- footer -->
@@ -47,7 +64,7 @@
       <nav>
         <a href="../../footer/imprint/imprint.html"> Impressum </a>
         <a href="../../footer/privacyPolicy/privacyPolicy.html"> Datenschutz </a>
-        <a href="../../footer/termsOfUse/termsOfViews.html"> Nutzungsbedingungen </a>
+        <a href="../../footer/termsOfUse/termsOfUse.html"> Nutzungsbedingungen </a>
         <a href="../../other/support/support.html"> Support </a>
       </nav>
     </footer>
