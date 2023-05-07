@@ -41,8 +41,8 @@
     <main>
 
       <!-- change details -->
-      <div>
-        <h1>Daten ändern</h1>
+      <section>
+        <h2>Daten ändern</h2>
         <form action="profileEdit.php" method="post">
           <img
             width="100"
@@ -60,35 +60,35 @@
           </label>
           <label>
             Vorname:
-            <input type="text" name="firstName" required>
+            <input type="text" name="vorname" required>
           </label>
           <label>
             Nachname:
-            <input type="text" name="lastName" required>
+            <input type="text" name="nachname" required>
           </label>
           <input type="submit" value="Daten ändern">
         </form>
-      </div>
+      </section>
 
       <!-- change password -->
-      <div>
-        <h1>Passwort ändern</h1>
+      <section>
+        <h2>Passwort ändern</h2>
         <form action="profileEdit.php" method="post">
           <label>
             Altes Passwort:
-            <input type="password" name="oldPassword" required>
+            <input type="password" name="altesPassword" required>
           </label>
           <label>
             Neues Passwort:
-            <input type="password" name="newPassword" required>
+            <input type="password" name="neuesPassword" required>
           </label>
           <label>
             Neues Passwort wiederholen:
-            <input type="password" name="repeatNewPassword" required>
+            <input type="password" name="passwortWiederholen" required>
           </label>
           <input type="submit" value="Passwort ändern">
         </form>
-      </div>
+      </section>
 
     </main>
 
