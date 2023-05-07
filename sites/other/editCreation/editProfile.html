@@ -56,15 +56,15 @@
             accept="image/png, image/jpeg">
           <label>
             E-Mail:
-            <input type="text" name="e-mail">
+            <input type="email" name="e-mail" required>
           </label>
           <label>
             Vorname:
-            <input type="text" name="firstName">
+            <input type="text" name="firstName" required>
           </label>
           <label>
             Nachname:
-            <input type="text" name="lastName">
+            <input type="text" name="lastName" required>
           </label>
           <input type="submit" value="Daten ändern">
         </form>
@@ -76,15 +76,15 @@
         <form action="profileEdit.php" method="post">
           <label>
             Altes Passwort:
-            <input type="text" name="oldPassword">
+            <input type="password" name="oldPassword" required>
           </label>
           <label>
             Neues Passwort:
-            <input type="text" name="newPassword">
+            <input type="password" name="newPassword" required>
           </label>
           <label>
             Neues Passwort wiederholen:
-            <input type="text" name="repeatNewPassword">
+            <input type="password" name="repeatNewPassword" required>
           </label>
           <input type="submit" value="Passwort ändern">
         </form>
