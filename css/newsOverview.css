@@ -1,0 +1,42 @@
+main {
+    background-color: gray;
+}
+
+.highlightedArticle {
+    background-color: white;
+    padding: 0px 25px 25px 45px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.highlightedArticle img {
+    float: left;
+    margin-right: 45px;
+    margin-bottom: 45px;
+}
+
+.highlightedArticle h2 {
+    padding-top: 25px;
+    margin-right: 10%;
+    font-size: 2.5em;
+}
+
+.highlightedArticle p {
+    margin-right: 10%;
+}
+
+.standardArtikel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 45px;
+}
+
+.standardArtikel > article {
+    width: 20%;
+    min-width: 300px;
+    background-color: white;
+    padding: 0px 25px 0px 25px;
+}
