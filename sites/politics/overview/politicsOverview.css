@@ -1,0 +1,55 @@
+.parties, .informations {
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border: #1554b6 3px solid;
+    margin-top: 40px;
+}
+
+main img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.8em;
+}
+
+.parties {
+    padding: 0px 0px;
+}
+
+.informations {
+    padding: 10px 20px;
+}
+
+.parties h2 {
+    padding: 20px 15px;
+    text-align: center;
+}
+
+.parties .parliament {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.partyOverviewContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.partyEntry {
+    padding: 10px 15px;
+    background-color: #FFFFFF;
+    border: #1554b6 solid 3px;
+    margin-top: 20px;
+    border-radius: 5px 5px 0px 0px;
+    width: 25%;
+    min-width: 250px;
+}
+
+.informations div {
+
+}
