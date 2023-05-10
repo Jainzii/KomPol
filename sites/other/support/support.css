@@ -6,7 +6,7 @@ form {
     flex-direction: column;
     margin: auto;
     background-color: rgba(34,121,195,0.9);
-    border-radius: 0px 0px 10px 10px ;
+    border-radius: 0px 0px 10px 10px;
     width: 80%;
     padding: 25px 25px 25px 25px;
 }
@@ -41,7 +41,6 @@ textarea {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-
     width: 100%;
 }
 
