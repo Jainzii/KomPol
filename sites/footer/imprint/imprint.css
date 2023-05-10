@@ -1,0 +1,41 @@
+.mainBox {
+    background-color: white;
+    padding: 25px 25px 25px 25px;
+    margin: auto;
+    width: 90%;
+}
+
+@media only screen and (min-width: 500px) {
+
+    .mainBox {
+        width: 75%;
+    }
+
+}
+
+@media only screen and (min-width: 750px) {
+
+    .mainBox {
+        width: 60%;
+    }
+
+}
+
+@media only screen and (min-width: 1000px) {
+
+    .mainBox {
+        width: 40%;
+    }
+
+}
+
+@media only screen and (min-width: 1240px) {
+
+    .mainBox {
+        padding: 15px 45px 25px 45px;
+        width: 30%;
+    }
+
+
+}
+
