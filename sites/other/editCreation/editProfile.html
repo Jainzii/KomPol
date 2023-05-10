@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>KomPol</title>
   <link rel="stylesheet" type="text/css" href="../../../css/main.css">
+  <link rel="stylesheet" type="text/css" href="editProfile.css">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
   <body>
@@ -37,55 +38,55 @@
     <!-- main content -->
     <main>
 
-      <!-- change details -->
-      <section>
-        <h2>Daten ändern</h2>
-        <form action="profileEdit.php" method="post">
-          <img
-            width="100"
-            height="100"
-            src="../../../images/site/avatarDummy.png"
-            alt = "Jetziger Avatar">
+        <!-- change details -->
+        <section class="changeDetails">
+          <h2>Daten ändern</h2>
+          <form action="profileEdit.php" method="post">
+            <img
+              width="100"
+              height="100"
+              src="../../../images/site/avatarDummy.png"
+              alt = "Jetziger Avatar">
 
-          <input
-            type="file"
-            name="avatar"
-            accept="image/png, image/jpeg">
-          <label>
-            E-Mail:
-            <input type="email" name="e-mail" required>
-          </label>
-          <label>
-            Vorname:
-            <input type="text" name="vorname" required>
-          </label>
-          <label>
-            Nachname:
-            <input type="text" name="nachname" required>
-          </label>
-          <input type="submit" value="Daten ändern">
-        </form>
-      </section>
+            <input
+              type="file"
+              name="avatar"
+              accept="image/png, image/jpeg">
+            <label>
+              E-Mail:
+              <input type="email" name="e-mail" required>
+            </label>
+            <label>
+              Vorname:
+              <input type="text" name="vorname" required>
+            </label>
+            <label>
+              Nachname:
+              <input type="text" name="nachname" required>
+            </label>
+            <input type="submit" value="Daten ändern">
+          </form>
+        </section>
 
-      <!-- change password -->
-      <section>
-        <h2>Passwort ändern</h2>
-        <form action="profileEdit.php" method="post">
-          <label>
-            Altes Passwort:
-            <input type="password" name="altesPassword" required>
-          </label>
-          <label>
-            Neues Passwort:
-            <input type="password" name="neuesPassword" required>
-          </label>
-          <label>
-            Neues Passwort wiederholen:
-            <input type="password" name="passwortWiederholen" required>
-          </label>
-          <input type="submit" value="Passwort ändern">
-        </form>
-      </section>
+        <!-- change password -->
+        <section class="changePassword">
+          <h2>Passwort ändern</h2>
+          <form action="profileEdit.php" method="post">
+            <label>
+              Altes Passwort:
+              <input type="password" name="altesPassword" required>
+            </label>
+            <label>
+              Neues Passwort:
+              <input type="password" name="neuesPassword" required>
+            </label>
+            <label>
+              Neues Passwort wiederholen:
+              <input type="password" name="passwortWiederholen" required>
+            </label>
+            <input type="submit" value="Passwort ändern">
+          </form>
+        </section>
 
     </main>
 

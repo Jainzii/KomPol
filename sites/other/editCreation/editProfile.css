@@ -1,0 +1,211 @@
+
+/* change details styling */
+
+.changeDetails form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: auto;
+    border: rgba(20,102,173,0.9) 3px solid;
+    border-top: none;
+    background-color: white;
+    border-radius: 0px 0px 10px 10px ;
+    width: 80%;
+    padding: 25px 25px 25px 25px;
+}
+
+.changeDetails h2 {
+    text-align: center;
+    font-size: 1.7em;
+    color: white;
+    background-color: rgba(20,102,173,0.9);
+    border-radius: 10px 10px 0px 0px;
+    border: rgba(20,102,173,0.9) 3px solid;
+    padding: 15px 25px 15px 25px;
+    margin: auto;
+    width: 80%;
+}
+
+.changeDetails img {
+    margin: 0px 0px 15px 0px;
+    border-radius: 7px 7px 7px 7px;
+}
+
+.changeDetails input[type="file"] {
+    font-size: 1em;
+    margin-bottom: 25px;
+}
+
+.changeDetails input[type="email"] {
+    font-size: 1.5em;
+    margin: 10px 0px 10px 0px;
+    border-radius: 7px 7px 7px 7px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.changeDetails input[type="password"] {
+    font-size: 1.5em;
+    margin: 10px 0px 10px 0px;
+    border-radius: 7px 7px 7px 7px;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.changeDetails input[type="text"] {
+    font-size: 1.5em;
+    margin: 10px 0px 10px 0px;
+    border-radius: 7px 7px 7px 7px;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.changeDetails input[type="submit"] {
+    text-align: center;
+    font-size: 1em;
+    background-color: #1554b6;
+    color: white;
+    margin-top: 35px;
+    margin-left: 0px;
+    width: 200px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    border: none;
+}
+
+/* change password styling */
+
+.changePassword form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: auto;
+    border: rgba(20,102,173,0.9) 3px solid;
+    border-top: none;
+    background-color: white;
+    border-radius: 0px 0px 10px 10px ;
+    width: 80%;
+    padding: 45px 25px 25px 25px;
+}
+
+.changePassword h2 {
+    text-align: center;
+    font-size: 1.7em;
+    color: white;
+    background-color: rgba(20,102,173,0.9);
+    border-radius: 10px 10px 0px 0px;
+    border: rgba(20,102,173,0.9) 3px solid;
+    padding: 15px 25px 15px 25px;
+    margin: 2% auto auto;
+    width: 80%;
+}
+
+.changePassword input[type="email"] {
+    font-size: 1.5em;
+    margin: 10px 0px 10px 0px;
+    border-radius: 7px 7px 7px 7px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.changePassword input[type="password"] {
+    font-size: 1.5em;
+    margin: 10px 0px 10px 0px;
+    border-radius: 7px 7px 7px 7px;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.changePassword input[type="text"] {
+    font-size: 1.5em;
+    margin: 10px 0px 10px 0px;
+    border-radius: 7px 7px 7px 7px;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.changePassword input[type="submit"] {
+    text-align: center;
+    font-size: 1em;
+    background-color: #1554b6;
+    color: white;
+    margin-top: 35px;
+    margin-left: 0px;
+    width: 200px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    border: none;
+}
+
+/* media queries */
+
+@media only screen and (min-width: 800px) {
+
+    .changeDetails form {
+        width: 65%;
+    }
+    .changeDetails h2 {
+        width: 65%;
+    }
+
+    .changePassword form {
+        width: 65%;
+    }
+    .changePassword h2 {
+        width: 65%;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+
+    .changeDetails form {
+        width: 55%;
+    }
+    .changeDetails h2 {
+        width: 55%;
+    }
+
+    .changePassword form {
+        width: 55%;
+    }
+    .changePassword h2 {
+        width: 55%;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+
+    .changeDetails form {
+        width: 35%;
+    }
+    .changeDetails h2 {
+        width: 35%;
+    }
+
+    .changePassword form {
+        width: 35%;
+    }
+    .changePassword h2 {
+        width: 35%;
+    }
+
+}
+
