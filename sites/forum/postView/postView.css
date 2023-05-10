@@ -1,0 +1,137 @@
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+main .post, .comments {
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    border: #1554b6 3px solid;
+    padding: 10px 5px;
+}
+
+.comments {
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+}
+
+.commentContent {
+    display: flex;
+    flex-direction: row;
+}
+
+main .userInfo {
+    padding: 20px 5px;
+    text-align: center;
+    width: 60px;
+    font-size: 0.8em;
+}
+
+main .userInfo img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.8em;
+}
+
+main .postContent {
+    padding: 10px 5px;
+}
+
+main .postContent p {
+    font-size: 0.8em;
+}
+
+main .postContent h2 {
+    font-size: 1.2em;
+}
+
+main button {
+    background-color: #1554b6;
+    border-radius: 10px;
+    padding: 5px 10px;
+    border: none;
+    width: 20%;
+    min-width: 150px;
+    color: white;
+    font-size: 1em;
+}
+
+main .comment {
+    display: flex;
+}
+
+.comment > .comment {
+    margin-left: 10px;
+    padding-left: 5px;
+    border-left: #1554b6AA solid 1px;
+}
+
+.partyOpinions {
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border: #1554b6 3px solid;
+    padding: 10px 5px;
+    margin-top: 20px;
+    height: fit-content;
+}
+
+.partyOpinions .opinionsContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 5px;
+}
+
+.partyOpinions .opinionsContainer img {
+    margin: 5px;
+}
+
+@media screen and (min-width: 800px){
+    main {
+        flex-direction: row;
+    }
+
+    main .userInfo {
+        width: auto;
+        font-size: 1em;
+    }
+
+    main .userInfo img {
+        border-radius: 1em;
+    }
+
+    main .userInfo {
+        padding: 20px 5px;
+    }
+
+    main .postContent {
+        padding: 10px 15px;
+    }
+
+    main .postContent p {
+        font-size: 1em;
+    }
+
+    main .postContent h2 {
+        font-size: 1.5em;
+    }
+
+    .comment > .comment {
+        margin-left: 30px;
+        padding-left: 20px;
+        border-left: #1554b6AA solid 1px;
+    }
+
+    .partyOpinions {
+        margin-top: 0px;
+        margin-left: 20px;
+    }
+}

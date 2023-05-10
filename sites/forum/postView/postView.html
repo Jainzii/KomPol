@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>KomPol</title>
   <link rel="stylesheet" type="text/css" href="../../../css/main.css">
+  <link rel="stylesheet" type="text/css" href="postView.css">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
   <body>
@@ -39,16 +40,17 @@
       <!-- post and answers -->
       <div>
         <!-- post  -->
-        <section>
-          <div>
+        <section class="post">
+          <div class="userInfo">
             <img
-              width="32"
-              height="32"
+              width="100"
+              height="100"
               src="../../../images/site/avatarDummy.png"
               alt = "Avatar">
-            <p>Name</p>
+            <p>Vorname</p>
+            <p>Nachname</p>
           </div>
-          <div>
+          <div class="postContent">
             <h2>Titel des Beitrags</h2>
             <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
               et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -67,53 +69,111 @@
           </div>
         </section>
         <!-- answers  -->
-        <section>
+        <section class="comments">
           <h3>Kommentare</h3>
-          <div>
-            <div>
-              <img
-                width="32"
-                height="32"
-                src="../../../images/site/avatarDummy.png"
-                alt = "Avatar">
-              <p>Name</p>
+          <div class="comment">
+            <div class="commentContent">
+              <div class="userInfo">
+                <img
+                        width="100"
+                        height="100"
+                        src="../../../images/site/avatarDummy.png"
+                        alt = "Avatar">
+                <p>Vorname</p>
+                <p>Nachname</p>
+              </div>
+              <div class="postContent">
+                <p>
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+                  et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                  Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+                  amet, consetetur sadipscing elitr
+                </p>
+                <p> XX Likes | XX Dislikes</p>
+                <button> Antworten </button>
+              </div>
             </div>
-            <div>
-              <p>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-                et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-                amet, consetetur sadipscing elitr
-              </p>
-              <p> XX Likes | XX Dislikes</p>
-              <button> Antworten </button>
+            <div class="comment">
+              <div class="commentContent">
+                <div class="userInfo">
+                  <img
+                          width="100"
+                          height="100"
+                          src="../../../images/site/avatarDummy.png"
+                          alt = "Avatar">
+                  <p>Vorname</p>
+                  <p>Nachname</p>
+                </div>
+                <div class="postContent">
+                  <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+                    et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+                    amet, consetetur sadipscing elitr
+                  </p>
+                  <p> XX Likes | XX Dislikes</p>
+                  <button> Antworten </button>
+                </div>
+              </div>
+            </div>
+            <div class="comment">
+              <div class="commentContent">
+                <div class="userInfo">
+                  <img
+                          width="100"
+                          height="100"
+                          src="../../../images/site/avatarDummy.png"
+                          alt = "Avatar">
+                  <p>Vorname</p>
+                  <p>Nachname</p>
+                </div>
+                <div class="postContent">
+                  <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+                    et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+                    amet, consetetur sadipscing elitr
+                  </p>
+                  <p> XX Likes | XX Dislikes</p>
+                  <button> Antworten </button>
+                </div>
+              </div>
+              <div class="comment">
+                <div class="commentContent">
+                  <div class="userInfo">
+                    <img
+                            width="100"
+                            height="100"
+                            src="../../../images/site/avatarDummy.png"
+                            alt = "Avatar">
+                    <p>Vorname</p>
+                    <p>Nachname</p>
+                  </div>
+                  <div class="postContent">
+                    <p>
+                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+                      et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                      Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+                      amet, consetetur sadipscing elitr
+                    </p>
+                    <p> XX Likes | XX Dislikes</p>
+                    <button> Antworten </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
       </div>
       <!-- party opinions -->
-      <section>
+      <section class="partyOpinions">
         <h3>Meinung der Parteien</h3>
-        <img
-          width="32"
-          height="32"
-          src="../../../images/site/partyCircle.svg"
-          alt = "Parteikreis">
-        <img
-          width="32"
-          height="32"
-          src="../../../images/site/partyCircle.svg"
-          alt = "Parteikreis">
-        <img
-          width="32"
-          height="32"
-          src="../../../images/site/partyCircle.svg"
-          alt = "Parteikreis">
-        <img
-          width="32"
-          height="32"
-          src="../../../images/site/partyCircle.svg"
-          alt = "Parteikreis">
+        <div class="opinionsContainer">
+          <img width="32" height="32" src="../../../images/site/partyCircle.svg" alt = "Parteikreis">
+          <img width="32" height="32" src="../../../images/site/partyCircle.svg" alt = "Parteikreis">
+          <img width="32" height="32" src="../../../images/site/partyCircle.svg" alt = "Parteikreis">
+          <img width="32" height="32" src="../../../images/site/partyCircle.svg" alt = "Parteikreis">
+        </div>
       </section>
     </main>
 

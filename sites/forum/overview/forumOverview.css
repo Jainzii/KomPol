@@ -140,6 +140,11 @@ article .postContent h2 {
     margin-right: 0px;
 }
 
+article .postContent h2:hover {
+    margin-right: 0px;
+    color: darkblue;
+}
+
 @media screen and (min-width: 600px) {
     .formOptions input[type="text"] {
         min-width: 300px;
