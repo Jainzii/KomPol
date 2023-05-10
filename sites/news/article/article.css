@@ -1,0 +1,42 @@
+.mainBox {
+    background-color: white;
+    padding: 0px 25px 25px 25px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+img {
+    margin-right: 45px;
+    max-width: 100%;
+    height: auto;
+}
+
+h2 {
+    padding-top: 25px;
+    margin-right: 10%;
+    font-size: 1.75em;
+}
+
+p {
+    font-size: 1em;
+    margin-right: 10%;
+}
+
+@media screen and (min-width: 800px) {
+
+    .mainBox {
+        margin-left: 18%;
+        margin-right: 18%;
+        padding: 0px 45px 25px 45px;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+
+    .mainBox {
+        margin-left: 18%;
+        margin-right: 18%;
+    }
+
+}
