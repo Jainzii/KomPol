@@ -1,0 +1,17 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.partyInfo {
+    border: #1554b6 3px solid;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    padding: 20px 30px;
+}
+
+.partyInfo img {
+    max-width: 100%;
+    height: auto;
+}
