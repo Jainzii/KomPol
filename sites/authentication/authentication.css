@@ -83,6 +83,16 @@ p a {
     color: white;
 }
 
+.hinweis {
+    background-color: #FFFFFF;
+    border: red solid 3px;
+    border-radius: 10px;
+}
+
+.hinweis p a{
+    color: black;
+}
+
 @media only screen and (min-width: 800px) {
 
     form {
