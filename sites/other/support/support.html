@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>KomPol</title>
   <link rel="stylesheet" type="text/css" href="../../../css/main.css">
+  <link rel="stylesheet" type="text/css" href="support.css">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
   <body>
@@ -36,11 +37,12 @@
 
     <!-- main content -->
     <main>
+      <h2>Support-Ticket einreichen:</h2>
       <form action="supportTicket.php" method="post">
         <!-- issue category -->
         <label>
           Anliegen:
-          <select name="anliegen">
+          <select name="anliegen" required>
             <option value="anliegen1">Anliegen 1</option>
             <option value="anliegen2">Anliegen 3</option>
             <option value="anliegen3">Anliegen 3</option>
@@ -49,7 +51,7 @@
         <!-- support ticket  -->
         <label>
           Nachricht:
-          <textarea name="nachricht" rows="20" cols="50"></textarea>
+          <textarea name="nachricht" rows="20" cols="50" required></textarea>
         </label>
         <input type="submit" value="Nachricht abschicken">
       </form>
