@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>KomPol</title>
   <link rel="stylesheet" type="text/css" href="../../../css/main.css">
+  <link rel="stylesheet" type="text/css" href="forumOverview.css">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
   <body>
@@ -33,61 +34,63 @@
         <a href="../../other/tutorial/tutorial.html"> Hilfe </a>
       </nav>
     </header>
-
     <!-- main content -->
     <main>
       <!-- search -->
       <section>
         <form action="forumSearch.php" method="get">
-          <label>
-            Name:
-            <input type="text" name="name">
-          </label>
-          <label>
-            Vor:
-            <input type="date" name="vor">
-          </label>
-          <label>
-            Nach:
-            <input type="date" name="nach">
-          </label>
-          <label>
-            Kategorie:
-            <select name="kategorie">
-              <option value="kommentar">Kommentar</option>
-              <option value="nachricht">Nachricht</option>
-              <option value="initiative">Initiative</option>
-            </select>
-          </label>
+          <div class="formOptions">
+            <label class="userInput">
+              Titel:
+              <input type="text" name="name">
+            </label>
+            <label class="userInput">
+              Vor:
+              <input type="date" name="vor">
+            </label>
+            <label class="userInput">
+              Nach:
+              <input type="date" name="nach">
+            </label>
+            <label class="userInput">
+              Kategorie:
+              <select name="kategorie">
+                <option value="kommentar">Kommentar</option>
+                <option value="nachricht">Nachricht</option>
+                <option value="initiative">Initiative</option>
+              </select>
+            </label>
+          </div>
           <input type="submit" value="Suche">
         </form>
-      </section>
-      <div>
         <a href="../postCreation/postCreation.html">
+          <img src="../../../images/site/plusSign.svg" alt="plus sign" width="16" height="16">
           Beitrag erstellen
         </a>
-      </div>
+      </section>
       <!-- first example forum post -->
       <article>
-        <div>
-          <div>
-            <a href="../postView/postView.html"> <h2>Titel des ersten Forumbeitrags</h2> </a>
+        <div class="post">
+          <p class="category">Kategoriegrößerheheh</p>
+          <div class="postContent">
+            <a href="../postView/postView.html">
+              <h2>Titel des ersten Forumbeitrags</h2>
+            </a>
             <p>Vorschau des Forumbeitragstexts</p>
           </div>
           <p>XXXX Likes | XXXX Dislikes</p>
         </div>
-        <p>Kategorie</p>
       </article>
       <!-- second example forum post -->
       <article>
-        <div>
-          <div>
+        <div class="post">
+          <p class="category">Kategorie</p>
+          <div class="postContent">
             <a href="../postView/postView.html"> <h2>Titel des zweiten Forumbeitrags</h2> </a>
             <p>Vorschau des Forumbeitragstexts</p>
           </div>
           <p>XXXX Likes | XXXX Dislikes</p>
         </div>
-        <p>Kategorie</p>
       </article>
     </main>
 
