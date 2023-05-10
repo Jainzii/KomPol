@@ -119,8 +119,9 @@ main {
     padding: 30px;
 }
 
-main h1, h2, p {
+main h1, h2,h3, p {
     color: #000;
+    overflow-wrap: break-word;
 }
 
 main a {
