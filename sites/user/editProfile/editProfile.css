@@ -35,6 +35,7 @@
 .changeDetails input[type="file"] {
     font-size: 1em;
     margin-bottom: 25px;
+    width: 100%;
 }
 
 .changeDetails input[type="email"] {
