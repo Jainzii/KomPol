@@ -8,32 +8,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
   <body>
-    <!-- header to be replaced when php is implemented -->
-    <header>
-      <div class="header">
-        <div class="cityName">
-          <a href="../../news/overview/newsOverview.html">
-            <img width="80" height="80" src = "../../../images/site/neuDoriasLogo.png" alt = "Wappen von XXX">
-            <h1>Neu Dorias</h1>
-          </a>
-        </div>
-        <div class="authentication">
-          <button>Abmelden</button>
-          <a href="../../user/login/login.html">
-            <img width="32" height="32" src="../../../images/site/login.svg" alt = "Anmeldungs-Icon">
-          </a>
-        </div>
-        <div class="hamburgerMenu">
-          <img width="32" height="32" src="../../../images/site/burger.svg" alt = "Anmeldungs-Icon">
-        </div>
-      </div>
-      <nav>
-        <a href="../../news/overview/newsOverview.html"> Neuigkeiten </a>
-        <a href="../../forum/overview/forumOverview.html"> Forum </a>
-        <a href="../../politics/overview/politicsOverview.html"> Kommunalpolitik </a>
-        <a href="../../other/tutorial/tutorial.html"> Hilfe </a>
-      </nav>
-    </header>
+    <!-- header -->
+    <?php
+    include "../../components/header/header.php"
+    ?>
+
     <!-- main content -->
     <main>
       <!-- search -->
@@ -63,7 +42,7 @@
           </div>
           <input type="submit" value="Suche">
         </form>
-        <a href="../postCreation/postCreation.html">
+        <a href="../postCreation/postCreation.php">
           <img src="../../../images/site/plusSign.svg" alt="plus sign" width="16" height="16">
           Beitrag erstellen
         </a>
@@ -73,7 +52,7 @@
         <div class="post">
           <p class="category">Kategoriegrößerheheh</p>
           <div class="postContent">
-            <a href="../postView/postView.html">
+            <a href="../postView/postView.php">
               <h2>Titel des ersten Forumbeitrags</h2>
             </a>
             <p>Vorschau des Forumbeitragstexts</p>
@@ -86,7 +65,7 @@
         <div class="post">
           <p class="category">Kategorie</p>
           <div class="postContent">
-            <a href="../postView/postView.html"> <h2>Titel des zweiten Forumbeitrags</h2> </a>
+            <a href="../postView/postView.php"> <h2>Titel des zweiten Forumbeitrags</h2> </a>
             <p>Vorschau des Forumbeitragstexts</p>
           </div>
           <p>XXXX Likes | XXXX Dislikes</p>
@@ -97,10 +76,10 @@
     <!-- footer -->
     <footer>
       <nav>
-        <a href="../../footer/imprint/imprint.html"> Impressum </a>
-        <a href="../../footer/privacyPolicy/privacyPolicy.html"> Datenschutz </a>
-        <a href="../../footer/termsOfUse/termsOfUse.html"> Nutzungsbedingungen </a>
-        <a href="../../other/support/support.html"> Support </a>
+        <a href="../../footer/imprint/imprint.php"> Impressum </a>
+        <a href="../../footer/privacyPolicy/privacyPolicy.php"> Datenschutz </a>
+        <a href="../../footer/termsOfUse/termsOfUse.php"> Nutzungsbedingungen </a>
+        <a href="../../other/support/support.php"> Support </a>
       </nav>
     </footer>
   </body>
