@@ -16,8 +16,6 @@ body {
 }
 
 header {
-    /*background: rgb(9,57,134);
-    background: linear-gradient(90deg, rgba(9,57,134,1) 6%, rgba(23,96,203,1) 22%, rgba(7,176,210,1) 100%); */
     background: rgb(10,61,143);
     background: linear-gradient(90deg, rgba(10,61,143,1) 15%, rgba(23,96,203,1) 33%, rgba(34,121,195,1) 100%);
     box-shadow: 0px 5px 13px -1px #000000;
@@ -29,12 +27,12 @@ header .header {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 10px 20px;
+    padding: 20px 20px;
 }
 
 header .cityName {
     justify-content: left;
-    min-width: 300px;
+    width: 250px;
 }
 
 header .cityName a {
@@ -54,27 +52,39 @@ header p,h1,a {
 }
 
 header .authentication {
-    display: none;
-    padding: 10px 0px 10px 0px;
-    flex-direction: row;
+    padding: 10px 70px;
     align-items: center;
     width: 30%;
     min-width: 200px;
-    justify-content: right;
+    justify-content: center;
 }
 
 header .authentication button {
     border: none;
-    padding: 5px 15px;
+    padding: 11px 31px;
     margin-right: 20px;
     font-size: 1em;
+    line-height: 1em;
     background-color: #1554b6;
     color: white;
     border-radius: 5px;
 }
 
 header .authentication a {
-    padding: 5px 7px;
+    padding: 7px 10px;
+    display: flex;
+    background-color: #1554b6;
+    border-radius: 5px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+header .authentication a p {
+    margin: 0px 0px 0px 10px;
+    text-align: center;
+    line-height: 1em;
+    height: 1em;
 }
 
 header .authentication a:hover {
@@ -93,12 +103,23 @@ header .hamburgerMenu {
     padding: 5px;
 }
 
-header nav {
+header .navBar {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5em;
+}
+
+header nav,.authentication {
+    display: none;
+    flex-direction: row;
     justify-content: center;
     align-items: stretch;
+}
+
+header nav {
+    flex-wrap: wrap;
 }
 
 header nav a {
@@ -112,6 +133,97 @@ header nav a {
 header nav a:hover {
     background: rgba(0,0,0,0.15);
     text-decoration: underline;
+}
+
+.menu-button-container {
+    display: flex;
+    height: 100%;
+    width: 30px;
+    margin-top: 40px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+    display: block;
+    background-color: #fff;
+    position: absolute;
+    height: 4px;
+    width: 30px;
+    border-radius: 2px;
+}
+
+.menu-button::before {
+    content: '';
+    margin-top: -8px;
+}
+
+.menu-button::after {
+    content: '';
+    margin-top: 8px;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+    margin-top: 0px;
+    transform: rotate(405deg);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button {
+    background: rgba(255, 255, 255, 0);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+    margin-top: 0px;
+    transform: rotate(-405deg);
+}
+
+#menu-toggle ~ nav a {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#menu-toggle ~ .authentication * {
+    display: none;
+}
+
+#menu-toggle:not(:checked) ~ .authentication {
+    padding: 0 70px;
+}
+
+#menu-toggle:checked ~ nav,.authentication {
+    display: flex;
+}
+
+#menu-toggle:checked ~ nav a {
+    height: 1em;
+    padding: 0.5em;
+}
+
+#menu-toggle:checked ~ nav a:last-child {
+    padding-bottom: 0;
+}
+
+#menu-toggle:checked ~ .authentication * {
+    display: flex;
+}
+
+.header nav > a {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5em 0;
+    width: 100%;
+    color: white;
 }
 
 main {
@@ -156,9 +268,10 @@ footer nav a:hover {
     text-decoration: underline;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 650px) {
     header .cityName {
-        width: 30%;
+        width: auto;
+        padding-bottom: 10px;
     }
 
     header .cityName a h1 {
@@ -167,7 +280,7 @@ footer nav a:hover {
     }
 
     header .header {
-        padding: 25px 10px 20px 10px;
+        padding: 25px 10px 10px 10px;
         justify-content: center;
     }
 
@@ -175,7 +288,23 @@ footer nav a:hover {
         display: flex;
     }
 
-    header .hamburgerMenu {
+    #menu-toggle ~ .authentication * {
+        display: flex;
+    }
+
+    header nav {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #menu-toggle ~ nav a {
+        height: auto;
+        margin: 0px;
+        width: auto;
+        padding: 5px 0px;
+    }
+
+    .menu-button-container {
         display: none;
     }
 
