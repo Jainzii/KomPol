@@ -150,6 +150,10 @@ header nav a:hover {
     display: none;
 }
 
+.menu-button p {
+    display: none;
+}
+
 .menu-button,
 .menu-button::before,
 .menu-button::after {

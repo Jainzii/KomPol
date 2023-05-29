@@ -5,19 +5,19 @@
     margin-right: 5%;
 }
 
-img {
+.mainBox img {
     margin-right: 45px;
     max-width: 100%;
     height: auto;
 }
 
-h2 {
+.mainBox h2 {
     padding-top: 25px;
     margin-right: 10%;
     font-size: 1.75em;
 }
 
-p {
+.mainBox p {
     font-size: 1em;
     margin-right: 10%;
 }

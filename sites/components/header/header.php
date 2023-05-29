@@ -8,7 +8,7 @@
         </div>
         <input id="menu-toggle" type="checkbox" />
         <label class='menu-button-container' for="menu-toggle">
-            <div class='menu-button'></div>
+            <div class='menu-button'><p>X</p></div>
         </label>
         <div class="authentication">
             <button>Abmelden</button>
