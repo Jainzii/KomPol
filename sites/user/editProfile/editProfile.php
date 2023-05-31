@@ -52,18 +52,18 @@
         <!-- change password -->
         <section class="changePassword">
           <h2>Passwort ändern</h2>
-          <form action="profileEdit.php" method="post">
+          <form action="?changePassword=1" method="post">
             <label>
               Altes Passwort:
-              <input type="password" name="altesPassword" required>
+              <input type="password" name="oldPassword" required>
             </label>
             <label>
               Neues Passwort:
-              <input type="password" name="neuesPassword" required>
+              <input type="password" name="newPassword1" required>
             </label>
             <label>
               Neues Passwort wiederholen:
-              <input type="password" name="passwortWiederholen" required>
+              <input type="password" name="newPassword2" required>
             </label>
             <input type="submit" value="Passwort ändern">
           </form>
