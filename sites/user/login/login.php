@@ -29,7 +29,7 @@
           Passwort:
           <input type="password" name="passwort" value="<?php echo $password ?>" required>
         </label>
-        <input type="submit" value="Anmelden">
+        <input type="submit" name="submit" value="Anmelden">
         <p>Noch keinen Account? <a href="../registration/registration.php">Hier registrieren</a></p>
       </form>
       <div class="hinweis">
