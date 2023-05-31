@@ -9,6 +9,7 @@
   <body>
     <!-- header -->
     <?php
+    $projectPath = "";
     include "sites/components/header/header.php"
     ?>
 
@@ -24,13 +25,9 @@
     </main>
 
     <!-- footer -->
-    <footer>
-      <nav>
-        <a href="sites/footer/imprint/imprint.php"> Impressum </a>
-        <a href="sites/footer/privacyPolicy/privacyPolicy.php"> Datenschutz </a>
-        <a href="sites/footer/termsOfUse/termsOfUse.php"> Nutzungsbedingungen </a>
-        <a href="sites/other/support/support.php"> Support </a>
-      </nav>
-    </footer>
+    <?php
+    $projectPath = "";
+    include "sites/components/footer/footer.php"
+    ?>
   </body>
 </html>

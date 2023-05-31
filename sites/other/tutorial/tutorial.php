@@ -69,13 +69,8 @@
     </main>
 
     <!-- footer -->
-    <footer>
-      <nav>
-        <a href="../../footer/imprint/imprint.php"> Impressum </a>
-        <a href="../../footer/privacyPolicy/privacyPolicy.php"> Datenschutz </a>
-        <a href="../../footer/termsOfUse/termsOfUse.php"> Nutzungsbedingungen </a>
-        <a href="../support/support.php"> Support </a>
-      </nav>
-    </footer>
+    <?php
+    include "../../components/footer/footer.php"
+    ?>
   </body>
 </html>
