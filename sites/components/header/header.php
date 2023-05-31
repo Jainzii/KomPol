@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (!isset($projectPath)) $projectPath = "../../../"
 ?>
 
@@ -15,11 +16,19 @@ if (!isset($projectPath)) $projectPath = "../../../"
             <div class='menu-button'><p>X</p></div>
         </label>
         <div class="authentication">
+            <?php if(isset($_SESSION["userId"])): ?>
             <button>Abmelden</button>
-            <a href="<?php echo $projectPath ?>sites/user/login/login.php">
+            <a href="../../user/editProfile/editProfile.php">
+                <img width="24" height="24" src="<?php echo $projectPath ?>sites/components/header/login.svg" alt = "Anmeldungs-Icon">
+                <p>Nutzer bearbeiten</p>
+            </a>
+            <?php else: ?>
+            <a href="../../user/login/login.php">
                 <img width="24" height="24" src="<?php echo $projectPath ?>sites/components/header/login.svg" alt = "Anmeldungs-Icon">
                 <p>Anmelden</p>
             </a>
+
+            <?php endif; ?>
         </div>
         <nav>
             <a href="<?php echo $projectPath ?>sites/news/overview/newsOverview.php"> Neuigkeiten </a>

@@ -13,17 +13,21 @@
     include "../../components/header/header.php"
     ?>
 
+    <?php
+    include "../LoginController.php";
+    ?>
+
     <!-- main content -->
     <main>
       <h2>Anmelden</h2>
-      <form action="login.php" method="post">
+      <form action="?login=1" method="post">
         <label>
           E-Mail:
-          <input type="email" name="e-mail" required>
+          <input type="email" name="e-mail" value="<?php echo $email ?>" required>
         </label>
         <label>
           Passwort:
-          <input type="password" name="passwort" required>
+          <input type="password" name="passwort" value="<?php echo $password ?>" required>
         </label>
         <input type="submit" value="Anmelden">
         <p>Noch keinen Account? <a href="../registration/registration.php">Hier registrieren</a></p>

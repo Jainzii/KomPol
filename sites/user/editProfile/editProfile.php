@@ -10,16 +10,19 @@
   <body>
     <!-- header -->
     <?php
-    include "../../components/header/header.php"
+    include "../../components/header/header.php";
     ?>
 
     <!-- main content -->
     <main>
+        <?php
+        include "../editProfileController.php";
+        ?>
 
         <!-- change details -->
         <section class="changeDetails">
           <h2>Daten ändern</h2>
-          <form action="profileEdit.php" method="post" enctype="multipart/form-data">
+          <form action="?changeDetails=1" method="post" enctype="multipart/form-data">
             <img
               width="100"
               height="100"
