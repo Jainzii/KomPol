@@ -1,0 +1,50 @@
+[
+  {
+    "uuid": "123456789",
+    "registrationCode": "BBBB",
+    "email": "okyeah@gmai.ce",
+    "password": "$2y$10$MpHRGnfHMl81QAeE\/5bu.e92e0fcHIUXRTrUlFCoXFGpRiAmRf0wO",
+    "firstName": null,
+    "lastName": null,
+    "avatar": null,
+    "party": null
+  },
+  {
+    "uuid": "user1",
+    "registrationCode": "AAAA",
+    "email": "maxdemora2000@gmail.com",
+    "password": "digga"
+  },
+  {
+    "uuid": "user5555",
+    "registrationCode": "CCCC",
+    "email": "okwowgenzehrlich@bruh.de",
+    "password": "$2y$10$E7Tc80pMYYhLmPFU\/uSC9.tpxiunFTWHIB23yIr\/OF8WepjpnLUKm",
+    "firstName": null,
+    "lastName": null,
+    "avatar": null,
+    "party": null
+  },
+  {
+    "uuid": "user6666",
+    "registrationCode": "DDDD",
+    "email": "aal@ultrabrutal.de",
+    "password": "$2y$10$wp10\/LtRdENrUf7yvr3BhuugNsCOWxHXb3hde77Mcgo0nzeaSjQSG",
+    "firstName": "KOKO",
+    "lastName": null,
+    "avatar": null,
+    "party": null
+  },
+  {
+    "email": "omg@aal.de",
+    "password": "a"
+  },
+  {
+    "email": "ohboy@gmai.ce",
+    "password": "dada"
+  },
+  {
+    "email": "okbruh@wow.com",
+    "password": "yeah"
+  }
+]

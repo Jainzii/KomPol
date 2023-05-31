@@ -32,15 +32,15 @@
               accept="image/png, image/jpeg">
             <label>
               E-Mail:
-              <input type="email" name="e-mail" required>
+              <input type="email" name="email" required>
             </label>
             <label>
               Vorname:
-              <input type="text" name="vorname" required>
+              <input type="text" name="firstName" required>
             </label>
             <label>
               Nachname:
-              <input type="text" name="nachname" required>
+              <input type="text" name="lastName" required>
             </label>
             <input type="submit" value="Daten ändern">
           </form>
