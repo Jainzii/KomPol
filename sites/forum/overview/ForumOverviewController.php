@@ -1,28 +1,31 @@
 <?php
 include "../FilePostDAO.php";
 
-if (isset($_GET["login"])) {
-    $email = isset($_POST["e-mail"]) ? $_POST["e-mail"] : "";
-    $password = isset($_POST["passwort"]) ? $_POST["passwort"] : "";
-    $error = false;
-    $userDAO = new FileUserDAO();
+$postDAO = new FilePostDAO();
+$postList = $postDAO->getPosts();
 
-    if ($email) {
-        $user = $userDAO ->loadUserByEmail($email);
+$searchActive = isset($_GET["vor"]) || isset($_GET["nach"]) || isset($_GET["kategorie"]) || isset($_GET["name"]);
 
-        if (isset($user) && password_verify($password, $user->password)) {
-            $_SESSION["userId"] = $user->uuid;
-            header('Location: '. '../../news/overview/newsOverview.php');
-            die();
-        } else {
-            $error = true;
-        }
-    } else {
-        $error = true;
-    }
-} else {
-    $email = "";
-    $password = "";
+if ($searchActive) {
+    $postList = $postDAO->getPosts();
+
+    $postList = isset($_GET["vor"]) && $_GET["vor"] !== ""  ? array_filter($postList, function ($post){
+        return strtotime($post->date) <= strtotime($_GET["vor"]);
+    }) : $postList;
+
+    $postList = isset($_GET["nach"]) && $_GET["nach"] !== ""  ? array_filter($postList, function ($post){
+        return strtotime($post->date) >= strtotime($_GET["nach"]);
+    }) : $postList;
+
+    $postList = isset($_GET["kategorie"]) && $_GET["kategorie"] !== "" ? array_filter($postList, function ($post){
+        return $post->category === $_GET["kategorie"];
+    }) : $postList;
+
+    $postList = isset($_GET["name"]) && $_GET["name"] !== "" ? array_filter($postList, function ($post){
+        $pos = strpos(strtoupper($post->title), strtoupper($_GET["name"]));
+        return is_int($pos);
+    }) : $postList;
+    unset($_GET["search"]);
 }
 
 ?>

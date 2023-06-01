@@ -14,7 +14,7 @@ class FileUserDAO implements UserDAO
     function addUser($user) {
         $json = file_get_contents($this->path . "user.json");
         $obj =  json_decode($json);
-        $obj[count($obj)] = $user;
+        $obj[] = $user;
         file_put_contents($this->path . "user.json", json_encode($obj));
     }
 

@@ -24,6 +24,7 @@ function registerWithoutCode($email, $password1, $password2){
     $userDAO = new FileUserDAO();
 
     $user = [];
+    $user["uuid"] = uniqid("u_", true);
     $user["email"] = $email;
     $user["password"] = password_hash($password1, PASSWORD_BCRYPT);
     $userDAO->addUser($user);
@@ -40,6 +41,7 @@ function registerWithCode($email, $password1, $password2, $registrationCode){
     $userId = $userDAO->getIdByRegistrationCode($registrationCode);
     if (isset($userId)) {
         $user = $userDAO->loadUserById($userId);
+        $user->uuid = uniqid("u_", true);
         $user->email = $email;
         $user->password = password_hash($password1, PASSWORD_BCRYPT);
         $userDAO->updateUser($user);

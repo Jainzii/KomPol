@@ -1,0 +1,19 @@
+[
+  {
+    "title": "Titel des ersten Forumbeitrags",
+    "text": "Vorschau des Forumsbeitrags",
+    "likes": "15",
+    "dislikes": "2",
+    "date": "01-03-2023",
+    "author": "user5555",
+    "category": "nachricht"
+  },{
+  "title": "Titel des zweiten Forumbeitrags",
+  "text": "Vorschau des Forumsbeitrags",
+  "likes": "25",
+  "dislikes": "15",
+  "date": "01-04-2023",
+  "author": "user6666",
+  "category": "kommentar"
+  }
+]
