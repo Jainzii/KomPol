@@ -51,6 +51,7 @@ class FileUserDAO implements UserDAO
     }
 
     function loadUserById($uuid) {
+        error_reporting(E_ERROR | E_PARSE);
         $json = file_get_contents($this->path . "user.json");
         $obj =  json_decode($json);
         $obj = isset($obj) ? $obj : [];

@@ -1,19 +1,32 @@
 [
   {
-    "title": "Titel des ersten Forumbeitrags",
-    "text": "Vorschau des Forumsbeitrags",
-    "likes": "15",
-    "dislikes": "2",
-    "date": "01-03-2023",
-    "author": "user5555",
-    "category": "nachricht"
-  },{
-  "title": "Titel des zweiten Forumbeitrags",
-  "text": "Vorschau des Forumsbeitrags",
-  "likes": "25",
-  "dislikes": "15",
-  "date": "01-04-2023",
-  "author": "user6666",
-  "category": "kommentar"
+    "uuid": "p_6477ee32533052.46611026",
+    "title": "Poggers",
+    "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore\n              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.\n              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit\n              amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam\n              erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,\n              no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing\n              elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n              At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus\n              est Lorem ipsum dolor sit amet.\n              Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore\n              eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum\n              zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,",
+    "likes": [],
+    "dislikes": [],
+    "date": "01-06-2023",
+    "author": " ",
+    "category": "kommentar"
+  },
+  {
+    "uuid": "p_6477ee6e8103e9.65081866",
+    "title": "Max der Sweete",
+    "text": "Oh mein Gott! Das KAktuseis ging so tief ~.~",
+    "likes": [],
+    "dislikes": [],
+    "date": "01-06-2023",
+    "author": " ",
+    "category": "kommentar"
+  },
+  {
+    "uuid": "p_6477f167b526b3.85978677",
+    "title": "Gamers unite",
+    "text": "Glasfaser pogchamp base epic, kupfer cringe virgin",
+    "likes": [],
+    "dislikes": [],
+    "date": "01-06-2023",
+    "author": " ",
+    "category": "initiative"
   }
 ]

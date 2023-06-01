@@ -28,4 +28,6 @@ if ($searchActive) {
     unset($_GET["search"]);
 }
 
+$postList = array_slice($postList, 0, 20);
+
 ?>

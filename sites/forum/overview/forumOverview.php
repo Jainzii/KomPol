@@ -63,12 +63,12 @@
             <div class="post">
               <p class="category"><?php echo isset($post->category)? $post->category : "Kommentar"; ?></p>
               <div class="postContent">
-                <a href="../postView/postView.php">
+                <a href="../postView/postView.php?id=<?php echo isset($post->uuid)? $post->uuid : ""; ?>">
                   <h2><?php echo isset($post->title)? $post->title : "Nicht vorhanden"; ?></h2>
                 </a>
                 <p><?php echo isset($post->text)? $post->text : "Der Text konnte aufgrund technischer Probleme nicht geladen werden."; ?></p>
               </div>
-              <p><?php echo isset($post->likes)? $post->likes : 0; ?> Likes | <?php echo isset($post->dislikes)? $post->dislikes : 0; ?> Dislikes</p>
+              <p><?php echo isset($post->likes)? count($post->likes) : 0; ?> Likes | <?php echo isset($post->dislikes)? count($post->dislikes) : 0; ?> Dislikes</p>
             </div>
           </article>
         <?php endforeach; ?>

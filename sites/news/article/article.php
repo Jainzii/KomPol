@@ -14,6 +14,10 @@
     ?>
 
     <!-- main content -->
+    <?php
+    include "ArticleController.php"
+    ?>
+
     <main>
       <div class="mainBox">
         <img

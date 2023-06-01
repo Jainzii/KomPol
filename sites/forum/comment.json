@@ -1,0 +1,41 @@
+[
+  {
+    "uuid": "c_5465h2hh24zh",
+    "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr",
+    "date": "13-03-23",
+    "author": "u_6477eed123de205.67687940",
+    "answerTo": "p_6477ee6e8103e9.65081866",
+    "likes": [
+      "1","2","3","4","1","2","3"
+    ],
+    "dislikes": [
+      "1","2","3","4","1"
+    ]
+  },
+  {
+    "uuid": "c_32qt2wrh25h",
+    "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr",
+    "date": "16-03-23",
+    "author": "u_6477eed35de3de205.67687940",
+    "answerTo": "p_6477ee6e8103e9.65081866",
+    "likes": [
+      "1","2","3","4","1","2"
+    ],
+    "dislikes": [
+      "1","2","3"
+    ]
+  },
+  {
+    "uuid": "c_24h235hsdrhw",
+    "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr",
+    "date": "13-04-23",
+    "author": "u_6477eed123de205.67687940",
+    "answerTo": "c_32qt2wrh25h",
+    "likes": [
+      "1","2","3","4","1","2","3","4"
+    ],
+    "dislikes": [
+      "1","2","3"
+    ]
+  }
+]
