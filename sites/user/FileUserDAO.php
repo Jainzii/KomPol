@@ -1,18 +1,26 @@
 <?php
+
 include "UserDAO.php";
 
 class FileUserDAO implements UserDAO
 {
+
+    private $path;
+
+    public function __construct ($path = "../") {
+        $this->path = $path;
+    }
+
     function addUser($user) {
-        $json = file_get_contents("../user.json");
+        $json = file_get_contents($this->path . "user.json");
         $obj =  json_decode($json);
         $obj[count($obj)] = $user;
-        file_put_contents("../user.json", json_encode($obj));
+        file_put_contents($this->path . "user.json", json_encode($obj));
     }
 
     function updateUser($updatedUser) {
         error_reporting(E_ERROR | E_PARSE);
-        $json = file_get_contents("../user.json");
+        $json = file_get_contents($this->path . "user.json");
         $obj =  json_decode($json);
         $obj = isset($obj) ? $obj : [];
         foreach ($obj as $user) {
@@ -27,18 +35,11 @@ class FileUserDAO implements UserDAO
                 $user->party = $updatedUser->party;
             }
         }
-        file_put_contents("../user.json", json_encode($obj));
-    }
-
-    function savePassword($email) {
-        $json = fopen("../user.json", "w");
-        $obj =  json_decode($json);
-        $obj->email = $email;
-        json_encode($obj);
+        file_put_contents($this->path . "user.json", json_encode($obj));
     }
 
     function loadUserByEmail($email) {
-        $json = file_get_contents("../user.json");
+        $json = file_get_contents($this->path . "user.json");
         $obj =  json_decode($json);
         $obj = isset($obj) ? $obj : [];
         foreach ($obj as $user) {
@@ -50,7 +51,7 @@ class FileUserDAO implements UserDAO
     }
 
     function loadUserById($uuid) {
-        $json = file_get_contents("../user.json");
+        $json = file_get_contents($this->path . "user.json");
         $obj =  json_decode($json);
         $obj = isset($obj) ? $obj : [];
         foreach ($obj as $user) {
@@ -62,7 +63,7 @@ class FileUserDAO implements UserDAO
     }
 
     function getIdByRegistrationCode($registrationCode) {
-        $json = file_get_contents("../user.json");
+        $json = file_get_contents($this->path . "user.json");
         $obj =  json_decode($json);
         $obj = isset($obj) ? $obj : [];
         foreach ($obj as $user) {

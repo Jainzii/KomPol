@@ -13,15 +13,18 @@
     include "../../components/header/header.php"
     ?>
 
+    <?php
+    include "supportController.php"
+    ?>
 
     <!-- main content -->
     <main>
       <h2>Support-Ticket einreichen:</h2>
-      <form action="supportTicket.php" method="post">
+      <form action="?supportTicket=1" method="post">
         <!-- issue category -->
         <label>
           Anliegen:
-          <select name="anliegen" required>
+          <select name="issue" required>
             <option value="anliegen1">Anliegen 1</option>
             <option value="anliegen2">Anliegen 2</option>
             <option value="anliegen3">Anliegen 3</option>
@@ -30,7 +33,7 @@
         <!-- support ticket  -->
         <label>
           Nachricht:
-          <textarea name="nachricht" rows="20" cols="50" required></textarea>
+          <textarea name="text" rows="20" cols="50" required></textarea>
         </label>
         <input type="submit" value="Nachricht abschicken">
       </form>
