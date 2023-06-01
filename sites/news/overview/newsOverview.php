@@ -15,82 +15,54 @@
 
     <!-- main content -->
     <main>
+
+      <?php
+      include "NewsOverviewController.php"
+      ?>
+
+
       <!-- highlighted article -->
-      <article class="highlightedArticle">
-        <img
-          width="1200"
-          height="800"
-          src="../media/kuhBild.jpg"
-          alt = "Bild zum Artikel">
-        <h2>Der lokale Kuhschubser hat zugeschlagen - mal wieder!</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-          et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-          amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-          erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-          no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-          elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-          At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-          est Lorem ipsum dolor sit amet.
-          Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore
-          eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum
-          zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-          et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-          amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-          erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-          no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-          elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-          At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-          est Lorem ipsum dolor sit amet. <a href="../article/article.php"> mehr lesen...</a>
-        </p>
-      </article>
+      <?php if(isset($articleList)): ?>
+          <?php $article = $articleList[0] ?>
+        <article class="highlightedArticle">
+          <img
+            width="1200"
+            height="800"
+            src="../media/kuhBild.jpg"
+            alt = "Bild zum Artikel">
+          <h2><?php echo isset($article->title)? $article->title : "Nicht vorhanden"; ?></h2>
+          <p>
+              <?php echo isset($article->contentPreview)? $article->contentPreview : "Nicht gefunden"; ?>
+            <a href="../article/article.php?id=<?php echo isset($article->uuid)? $article->uuid : ""; ?>"> mehr lesen...</a>
+          </p>
+        </article>
+
+      <?php else: ?>
+        <h2>Artikel nicht gefunden</h2>
+      <?php endif ?>
+
       <!-- list of other articles -->
       <div class="standardArtikel">
-        <article>
-          <img
-            width="300"
-            height="200"
-            src="../../../images/site/pictureDummy.png"
-            alt = "Bild zum Artikel">
-          <h3>Titel des Artikels</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-            et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-            amet, consetetur sadipscing elitr. <a href="../article/article.php"> mehr lesen...</a>
-          </p>
-        </article>
-        <article>
-          <img
-            width="300"
-            height="200"
-            src="../../../images/site/pictureDummy.png"
-            alt = "Bild zum Artikel">
-          <h3>Titel des Artikels</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-            et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-            amet, consetetur sadipscing elitr. <a href="../article/article.php"> mehr lesen...</a>
-          </p>
-        </article>
-        <article>
-          <img
-            width="300"
-            height="200"
-            src="../../../images/site/pictureDummy.png"
-            alt = "Bild zum Artikel">
-          <h3>Titel des Artikels</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-            et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-            amet, consetetur sadipscing elitr. <a href="../article/article.php"> mehr lesen...</a>
-          </p>
-        </article>
+        <?php if(isset($articleList)): ?>
+          <?php foreach($articleList as $article): ?>
+            <?php if($article !== $articleList[0]): ?>
+              <article>
+                <img
+                  width="300"
+                  height="200"
+                  src="../../../images/site/pictureDummy.png"
+                  alt = "Bild zum Artikel">
+                <h3><?php echo isset($article->title)? $article->title : "Nicht vorhanden"; ?></h3>
+                <p>
+                  <?php echo isset($article->contentPreview)? $article->contentPreview : "Nicht gefunden"; ?>
+                  <a href="../article/article.php?id=<?php echo isset($article->uuid)? $article->uuid : ""; ?>"> mehr lesen...</a>
+                </p>
+              </article>
+            <?php endif ?>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <h2>Artikel nicht gefunden</h2>
+        <?php endif ?>
       </div>
     </main>
 

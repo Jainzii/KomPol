@@ -11,19 +11,22 @@ if(isset($_GET["supportTicket"])) {
 
 
 function sendSupportTicket($issue, $text) {
-    $userDAO = new FileUserDAO("../../user/");
-    $user = $userDAO->loadUserById($_SESSION["userId"]);
+    if(isset($_SESSION["userId"])) {
+        $userDAO = new FileUserDAO("../../user/");
+        $user = $userDAO->loadUserById($_SESSION["userId"]);
 
-    $FileSupportDAO = new FileSupportDAO();
+        $FileSupportDAO = new FileSupportDAO();
 
-    $ticket = [];
-    $ticket["firstName"] = $user->firstName;
-    $ticket["lastName"] = $user->lastName;
-    $ticket["email"] = $user->email;
-    $ticket["issue"] = $issue;
-    $ticket["text"] = $text;
+        $ticket = [];
+        $ticket["firstName"] = $user->firstName;
+        $ticket["lastName"] = $user->lastName;
+        $ticket["email"] = $user->email;
+        $ticket["issue"] = $issue;
+        $ticket["text"] = $text;
 
-    $FileSupportDAO->addSupportTicket($ticket);
+        $FileSupportDAO->addSupportTicket($ticket);
+    }
+
 }
 
 ?>

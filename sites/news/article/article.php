@@ -19,40 +19,21 @@
     ?>
 
     <main>
-      <div class="mainBox">
-        <img
-          width="600"
-          height="400"
-          src="../../../images/site/pictureDummy.png"
-          alt = "Bild zum Artikel">
-        <h2>Titel des Artikels</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-          et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-          amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-          erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-          no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-          elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-          At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-          est Lorem ipsum dolor sit amet.
-          Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore
-          eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum
-          zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-          et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-          amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-          erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-          no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-          elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-          At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-          est Lorem ipsum dolor sit amet.
-          Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore
-          eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum
-          zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
-        </p>
-      </div>
+      <?php if(isset($article)): ?>
+        <div class="mainBox">
+          <img
+            width="600"
+            height="400"
+            src="../../../images/site/pictureDummy.png"
+            alt = "Bild zum Artikel">
+          <h2><?php echo isset($article->title)? $article->title : "Nicht vorhanden"; ?></h2>
+          <p>
+              <?php echo isset($article->content)? $article->content : "Nicht gefunden"; ?>
+          </p>
+        </div>
+	  <?php else: ?>
+        <h2>Artikel nicht gefunden</h2>
+	  <?php endif ?>
     </main>
 
     <!-- footer -->

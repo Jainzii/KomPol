@@ -13,24 +13,28 @@
     include "../../components/header/header.php"
     ?>
 
+    <?php
+    include "PostCreationController.php"
+    ?>
+
     <!-- main content -->
     <main>
       <h2>Beitrag verfassen:</h2>
-      <form action="postCreation.php" method="post">
+      <form action="?postCreation=1" method="post">
         <label>
           Kategorie:
-          <select name="kategorie" required>
+          <select name="category" required>
             <option value="kommentar">Kommentar</option>
             <option value="initiative">Initiative</option>
           </select>
         </label>
         <label>
           Titel:
-          <input type="text" name="titel" required>
+          <input type="text" name="title" required>
         </label>
         <label>
           Beitrag:
-          <textarea name="beitrag" rows="20" cols="50" required></textarea>
+          <textarea name="content" rows="20" cols="50" required></textarea>
         </label>
         <input type="submit" value="Beitrag erstellen">
       </form>
