@@ -13,6 +13,9 @@
     include "../../components/header/header.php"
     ?>
 
+    <?php
+    include "PoliticsOverviewController.php"
+    ?>
 
     <!-- main content -->
     <main>
@@ -28,33 +31,20 @@
 
       </section>
       <section class="partyOverviewContainer">
-        <section class="partyEntry">
-          <img width="150" height="100" src="../media/partyDummy.png" alt="Bild von Partei 1">
-          <h3>Partei 1</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-            At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-            <a href="../party/party.php"> mehr lesen... </a>
-          </p>
-        </section>
-        <section class="partyEntry">
-          <img width="150" height="100" src="../media/partyDummy.png" alt="Bild von Partei 1">
-          <h3>Partei 2</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-            At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-            <a href="../party/party.php"> mehr lesen... </a>
-          </p>
-        </section>
-        <section class="partyEntry">
-          <img width="150" height="100" src="../media/partyDummy.png" alt="Bild von Partei 1">
-          <h3>Partei 3</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-            At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-            <a href="../party/party.php"> mehr lesen... </a>
-          </p>
-        </section>
+        <?php if (isset($partyList)): ?>
+          <?php foreach ($partyList as $party): ?>
+            <section class="partyEntry">
+              <img width="150" height="100" src="<?php echo isset($party->logo)? $party->logo : "../media/partyDummy.png"; ?>" alt="Bild von <?php echo isset($party->name)? $party->name : "Partei"; ?>">
+              <h3><?php echo isset($party->name)? $party->name : "Partei"; ?></h3>
+              <p>
+				        <?php echo isset($party->text)? $party->text : "Parteitext konnte nicht geladen werden"; ?>
+                <a href="../party/party.php?name=<?php echo isset($party->name)? $party->name : ""; ?>"> mehr lesen... </a>
+              </p>
+            </section>
+          <?php endforeach;?>
+        <?php else: ?>
+          <h2>Keine Parteien verfügbar</h2>
+        <?php endif; ?>
       </section>
 
       <!-- container for politics information -->

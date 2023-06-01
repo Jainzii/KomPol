@@ -42,7 +42,7 @@
         <!-- answers  -->
         <section class="comments">
           <h3>Kommentare</h3>
-          <?php if(isset($commentList) && isset($userDAO) && isset($commentDAO)): ?>
+          <?php if(isset($commentList) && $commentList !== [] ): ?>
             <?php foreach ($commentList as $comment) echo $comment->uuid ?>
             <?php createComment($commentList) ?>
           <?php else: ?>

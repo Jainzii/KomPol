@@ -24,7 +24,7 @@
           <img
             width="600"
             height="400"
-            src="../../../images/site/pictureDummy.png"
+            src="<?php echo isset($article->picturePath)? $article->picturePath : "../media/pictureDummy.png" ?>"
             alt = "Bild zum Artikel">
           <h2><?php echo isset($article->title)? $article->title : "Nicht vorhanden"; ?></h2>
           <p>

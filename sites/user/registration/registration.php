@@ -14,7 +14,7 @@
     ?>
 
     <?php
-    include "../RegisterController.php";
+    include "RegisterController.php";
     ?>
 
     <!-- main content -->

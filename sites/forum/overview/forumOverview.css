@@ -1,4 +1,4 @@
-form {
+main form {
     display: flex;
     flex-direction: column;
     min-width: 310px;
@@ -162,7 +162,7 @@ article .postContent h2:hover {
         margin-right: 30px;
     }
 
-    form {
+    main form {
         flex-direction: row;
     }
     form input[type="submit"] {

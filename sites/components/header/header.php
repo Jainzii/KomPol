@@ -1,6 +1,11 @@
 <?php
 session_start();
-if (!isset($projectPath)) $projectPath = "../../../"
+if (!isset($projectPath)) $projectPath = "../../../";
+
+if (isset($_GET["logout"])) {
+  unset($_SESSION["userId"]);
+}
+
 ?>
 
 <header>
@@ -17,7 +22,9 @@ if (!isset($projectPath)) $projectPath = "../../../"
         </label>
         <div class="authentication">
             <?php if(isset($_SESSION["userId"])): ?>
-            <button>Abmelden</button>
+            <form action="?logout=true" method="post">
+              <input type="submit" id="logoutButton" value="Abmelden">
+            </form>
             <a href="../../user/editProfile/editProfile.php">
                 <img width="24" height="24" src="<?php echo $projectPath ?>sites/components/header/login.svg" alt = "Anmeldungs-Icon">
                 <p>Nutzer bearbeiten</p>

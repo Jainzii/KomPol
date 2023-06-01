@@ -28,7 +28,7 @@
           <img
             width="1200"
             height="800"
-            src="../media/kuhBild.jpg"
+            src="<?php echo isset($article->picturePath)? $article->picturePath : "../media/pictureDummy.png" ?>"
             alt = "Bild zum Artikel">
           <h2><?php echo isset($article->title)? $article->title : "Nicht vorhanden"; ?></h2>
           <p>
@@ -50,7 +50,7 @@
                 <img
                   width="300"
                   height="200"
-                  src="../../../images/site/pictureDummy.png"
+                  src="<?php echo isset($article->picturePath)? $article->picturePath : "../media/pictureDummy.png" ?>"
                   alt = "Bild zum Artikel">
                 <h3><?php echo isset($article->title)? $article->title : "Nicht vorhanden"; ?></h3>
                 <p>

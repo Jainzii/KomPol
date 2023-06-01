@@ -16,7 +16,7 @@
     <!-- main content -->
     <main>
         <?php
-        include "../editProfileController.php";
+        include "EditProfileController.php";
         ?>
 
         <!-- change details -->
@@ -26,7 +26,7 @@
             <img
               width="100"
               height="100"
-              src="../media/avatarDummy.png"
+              src="<?php echo isset($user->avatar)? $user->avatar : "../media/avatarDummy.png" ?>"
               alt = "Jetziger Avatar">
 
             <input
@@ -35,15 +35,15 @@
               accept="image/png, image/jpeg">
             <label>
               E-Mail:
-              <input type="email" name="email" required>
+              <input type="email" name="email" value="<?php echo isset($user->email)? $user->email : "" ?>" required>
             </label>
             <label>
               Vorname:
-              <input type="text" name="firstName" required>
+              <input type="text" name="firstName" value="<?php echo isset($user->firstName)? $user->firstName : "" ?>" required>
             </label>
             <label>
               Nachname:
-              <input type="text" name="lastName" required>
+              <input type="text" name="lastName" value="<?php echo isset($user->lastName)? $user->lastName : "" ?>" required>
             </label>
             <input type="submit" value="Daten ändern">
           </form>

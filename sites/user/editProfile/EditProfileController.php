@@ -6,18 +6,29 @@ if (!isset($_SESSION["userId"])){
     header('Location: '. '../login/login.php');
 }
 
+$userDAO = new FileUserDAO();
+$user = $userDAO->loadUserById($_SESSION["userId"]);
+
 if(isset($_GET["changeDetails"])) {
+
+	$avatarName = basename($_FILES["avatar"]["name"]) !== null ? basename($_FILES["avatar"]["name"]) . "_" . $_SESSION["userId"] : "";
     $email = isset($_POST["email"]) ? $_POST["email"] : "";
     $firstName = isset($_POST["firstName"]) ? $_POST["firstName"] : "";
     $lastName = isset($_POST["lastName"]) ? $_POST["lastName"] : "";
-    changeDetails($_POST["email"], $_POST["firstName"], $_POST["lastName"]);
+    changeDetails($avatarName,$_POST["email"], $_POST["firstName"], $_POST["lastName"]);
 }
 
-function changeDetails($email, $firstName, $lastName) {
-
-    $userDAO = new FileUserDAO();
-
-    $user = $userDAO->loadUserById($_SESSION["userId"]);
+function changeDetails($avatarName, $email, $firstName, $lastName) {
+	global $user;
+	global $userDAO;
+	if (isset($avatarName)){
+		$target_file = "../media/" . $avatarName;
+		if (file_exists($target_file)) {
+			unlink($target_file);
+		}
+		move_uploaded_file($_FILES["avatar"]["tmp_name"], $target_file);
+		$user->avatar = $target_file;
+	}
     $user->firstName = $firstName;
     $user->lastName = $lastName;
     $user->email = $email;
@@ -38,9 +49,8 @@ function changePassword($oldPassword, $newPassword1, $newPassword2) {
         return;
     }
 
-    $userDAO = new FileUserDAO();
-
-    $user = $userDAO->loadUserById($_SESSION["userId"]);
+	global $user;
+	global $userDAO;
 
     if(password_verify($oldPassword, $user->password)) {
         $user->password = password_hash($newPassword1, PASSWORD_BCRYPT);

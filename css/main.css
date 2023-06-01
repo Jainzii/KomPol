@@ -59,7 +59,7 @@ header .authentication {
     justify-content: center;
 }
 
-header .authentication button {
+header .authentication #logoutButton {
     border: none;
     padding: 11px 31px;
     margin-right: 20px;
@@ -68,6 +68,7 @@ header .authentication button {
     background-color: #1554b6;
     color: white;
     border-radius: 5px;
+    width: auto;
 }
 
 header .authentication a {
