@@ -28,12 +28,12 @@
           <img
             width="1200"
             height="800"
-            src="<?php echo isset($article->picturePath)? $article->picturePath : "../media/pictureDummy.png" ?>"
+            src="<?php echo isset($article["picturePath"])? $article["picturePath"] : "../media/pictureDummy.png" ?>"
             alt = "Bild zum Artikel">
-          <h2><?php echo isset($article->title)? $article->title : "Nicht vorhanden"; ?></h2>
+          <h2><?php echo isset($article["title"])? $article["title"] : "Nicht vorhanden"; ?></h2>
           <p>
-              <?php echo isset($article->contentPreview)? $article->contentPreview : "Nicht gefunden"; ?>
-            <a href="../article/article.php?id=<?php echo isset($article->uuid)? $article->uuid : ""; ?>"> mehr lesen...</a>
+              <?php echo isset($article["contentPreview"])? $article["contentPreview"] : "Nicht gefunden"; ?>
+            <a href="../article/article.php?id=<?php echo isset($article["uuid"])? $article["uuid"] : ""; ?>"> mehr lesen...</a>
           </p>
         </article>
 
@@ -50,12 +50,12 @@
                 <img
                   width="300"
                   height="200"
-                  src="<?php echo isset($article->picturePath)? $article->picturePath : "../media/pictureDummy.png" ?>"
+                  src="<?php echo isset($article["picturePath"])? $article["picturePath"] : "../media/pictureDummy.png" ?>"
                   alt = "Bild zum Artikel">
-                <h3><?php echo isset($article->title)? $article->title : "Nicht vorhanden"; ?></h3>
+                <h3><?php echo isset($article["title"])? $article["title"] : "Nicht vorhanden"; ?></h3>
                 <p>
-                  <?php echo isset($article->contentPreview)? $article->contentPreview : "Nicht gefunden"; ?>
-                  <a href="../article/article.php?id=<?php echo isset($article->uuid)? $article->uuid : ""; ?>"> mehr lesen...</a>
+                  <?php echo isset($article["contentPreview"])? $article["contentPreview"] : "Nicht gefunden"; ?>
+                  <a href="../article/article.php?id=<?php echo isset($article["uuid"])? $article["uuid"] : ""; ?>"> mehr lesen...</a>
                 </p>
               </article>
             <?php endif ?>

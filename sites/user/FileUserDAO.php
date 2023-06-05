@@ -1,5 +1,6 @@
 <?php
 
+namespace user;
 include "UserDAO.php";
 
 class FileUserDAO implements UserDAO

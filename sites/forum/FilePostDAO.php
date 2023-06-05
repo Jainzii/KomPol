@@ -1,5 +1,8 @@
 <?php
+namespace posts;
+
 include "PostDAO.php";
+use posts\PostDAO;
 
 class FilePostDAO implements PostDAO
 {

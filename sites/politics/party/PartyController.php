@@ -1,12 +1,16 @@
 <?php
 
-include "../FilePartyDAO.php";
+//include "../FilePartyDAO.php";
+include "../DBPartyDAO.php";
+
+//use party\FilePartyDAO;
+use party\DBPartyDAO;
 
 if (!isset($_GET["name"])){
 	header('Location: '. '../overview/politicsOverview.php');
 }
 
-$partyDAO = new FilePartyDAO();
+$partyDAO = new DBPartyDAO();
 $party = $partyDAO->getParty($_GET["name"]);
 
 if (!isset($party)){

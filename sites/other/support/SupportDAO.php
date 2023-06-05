@@ -1,5 +1,7 @@
 <?php
 
+namespace support;
+
 interface SupportDAO
 {
 

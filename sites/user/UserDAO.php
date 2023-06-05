@@ -1,5 +1,7 @@
 <?php
 
+namespace user;
+
 interface UserDAO
 {
 

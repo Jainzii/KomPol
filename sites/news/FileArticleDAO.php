@@ -2,6 +2,8 @@
 
 include "ArticleDAO.php";
 
+use news\ArticleDAO;
+
 class FileArticleDAO implements ArticleDAO
 {
 

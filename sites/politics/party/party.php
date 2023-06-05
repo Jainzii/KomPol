@@ -19,10 +19,9 @@
     <!-- main content -->
     <main>
       <div class="partyInfo">
-        <img width="300" height="200" src="<?php echo isset($party->logo)? $party->logo : "../media/partyDummy.png"; ?>" alt = "Partei-Bild">
-        <h2><?php echo isset($party->name)? $party->name : "Parteiname"; ?></h2>
-        <p>
-			  <?php echo isset($party->text)? $party->text : "Parteitext konnte nicht geladen werden."; ?></p>
+        <img width="300" height="200" src="<?php echo isset($party["logo"])? $party["logo"] : "../media/partyDummy.png"; ?>" alt = "Partei-Bild">
+        <h2><?php echo isset($party["name"])? $party["name"] : "Parteiname"; ?></h2>
+        <p><?php echo isset($party["text"])? $party["text"] : "Parteitext konnte nicht geladen werden."; ?></p>
       </div>
     </main>
 

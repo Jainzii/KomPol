@@ -1,5 +1,6 @@
 <?php
 
+namespace party;
 include "PartyDAO.php";
 
 class FilePartyDAO implements PartyDAO

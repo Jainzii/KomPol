@@ -1,7 +1,11 @@
 <?php
-include "../FilePostDAO.php";
+//include "../FilePostDAO.php";
+include "../DBPostDAO.php";
 
-$postDAO = new FilePostDAO();
+//use posts\FilePostDAO;
+use posts\DBPostDAO;
+
+$postDAO = new DBPostDAO();
 $postList = $postDAO->getPosts();
 
 $searchActive = isset($_GET["vor"]) || isset($_GET["nach"]) || isset($_GET["kategorie"]) || isset($_GET["name"]);

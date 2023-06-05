@@ -1,5 +1,7 @@
 <?php
 
+namespace party;
+
 interface PartyDAO
 {
 	function getParties();

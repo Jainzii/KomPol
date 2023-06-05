@@ -1,12 +1,16 @@
 <?php
 
-include "../FileUserDAO.php";
+//include "../FileUserDAO.php";
+include "../DBUserDAO.php";
+
+//use user\FileUserDAO;
+use user\DBUserDAO;
 
 if (!isset($_SESSION["userId"])){
     header('Location: '. '../login/login.php');
 }
 
-$userDAO = new FileUserDAO();
+$userDAO = new DBUserDAO();
 $user = $userDAO->loadUserById($_SESSION["userId"]);
 
 if(isset($_GET["changeDetails"])) {
@@ -27,13 +31,12 @@ function changeDetails($avatarName, $email, $firstName, $lastName) {
 			unlink($target_file);
 		}
 		move_uploaded_file($_FILES["avatar"]["tmp_name"], $target_file);
-		$user->avatar = $target_file;
+		$user["avatar"] = $target_file;
 	}
-    $user->firstName = $firstName;
-    $user->lastName = $lastName;
-    $user->email = $email;
+    $user["firstName"] = $firstName;
+    $user["lastName"] = $lastName;
+    $user["email"] = $email;
     $userDAO->updateUser($user);
-
 }
 
 if(isset($_GET["changePassword"])) {
@@ -45,15 +48,14 @@ if(isset($_GET["changePassword"])) {
 
 
 function changePassword($oldPassword, $newPassword1, $newPassword2) {
-    if (!$newPassword1 == $newPassword2) {
+    if ($newPassword1 !== $newPassword2) {
         return;
     }
-
 	global $user;
 	global $userDAO;
 
-    if(password_verify($oldPassword, $user->password)) {
-        $user->password = password_hash($newPassword1, PASSWORD_BCRYPT);
+    if(password_verify($oldPassword, $user["password"])) {
+        $user["password"] = password_hash($newPassword1, PASSWORD_BCRYPT);
         $userDAO->updateUser($user);
     }
 

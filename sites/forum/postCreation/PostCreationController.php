@@ -1,7 +1,10 @@
 <?php
 
-include "../FilePostDAO.php";
-include "../../user/FileUserDAO.php";
+//include "../FilePostDAO.php";
+include "../DBPostDAO.php";
+
+//use posts\FilePostDAO;
+use posts\DBPostDAO;
 
 if (!isset($_SESSION["userId"])){
     header('Location: '. '../overview/forumOverview.php');
@@ -16,11 +19,7 @@ if (isset($_GET["postCreation"])) {
 
 function submitForumPost($title, $category, $content ) {
 
-
-    $userDAO = new FileUserDAO("../../user/");
-    $user = $userDAO->loadUserById($_SESSION["userId"]);
-
-    $postDAO = new FilePostDAO();
+    $postDAO = new DBPostDAO();
 
     $post = [];
     $post["uuid"] = uniqid("p_",true);
@@ -29,7 +28,7 @@ function submitForumPost($title, $category, $content ) {
     $post["likes"] = [];
     $post["dislikes"] = [];
     $post["date"] = date("d-m-Y");
-    $post["author"] = $user->uuid;
+    $post["author"] = $_SESSION["userId"];
     $post["category"] = $category;
 
     $postDAO->addPost($post);

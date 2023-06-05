@@ -14,7 +14,7 @@
     ?>
 
     <?php
-    include "PoliticsOverviewController.php"
+    include "PoliticsOverviewController.php";
     ?>
 
     <!-- main content -->
@@ -34,11 +34,11 @@
         <?php if (isset($partyList)): ?>
           <?php foreach ($partyList as $party): ?>
             <section class="partyEntry">
-              <img width="150" height="100" src="<?php echo isset($party->logo)? $party->logo : "../media/partyDummy.png"; ?>" alt="Bild von <?php echo isset($party->name)? $party->name : "Partei"; ?>">
-              <h3><?php echo isset($party->name)? $party->name : "Partei"; ?></h3>
+              <img width="150" height="100" src="<?php echo isset($party["logo"])? $party["logo"] : "../media/partyDummy.png"; ?>" alt="Bild von <?php echo isset($party["name"])? $party["name"] : "Partei"; ?>">
+              <h3><?php echo isset($party["name"])? $party["name"] : "Partei"; ?></h3>
               <p>
-				        <?php echo isset($party->text)? $party->text : "Parteitext konnte nicht geladen werden"; ?>
-                <a href="../party/party.php?name=<?php echo isset($party->name)? $party->name : ""; ?>"> mehr lesen... </a>
+				        <?php echo isset($party["textPreview"])? $party["textPreview"] : "Parteitext konnte nicht geladen werden"; ?>
+                <a href="../party/party.php?name=<?php echo isset($party["name"])? $party["name"] : ""; ?>"> mehr lesen... </a>
               </p>
             </section>
           <?php endforeach;?>

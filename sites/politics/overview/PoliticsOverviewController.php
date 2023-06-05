@@ -1,6 +1,10 @@
 <?php
 
-include "../FilePartyDAO.php";
+//include "../FilePartyDAO.php";
+//use party\FilePartyDAO;
 
-$partyDAO = new FilePartyDAO();
+include "../DBPartyDAO.php";
+use party\DBPartyDAO;
+
+$partyDAO = new DBPartyDAO();
 $partyList = $partyDAO->getParties();

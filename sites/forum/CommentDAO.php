@@ -1,5 +1,7 @@
 <?php
 
+namespace posts;
+
 interface CommentDAO
 {
     function addComment($comment);
