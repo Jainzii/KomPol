@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>KomPol</title>
-  <link rel="stylesheet" type="text/css" href="../../../css/main.css">
+  <link rel="stylesheet" type="text/css" href="../../main.css">
   <link rel="stylesheet" type="text/css" href="postView.css">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
@@ -54,10 +54,10 @@
       <section class="partyOpinions">
         <h3>Meinung der Parteien</h3>
         <div class="opinionsContainer">
-          <img width="32" height="32" src="../../../images/site/partyCircle.svg" alt = "Parteikreis">
-          <img width="32" height="32" src="../../../images/site/partyCircle.svg" alt = "Parteikreis">
-          <img width="32" height="32" src="../../../images/site/partyCircle.svg" alt = "Parteikreis">
-          <img width="32" height="32" src="../../../images/site/partyCircle.svg" alt = "Parteikreis">
+          <img width="32" height="32" src="partyCircle.svg" alt = "Parteikreis">
+          <img width="32" height="32" src="partyCircle.svg" alt = "Parteikreis">
+          <img width="32" height="32" src="partyCircle.svg" alt = "Parteikreis">
+          <img width="32" height="32" src="partyCircle.svg" alt = "Parteikreis">
         </div>
       </section>
     </main>

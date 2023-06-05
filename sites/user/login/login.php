@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>KomPol</title>
-  <link rel="stylesheet" type="text/css" href="../../../css/main.css">
+  <link rel="stylesheet" type="text/css" href="../../main.css">
   <link rel="stylesheet" type="text/css" href="../authentication.css">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
@@ -32,9 +32,6 @@
         <input type="submit" name="submit" value="Anmelden">
         <p>Noch keinen Account? <a href="../registration/registration.php">Hier registrieren</a></p>
       </form>
-      <div class="hinweis">
-        <p> <a href="../editProfile/editProfile.php"> HIER GEHT ES ZUR PROFIL BEARBEITUNGSSEITE (TEMPORÄR BIS AUTHENTIFIZIERUNG IMPLEMENTIERT IST) </a> </p>
-      </div>
     </main>
 
     <!-- footer -->

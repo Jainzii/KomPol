@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>KomPol</title>
-  <link rel="stylesheet" type="text/css" href="../../../css/main.css">
+  <link rel="stylesheet" type="text/css" href="../../main.css">
   <link rel="stylesheet" type="text/css" href="forumOverview.css">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
@@ -52,7 +52,7 @@
           <input type="submit" value="Suche">
         </form>
         <a href="../postCreation/postCreation.php">
-          <img src="../../../images/site/plusSign.svg" alt="plus sign" width="16" height="16">
+          <img src="plusSign.svg" alt="plus sign" width="16" height="16">
           Beitrag erstellen
         </a>
       </section>

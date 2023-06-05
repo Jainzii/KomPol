@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>KomPol</title>
-  <link rel="stylesheet" type="text/css" href="../../../css/main.css">
+  <link rel="stylesheet" type="text/css" href="../../main.css">
   <link rel="stylesheet" type="text/css" href="tutorial.css">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
@@ -22,7 +22,7 @@
           <img
             width="300"
             height="200"
-            src="../../../images/site/pictureDummy.png"
+            src="pictureDummy.png"
             alt = "Account erstellen Bild"
           >
         </div>
@@ -51,7 +51,7 @@
           <img
             width="300"
             height="200"
-            src="../../../images/site/pictureDummy.png"
+            src="pictureDummy.png"
             alt = "Beitrag verfassen Bild"
           >
         </div>

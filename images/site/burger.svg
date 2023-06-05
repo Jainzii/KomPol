@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <line style="stroke-linejoin: round; stroke-linecap: round; stroke-width: 13px; stroke: rgb(255, 255, 255);" x1="15" y1="50" x2="85" y2="50"/>
-  <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke-width: 13px; stroke: rgb(255, 255, 255);" x1="15" y1="25" x2="85" y2="25"/>
-  <line style="fill: rgb(216, 216, 216); stroke-width: 13px; stroke-linecap: round; stroke: rgb(255, 255, 255);" x1="15" y1="75" x2="85" y2="75"/>
-</svg>
