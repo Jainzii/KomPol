@@ -29,7 +29,7 @@ function submitForumPost($title, $category, $content ) {
     $post["likes"] = [];
     $post["dislikes"] = [];
     $post["date"] = date("d-m-Y");
-    $post["author"] = $user->firstName . " " . $user->lastName;
+    $post["author"] = $user->uuid;
     $post["category"] = $category;
 
     $postDAO->addPost($post);

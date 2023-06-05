@@ -30,7 +30,7 @@
               src="../../user/media/avatarDummy.png"
               alt = "Avatar">
             <p><?php echo isset($author->firstName) ? $author->firstName : "" ?></p>
-            <p><?php echo isset($author->firstName) ? $author->lastName : "" ?></p>
+            <p><?php echo isset($author->lastName) ? $author->lastName : "" ?></p>
           </div>
           <div class="postContent">
             <h2><?php echo isset($post->title) ? $post->title : "Beitragstitel" ?></h2>
