@@ -1,1 +1,41 @@
-[{"uuid":"u_6477ede7e8dc05.67687940","email":"jens-lippert01@web.de","password":"$2y$10$hcnEScnsxU0AcDoxrKhl5.11Kk8JlJbbWE6ukxj20IfyiLPxSArv6","avatar":"..\/media\/opossum.PNG_u_6477ede7e8dc05.67687940","firstName":"Jens","lastName":"Lippert","party":null},{"uuid":"u_6477eed35de3de205.67687940","registrationCode":"A2C4","email":null,"password":null,"firstName":"Katarina","lastName":"Specht","avatar":"..\/media\/avatarDummy.png","party":null},{"uuid":"u_6477eed123de205.67687940","registrationCode":"ABCD","email":null,"password":null,"firstName":"Dorian","lastName":"Schwirkus","avatar":"..\/media\/avatarDummy.png","party":null},{"uuid":"u_6477eedef32105.67687940","registrationCode":"12CD","email":null,"password":null,"firstName":"Mux","lastName":"Masterman","avatar":"..\/media\/avatarDummy.png","party":null}]
+[
+  {
+    "uuid": "u_6477ede7e8dc05.67687940",
+    "email": "test@test.de",
+    "password": "$2y$10$hcnEScnsxU0AcDoxrKhl5.11Kk8JlJbbWE6ukxj20IfyiLPxSArv6",
+    "avatar": "../media/avatarDummy.png",
+    "firstName": "Example",
+    "lastName": "User",
+    "party": null
+  },
+  {
+    "uuid": "u_6477eed35de3de205.67687940",
+    "registrationCode": "A2C4",
+    "email": null,
+    "password": null,
+    "firstName": "Katarina",
+    "lastName": "Specht",
+    "avatar": "..\/media\/avatarDummy.png",
+    "party": null
+  },
+  {
+    "uuid": "u_6477eed123de205.67687940",
+    "registrationCode": "ABCD",
+    "email": null,
+    "password": null,
+    "firstName": "Dorian",
+    "lastName": "Schwirkus",
+    "avatar": "..\/media\/avatarDummy.png",
+    "party": null
+  },
+  {
+    "uuid": "u_6477eedef32105.67687940",
+    "registrationCode": "12CD",
+    "email": null,
+    "password": null,
+    "firstName": "Mux",
+    "lastName": "Masterman",
+    "avatar": "..\/media\/avatarDummy.png",
+    "party": null
+  }
+]
