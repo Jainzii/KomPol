@@ -24,11 +24,11 @@
           <img
             width="600"
             height="400"
-            src="<?php echo isset($article->picturePath)? $article->picturePath : "../media/pictureDummy.png" ?>"
+            src="<?php echo isset($article["picturePath"])? $article["picturePath"] : "../media/pictureDummy.png" ?>"
             alt = "Bild zum Artikel">
-          <h2><?php echo isset($article->title)? $article->title : "Nicht vorhanden"; ?></h2>
+          <h2><?php echo isset($article["title"])? $article["title"] : "Nicht vorhanden"; ?></h2>
           <p>
-              <?php echo isset($article->content)? $article->content : "Nicht gefunden"; ?>
+              <?php echo isset($article["content"])? $article["content"] : "Nicht gefunden"; ?>
           </p>
         </div>
 	  <?php else: ?>

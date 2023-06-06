@@ -1,7 +1,7 @@
 <?php
 namespace posts;
 include "PostDAO.php";
-include "../../SQLHelper.php";
+include_once "../../SQLHelper.php";
 
 use Exception;
 use PDO;
@@ -26,6 +26,8 @@ class DBPostDAO implements PostDAO {
 
 	function addPost($post) {
 		try {
+			// mySQL TRANSACTION ISOLATION LEVEL hinzufügen
+			$this->db->beginTransaction();
 			$sql = 'INSERT INTO Post (uuid, title, text, author, category)
 					VALUES (:uuid, :title, :text, :author, :category)';
 			$preparedSQL = $this->db->prepare($sql);
@@ -35,34 +37,17 @@ class DBPostDAO implements PostDAO {
 			$preparedSQL->bindValue(":author", $post["author"]);
 			$preparedSQL->bindValue(":category", $post["category"]);
 			if ($preparedSQL->execute()) {
+				$this->db->commit();
 				echo "Posttabelle aktualisiert";
+				return true;
 			} else {
 				echo "Posttabelle nicht aktualisiert";
 			}
 		} catch (Exception $ex) {
 			echo "Fehler :" . $ex->getMessage();
 		}
-	}
-
-	function updatePost($post) {
-		try {
-			$sql = 'UPDATE Post
-					SET title = :title, text = :text, category = :category
-					WHERE uuid = :uuid';
-			$preparedSQL = $this->db->prepare($sql);
-			$preparedSQL->bindValue(":title", $post->title);
-			$preparedSQL->bindValue(":text", $post->text);
-			$preparedSQL->bindValue(":category", $post->category);
-			$preparedSQL->bindValue(":uuid", $post->author->uuid);
-
-			if ($preparedSQL->execute()) {
-				echo "Post aktualisiert";
-			} else {
-				echo "Post nicht aktualisiert";
-			}
-		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
-		}
+		$this->db->rollBack();
+		return false;
 	}
 
 	function getPost($uuid) {
@@ -85,19 +70,5 @@ class DBPostDAO implements PostDAO {
 			echo "Fehler :" . $ex->getMessage();
 			return [];
 		}
-	}
-
-	function likePost($userId, $post) {
-		$sql = "SELECT * FROM Like WHERE uuid = :postId AND user = :userId";
-		$preparedSQL = $this->db->prepare($sql);
-		$preparedSQL->bindValue(":postId", $post["uuid"]);
-		$preparedSQL->bindValue(":userId", $userId);
-		$executedSQL = $preparedSQL->execute();
-		echo isset($executedSQL);
-
-	}
-
-	function dislikePost($user) {
-
 	}
 }

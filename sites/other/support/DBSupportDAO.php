@@ -5,7 +5,7 @@ use Exception;
 use PDO;
 use SQLHelper;
 
-//include "../../SQLHelper.php";
+include_once "../../SQLHelper.php";
 include "SupportDAO.php";
 
 class DBSupportDAO implements SupportDAO {
@@ -26,6 +26,8 @@ class DBSupportDAO implements SupportDAO {
 
 	function addSupportTicket($supportTicket) {
 		try {
+			// mySQL TRANSACTION ISOLATION LEVEL hinzufügen
+			$this->db->beginTransaction();
 			$sql = 'INSERT INTO Support (uuid, firstName, lastName, email, issue, text)
 					VALUES (:uuid, :firstName, :lastName, :email, :issue, :text)';
 			$preparedSQL = $this->db->prepare($sql);
@@ -36,13 +38,17 @@ class DBSupportDAO implements SupportDAO {
 			$preparedSQL->bindValue(":issue", $supportTicket["issue"]);
 			$preparedSQL->bindValue(":text", $supportTicket["text"]);
 			if ($preparedSQL->execute()) {
+				$this->db->commit();
 				echo "Supporttabelle aktualisiert";
+				return true;
 			} else {
 				echo "Supporttabelle nicht aktualisiert";
 			}
 		} catch (Exception $ex) {
 			echo "Fehler :" . $ex->getMessage();
 		}
+		$this->db->rollBack();
+		return false;
 	}
 
 

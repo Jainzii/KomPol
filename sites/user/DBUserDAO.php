@@ -2,7 +2,7 @@
 
 namespace user;
 include "UserDAO.php";
-include "../../SQLHelper.php";
+include_once "../../SQLHelper.php";
 
 use Exception;
 use PDO;
@@ -27,6 +27,8 @@ class DBUserDAO implements UserDAO {
 	function addUser($user)
 	{
 		try {
+			// mySQL TRANSACTION ISOLATION LEVEL hinzufügen
+			$this->db->beginTransaction();
 			$sql = 'INSERT INTO User (uuid, email, password)
 					VALUES (:uuid, :email, :password)';
 			$preparedSQL = $this->db->prepare($sql);
@@ -34,6 +36,7 @@ class DBUserDAO implements UserDAO {
 			$preparedSQL->bindValue(":email", $user["email"]);
 			$preparedSQL->bindValue(":password", $user["password"]);
 			if ($preparedSQL->execute()) {
+				$this->db->commit();
 				echo "Usertabelle aktualisiert";
 				return true;
 			} else {
@@ -42,12 +45,15 @@ class DBUserDAO implements UserDAO {
 		} catch (Exception $ex) {
 			echo "Fehler :" . $ex->getMessage();
 		}
+		$this->db->rollBack();
 		return false;
 	}
 
 	function updateUser($user)
 	{
 		try {
+			// mySQL TRANSACTION ISOLATION LEVEL hinzufügen
+			$this->db->beginTransaction();
 			$sql = 'UPDATE User SET email = :email, password = :password, firstName = :firstName, lastName = :lastName, 
                 avatar = :avatar, party = :party WHERE uuid = :uuid';
 			$preparedSQL = $this->db->prepare($sql);
@@ -59,6 +65,7 @@ class DBUserDAO implements UserDAO {
 			$preparedSQL->bindValue(":avatar", $user["avatar"]);
 			$preparedSQL->bindValue(":party", $user["party"]);
 			if ($preparedSQL->execute()) {
+				$this->db->commit();
 				echo "Usertabelle aktualisiert";
 				return true;
 			} else {
@@ -67,6 +74,7 @@ class DBUserDAO implements UserDAO {
 		} catch (Exception $ex) {
 			echo "Fehler :" . $ex->getMessage();
 		}
+		$this->db->rollBack();
 		return false;
 	}
 

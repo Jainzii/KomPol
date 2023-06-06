@@ -1,9 +1,11 @@
 <?php
 //include "../FilePostDAO.php";
-include "../DBPostDAO.php";
+include_once "../DBPostDAO.php";
+include_once "../DBRatingDAO.php";
 
 //use posts\FilePostDAO;
 use posts\DBPostDAO;
+use posts\DBRatingDAO;
 
 $postDAO = new DBPostDAO();
 $postList = $postDAO->getPosts();

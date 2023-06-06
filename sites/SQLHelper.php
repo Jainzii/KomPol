@@ -12,6 +12,7 @@ class SQLHelper {
 		// MYSQL
 		// $dsn = 'mysql:dbname=kompol;host=localhost';
 		$this->db = new PDO($dsn, $user, $pw);
+		$this->createCommentTable();
 	}
 
 	function createUserTable(){
@@ -68,6 +69,23 @@ class SQLHelper {
 		$this->createDislikeTable();
 	}
 
+	function createCommentTable(){
+		$this->createPostTable();
+		$sql = "CREATE TABLE IF NOT EXISTS Comment (
+    		uuid VARCHAR(255) PRIMARY KEY,
+    		answerTo VARCHAR,
+    		text VARCHAR,
+    		date DATE DEFAULT CURRENT_DATE,
+    		author VARCHAR,
+    		CONSTRAINT FK_User FOREIGN KEY (author) REFERENCES User(uuid)
+		)";
+		if ($this->db->exec($sql)) {
+			echo "Posttabelle angelegt";
+		} else {
+			echo "Posttabelle nicht angelegt";
+		}
+	}
+
 	function createArticleTable(){
 		$sql = "CREATE TABLE IF NOT EXISTS Article (
     		uuid VARCHAR(255),
@@ -84,16 +102,11 @@ class SQLHelper {
 		}
 	}
 
-	function createCommentTable(){
-		// TODO: implement
-	}
-
-	private function createLikeTable(){
+	function createLikeTable(){
 		$sql = "CREATE TABLE IF NOT EXISTS Like (
     		uuid VARCHAR(255),
     		user VARCHAR(255),
     		CONSTRAINT PK_Like PRIMARY KEY (uuid,user),
-    		CONSTRAINT FK_LikePost FOREIGN KEY (uuid) REFERENCES Post(uuid),
     		CONSTRAINT PK_LikeUser FOREIGN KEY (user) REFERENCES User(uuid)
 		)";
 		if ($this->db->exec($sql)) {
@@ -103,12 +116,11 @@ class SQLHelper {
 		}
 	}
 
-	private function createDislikeTable(){
+	function createDislikeTable(){
 		$sql = "CREATE TABLE IF NOT EXISTS Dislike (
     		uuid VARCHAR(255),
     		user VARCHAR(255),
     		CONSTRAINT PK_Dislike PRIMARY KEY (uuid,user),
-    		CONSTRAINT FK_LikePost FOREIGN KEY (uuid) REFERENCES Post(uuid),
     		CONSTRAINT PK_LikeUser FOREIGN KEY (user) REFERENCES User(uuid)
 		)";
 		if ($this->db->exec($sql)) {

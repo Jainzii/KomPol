@@ -1,7 +1,7 @@
 <?php
 namespace posts;
 include "CommentDAO.php";
-include "../../SQLHelper.php";
+include_once "../../SQLHelper.php";
 use PDO;
 use SQLHelper;
 use Exception;
@@ -20,39 +20,47 @@ class DBCommentDAO implements CommentDAO {
 		// MYSQL
 		// $dsn = 'mysql:dbname=kompol;host=localhost';
 
-		$helper = new \SQLHelper();
+		$helper = new SQLHelper();
+		$helper->createCommentTable();
+		$helper->closeConnection();
 
 		$this->db = new PDO($dsn, $user, $pw);
 	}
 
-	function addComment($comment)
-	{
+	function addComment($comment) {
 		try {
-			$sql = 'INSERT INTO Post (uuid, title, text, author, category)
-					VALUES (:uuid, :title, :text, :author, :category)';
+			// mySQL TRANSACTION ISOLATION LEVEL hinzufügen
+			$this->db->beginTransaction();
+			$sql = 'INSERT INTO Comment (uuid, answerTo, text, author)
+					VALUES (:uuid, :answerTo, :text, :author)';
 			$preparedSQL = $this->db->prepare($sql);
 			$preparedSQL->bindValue(":uuid", $comment["uuid"]);
-			$preparedSQL->bindValue(":title", $comment["title"]);
+			$preparedSQL->bindValue(":answerTo", $comment["answerTo"]);
 			$preparedSQL->bindValue(":text", $comment["text"]);
 			$preparedSQL->bindValue(":author", $comment["author"]);
-			$preparedSQL->bindValue(":category", $comment["category"]);
 			if ($preparedSQL->execute()) {
+				$this->db->commit();
 				echo "Posttabelle aktualisiert";
+				return true;
 			} else {
 				echo "Posttabelle nicht aktualisiert";
 			}
 		} catch (Exception $ex) {
 			echo "Fehler :" . $ex->getMessage();
 		}
+		$this->db->rollBack();
+		return false;
 	}
 
-	function updateComment($comment)
-	{
-		// TODO: Implement updateComment() method.
-	}
-
-	function getComments($answerTo)
-	{
-		// TODO: Implement getComments() method.
+	function getComments($answerTo) {
+		try {
+			$sql = "SELECT * FROM Comment WHERE answerTo = '" . $answerTo . "'";
+			$test = $this->db->query($sql);
+			$party = $test->fetchAll();
+			return array_pop($party);
+		} catch (Exception $ex) {
+			echo "Fehler :" . $ex->getMessage();
+			return null;
+		}
 	}
 }
