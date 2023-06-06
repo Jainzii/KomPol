@@ -14,8 +14,7 @@ $userDAO = new DBUserDAO();
 $user = $userDAO->loadUserById($_SESSION["userId"]);
 
 if(isset($_GET["changeDetails"])) {
-
-	$avatarName = basename($_FILES["avatar"]["name"]) !== null ? basename($_FILES["avatar"]["name"]) . "_" . $_SESSION["userId"] : "";
+	$avatarName = basename($_FILES["avatar"]["name"]) !== "" ? basename($_FILES["avatar"]["name"]) . "_" . $_SESSION["userId"] : null;
     $email = isset($_POST["email"]) ? $_POST["email"] : "";
     $firstName = isset($_POST["firstName"]) ? $_POST["firstName"] : "";
     $lastName = isset($_POST["lastName"]) ? $_POST["lastName"] : "";
@@ -31,6 +30,7 @@ function changeDetails($avatarName, $email, $firstName, $lastName) {
 			unlink($target_file);
 		}
 		move_uploaded_file($_FILES["avatar"]["tmp_name"], $target_file);
+		unset($_FILES["avatar"]);
 		$user["avatar"] = $target_file;
 	}
     $user["firstName"] = $firstName;
