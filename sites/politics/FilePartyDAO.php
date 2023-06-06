@@ -1,7 +1,7 @@
 <?php
 
 namespace party;
-include "PartyDAO.php";
+include_once "PartyDAO.php";
 
 class FilePartyDAO implements PartyDAO
 {

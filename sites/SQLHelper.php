@@ -29,9 +29,9 @@ class SQLHelper {
     		FOREIGN KEY (party) REFERENCES Party(name)
 		)";
 		if ($this->db->exec($sql)) {
-			echo "Usertabelle angelegt";
+			return true;
 		} else {
-			echo "Usertabelle nicht angelegt";
+			return false;
 		}
 	}
 
@@ -43,9 +43,9 @@ class SQLHelper {
     		logo VARCHAR
 		)";
 		if ($this->db->exec($sql)) {
-			echo "Parteitabelle angelegt";
+			return true;
 		} else {
-			echo "Parteitabelle nicht angelegt";
+			return false;
 		}
 	}
 
@@ -60,13 +60,10 @@ class SQLHelper {
     		category VARCHAR,
     		CONSTRAINT FK_User FOREIGN KEY (author) REFERENCES User(uuid)
 		)";
-		if ($this->db->exec($sql)) {
-			echo "Posttabelle angelegt";
-		} else {
-			echo "Posttabelle nicht angelegt";
-		}
+		$result = $this->db->exec($sql);
 		$this->createLikeTable();
 		$this->createDislikeTable();
+		return $result;
 	}
 
 	function createCommentTable(){
@@ -80,9 +77,9 @@ class SQLHelper {
     		CONSTRAINT FK_User FOREIGN KEY (author) REFERENCES User(uuid)
 		)";
 		if ($this->db->exec($sql)) {
-			echo "Posttabelle angelegt";
+			return true;
 		} else {
-			echo "Posttabelle nicht angelegt";
+			return false;
 		}
 	}
 
@@ -96,9 +93,9 @@ class SQLHelper {
     		CONSTRAINT PK_Like PRIMARY KEY (uuid)
 		)";
 		if ($this->db->exec($sql)) {
-			echo "Artikeltabelle angelegt";
+			return true;
 		} else {
-			echo "Artikeltabelle nicht angelegt";
+			return false;
 		}
 	}
 
@@ -110,9 +107,9 @@ class SQLHelper {
     		CONSTRAINT PK_LikeUser FOREIGN KEY (user) REFERENCES User(uuid)
 		)";
 		if ($this->db->exec($sql)) {
-			echo "Liketabelle angelegt";
+			return true;
 		} else {
-			echo "Liketabelle nicht angelegt";
+			return false;
 		}
 	}
 
@@ -124,9 +121,9 @@ class SQLHelper {
     		CONSTRAINT PK_LikeUser FOREIGN KEY (user) REFERENCES User(uuid)
 		)";
 		if ($this->db->exec($sql)) {
-			echo "Disliketabelle angelegt";
+			return true;
 		} else {
-			echo "Disliketabelle nicht angelegt";
+			return false;
 		}
 	}
 
@@ -140,9 +137,9 @@ class SQLHelper {
     		text VARCHAR
 		)";
 		if ($this->db->exec($sql)) {
-			echo "Supporttabelle angelegt";
+			return true;
 		} else {
-			echo "Supporttabelle nicht angelegt";
+			return false;
 		}
 	}
 

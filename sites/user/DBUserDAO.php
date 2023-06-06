@@ -1,7 +1,7 @@
 <?php
 
 namespace user;
-include "UserDAO.php";
+include_once "UserDAO.php";
 include_once "../../SQLHelper.php";
 
 use Exception;
@@ -37,7 +37,6 @@ class DBUserDAO implements UserDAO {
 			$preparedSQL->bindValue(":password", $user["password"]);
 			if ($preparedSQL->execute()) {
 				$this->db->commit();
-				echo "Usertabelle aktualisiert";
 				return true;
 			} else {
 				echo "Usertabelle nicht aktualisiert";
@@ -66,7 +65,6 @@ class DBUserDAO implements UserDAO {
 			$preparedSQL->bindValue(":party", $user["party"]);
 			if ($preparedSQL->execute()) {
 				$this->db->commit();
-				echo "Usertabelle aktualisiert";
 				return true;
 			} else {
 				echo "Usertabelle nicht aktualisiert";

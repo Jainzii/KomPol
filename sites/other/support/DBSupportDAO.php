@@ -6,7 +6,7 @@ use PDO;
 use SQLHelper;
 
 include_once "../../SQLHelper.php";
-include "SupportDAO.php";
+include_once "SupportDAO.php";
 
 class DBSupportDAO implements SupportDAO {
 
@@ -39,7 +39,6 @@ class DBSupportDAO implements SupportDAO {
 			$preparedSQL->bindValue(":text", $supportTicket["text"]);
 			if ($preparedSQL->execute()) {
 				$this->db->commit();
-				echo "Supporttabelle aktualisiert";
 				return true;
 			} else {
 				echo "Supporttabelle nicht aktualisiert";

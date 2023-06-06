@@ -10,11 +10,11 @@
   <body>
     <!-- header -->
     <?php
-    include "../../components/header/header.php"
+    include_once "../../components/header/header.php"
     ?>
 
     <?php
-    include "PoliticsOverviewController.php";
+    include_once "PoliticsOverviewController.php";
     ?>
 
     <!-- main content -->
@@ -73,7 +73,7 @@
 
     <!-- footer -->
     <?php
-    include "../../components/footer/footer.php"
+    include_once "../../components/footer/footer.php"
     ?>
   </body>
 </html>

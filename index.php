@@ -10,7 +10,7 @@
     <!-- header -->
     <?php
     $projectPath = "";
-    include "sites/components/header/header.php"
+    include_once "sites/components/header/header.php"
     ?>
 
     <!-- main content -->
@@ -27,7 +27,7 @@
     <!-- footer -->
     <?php
     $projectPath = "";
-    include "sites/components/footer/footer.php"
+    include_once "sites/components/footer/footer.php"
     ?>
   </body>
 </html>

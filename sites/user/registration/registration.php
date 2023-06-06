@@ -10,11 +10,11 @@
   <body>
     <!-- header -->
     <?php
-    include "../../components/header/header.php"
+    include_once "../../components/header/header.php"
     ?>
 
     <?php
-    include "RegisterController.php";
+    include_once "RegisterController.php";
     ?>
 
     <!-- main content -->
@@ -44,7 +44,7 @@
 
     <!-- footer -->
     <?php
-    include "../../components/footer/footer.php"
+    include_once "../../components/footer/footer.php"
     ?>
   </body>
 </html>

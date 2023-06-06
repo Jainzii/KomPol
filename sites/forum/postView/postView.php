@@ -10,11 +10,11 @@
   <body>
     <!-- header -->
     <?php
-    include "../../components/header/header.php"
+    include_once "../../components/header/header.php"
     ?>
 
     <?php
-    include "PostViewController.php"
+    include_once "PostViewController.php"
     ?>
 
     <!-- main content -->
@@ -46,7 +46,7 @@
             <?php foreach ($commentList as $comment) echo $comment["uuid"] ?>
             <?php createComment($commentList) ?>
           <?php else: ?>
-            <h3>Keine Kommentare</h3>
+            <h4>Keine Kommentare</h4>
           <?php endif ?>
         </section>
       </div>
@@ -64,7 +64,7 @@
 
     <!-- footer -->
     <?php
-    include "../../components/footer/footer.php"
+    include_once "../../components/footer/footer.php"
     ?>
   </body>
 </html>

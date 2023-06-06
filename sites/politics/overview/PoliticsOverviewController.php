@@ -1,9 +1,9 @@
 <?php
 
-//include "../FilePartyDAO.php";
+//include_once "../FilePartyDAO.php";
 //use party\FilePartyDAO;
 
-include "../DBPartyDAO.php";
+include_once "../DBPartyDAO.php";
 use party\DBPartyDAO;
 
 $partyDAO = new DBPartyDAO();

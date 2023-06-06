@@ -1,6 +1,6 @@
 <?php
 
-include "CommentDAO.php";
+include_once "CommentDAO.php";
 use posts\CommentDAO;
 
 class FileCommentDAO implements CommentDAO

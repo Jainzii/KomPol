@@ -1,7 +1,7 @@
 <?php
 
-//include "../FilePostDAO.php";
-include "../DBPostDAO.php";
+//include_once "../FilePostDAO.php";
+include_once "../DBPostDAO.php";
 
 //use posts\FilePostDAO;
 use posts\DBPostDAO;

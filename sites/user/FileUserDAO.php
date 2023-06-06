@@ -1,7 +1,7 @@
 <?php
 
 namespace user;
-include "UserDAO.php";
+include_once "UserDAO.php";
 
 class FileUserDAO implements UserDAO
 {

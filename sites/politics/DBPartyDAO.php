@@ -5,8 +5,8 @@ use Exception;
 use PDO;
 use SQLHelper;
 
-include "PartyDAO.php";
-include "../../SQLHelper.php";
+include_once "PartyDAO.php";
+include_once "../../SQLHelper.php";
 
 class DBPartyDAO implements PartyDAO
 {

@@ -1,6 +1,6 @@
 <?php
 
-include "ArticleDAO.php";
+include_once "ArticleDAO.php";
 
 use news\ArticleDAO;
 

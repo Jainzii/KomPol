@@ -1,7 +1,9 @@
 <?php
 
-include "SupportDAO.php";
-include "../../user/FileUserDAO.php";
+include_once "SupportDAO.php";
+include_once "../../user/FileUserDAO.php";
+
+use support\SupportDAO;
 
 class FileSupportDAO implements SupportDAO
 {

@@ -1,7 +1,7 @@
 <?php
 
-//include "../FileUserDAO.php";
-include "../DBUserDAO.php";
+//include_once "../FileUserDAO.php";
+include_once "../DBUserDAO.php";
 
 //use user\FileUserDAO;
 use user\DBUserDAO;

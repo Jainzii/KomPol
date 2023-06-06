@@ -1,6 +1,6 @@
 <?php
 namespace posts;
-include "PostDAO.php";
+include_once "PostDAO.php";
 include_once "../../SQLHelper.php";
 
 use Exception;
@@ -38,7 +38,6 @@ class DBPostDAO implements PostDAO {
 			$preparedSQL->bindValue(":category", $post["category"]);
 			if ($preparedSQL->execute()) {
 				$this->db->commit();
-				echo "Posttabelle aktualisiert";
 				return true;
 			} else {
 				echo "Posttabelle nicht aktualisiert";

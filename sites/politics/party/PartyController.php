@@ -1,7 +1,7 @@
 <?php
 
-//include "../FilePartyDAO.php";
-include "../DBPartyDAO.php";
+//include_once "../FilePartyDAO.php";
+include_once "../DBPartyDAO.php";
 
 //use party\FilePartyDAO;
 use party\DBPartyDAO;

@@ -1,9 +1,9 @@
 <?php
 
-//include "FileSupportDAO.php";
-include "DBSupportDAO.php";
-//include "../../user/FileUserDAO.php";
-include "../../user/DBUserDAO.php";
+//include_once "FileSupportDAO.php";
+include_once "DBSupportDAO.php";
+//include_once "../../user/FileUserDAO.php";
+include_once "../../user/DBUserDAO.php";
 
 use support\DBSupportDAO;
 //use user\FileUserDAO;
@@ -20,7 +20,7 @@ function sendSupportTicket($issue, $text) {
         $userDAO = new DBUserDAO();
         $user = $userDAO->loadUserById($_SESSION["userId"]);
 
-        $FileSupportDAO = new DBSupportDAO();
+        $supportDAO = new DBSupportDAO();
 		$ticketId = uniqid("s_", true);
 
         $ticket = [];
@@ -31,7 +31,7 @@ function sendSupportTicket($issue, $text) {
         $ticket["issue"] = $issue;
         $ticket["text"] = $text;
 
-        $FileSupportDAO->addSupportTicket($ticket);
+        $supportDAO->addSupportTicket($ticket);
     }
 
 }

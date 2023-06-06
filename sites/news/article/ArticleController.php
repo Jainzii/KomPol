@@ -2,7 +2,7 @@
 
 use news\DBArticleDAO;
 
-include "../DBArticleDAO.php";
+include_once "../DBArticleDAO.php";
 
 if (!isset($_GET["id"])){
     header('Location: '. '../overview/newsOverview.php');

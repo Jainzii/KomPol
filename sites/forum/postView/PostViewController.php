@@ -1,8 +1,8 @@
 <?php
 
-//include "../FilePostDAO.php";
-//include "../FileCommentDAO.php";
-//include "../../user/FileUserDAO.php";
+//include_once "../FilePostDAO.php";
+//include_once "../FileCommentDAO.php";
+//include_once "../../user/FileUserDAO.php";
 
 use posts\DBCommentDAO;
 use posts\DBPostDAO;

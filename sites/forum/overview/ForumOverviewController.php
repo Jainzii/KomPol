@@ -1,5 +1,5 @@
 <?php
-//include "../FilePostDAO.php";
+//include_once "../FilePostDAO.php";
 include_once "../DBPostDAO.php";
 include_once "../DBRatingDAO.php";
 

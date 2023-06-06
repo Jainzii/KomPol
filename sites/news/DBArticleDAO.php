@@ -1,7 +1,7 @@
 <?php
 namespace news;
-include "ArticleDAO.php";
-include "../../SQLHelper.php";
+include_once "ArticleDAO.php";
+include_once "../../SQLHelper.php";
 
 use Exception;
 use PDO;

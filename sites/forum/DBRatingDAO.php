@@ -52,7 +52,6 @@ class DBRatingDAO implements RatingDAO {
 			echo $postId . " " . $userId;
 			if ($preparedSQL->execute()) {
 				$this->db->commit();
-				echo "Posttabelle aktualisiert";
 				return true;
 			} else {
 				echo "Posttabelle nicht aktualisiert";
@@ -75,7 +74,6 @@ class DBRatingDAO implements RatingDAO {
 			$preparedSQL->bindValue(":userId", $userId);
 			if ($preparedSQL->execute()) {
 				$this->db->commit();
-				echo "Posttabelle aktualisiert";
 				return true;
 			} else {
 				echo "Posttabelle nicht aktualisiert";
@@ -125,7 +123,6 @@ class DBRatingDAO implements RatingDAO {
 			$preparedSQL->bindValue(":user", $userId);
 			if ($preparedSQL->execute()) {
 				$this->db->commit();
-				echo "Posttabelle aktualisiert";
 				return true;
 			} else {
 				echo "Posttabelle nicht aktualisiert";
@@ -148,7 +145,6 @@ class DBRatingDAO implements RatingDAO {
 			$preparedSQL->bindValue(":userId", $userId);
 			if ($preparedSQL->execute()) {
 				$this->db->commit();
-				echo "Posttabelle aktualisiert";
 				return true;
 			} else {
 				echo "Posttabelle nicht aktualisiert";

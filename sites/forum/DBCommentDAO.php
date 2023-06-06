@@ -1,6 +1,6 @@
 <?php
 namespace posts;
-include "CommentDAO.php";
+include_once "CommentDAO.php";
 include_once "../../SQLHelper.php";
 use PDO;
 use SQLHelper;
@@ -40,7 +40,6 @@ class DBCommentDAO implements CommentDAO {
 			$preparedSQL->bindValue(":author", $comment["author"]);
 			if ($preparedSQL->execute()) {
 				$this->db->commit();
-				echo "Posttabelle aktualisiert";
 				return true;
 			} else {
 				echo "Posttabelle nicht aktualisiert";
