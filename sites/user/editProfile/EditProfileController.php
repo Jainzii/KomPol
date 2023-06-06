@@ -13,6 +13,10 @@ if (!isset($_SESSION["userId"])){
 $userDAO = new DBUserDAO();
 $user = $userDAO->loadUserById($_SESSION["userId"]);
 
+if (!isset($user)){
+	header('Location: '. '../login/login.php');
+}
+
 if(isset($_GET["changeDetails"])) {
 	$avatarName = basename($_FILES["avatar"]["name"]) !== "" ? basename($_FILES["avatar"]["name"]) . "_" . $_SESSION["userId"] : null;
     $email = isset($_POST["email"]) ? $_POST["email"] : "";

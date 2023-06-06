@@ -24,6 +24,10 @@ $post = $postDAO->getPost($_GET["id"]);
 $author = $userDAO->loadUserById($post["author"]);
 $commentList = $commentDAO->getComments($_GET["id"]);
 
+if (!isset($post)) {
+	header('Location: '. '../overview/forumOverview.php');
+}
+
 function createComment($commentList) {
   foreach ($commentList as $comment){
     global $userDAO;

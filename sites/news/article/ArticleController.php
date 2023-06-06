@@ -11,3 +11,7 @@ if (!isset($_GET["id"])){
 $articleDAO = new DBArticleDAO();
 $article = $articleDAO->getArticle($_GET["id"]);
 
+if (!isset($article)){
+	header('Location: '. '../overview/newsOverview.php');
+}
+
