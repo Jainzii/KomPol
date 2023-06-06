@@ -90,8 +90,7 @@ class DBRatingDAO implements RatingDAO {
 		try {
 			$sql = "SELECT COUNT(uuid) FROM Like WHERE uuid = '" . $postId . "'";
 			$test = $this->db->query($sql);
-			$counts = $test->fetchColumn();
-			return $counts;
+            return $test->fetchColumn();
 		} catch (Exception $ex) {
 			echo "Fehler :" . $ex->getMessage();
 			return 0;
@@ -161,8 +160,7 @@ class DBRatingDAO implements RatingDAO {
 		try {
 			$sql = "SELECT COUNT(uuid) FROM Dislike WHERE uuid = '" . $postId . "'";
 			$test = $this->db->query($sql);
-			$counts = $test->fetchColumn();;
-			return $counts;
+            return $test->fetchColumn();
 		} catch (Exception $ex) {
 			echo "Fehler :" . $ex->getMessage();
 			return 0;

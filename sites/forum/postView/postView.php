@@ -35,7 +35,7 @@
           <div class="postContent">
             <h2><?php echo isset($post["title"]) ? $post["title"] : "Beitragstitel" ?></h2>
             <p><?php echo isset($post["text"]) ? $post["text"] : "Beitrag konnte leider nicht geladen werden." ?></p>
-            <p><?php echo isset($post["likes"])? count($post["likes"]) : 0; ?> Likes | <?php echo isset($post["dislikes"])? count($post["dislikes"]) : 0; ?> Dislikes</p>
+            <p><?php echo isset($post["likes"])? $post["likes"] : 0; ?> Likes | <?php echo isset($post["dislikes"])? $post["dislikes"] : 0; ?> Dislikes</p>
             <button>Antworten</button>
           </div>
         </section>
@@ -43,7 +43,6 @@
         <section class="comments">
           <h3>Kommentare</h3>
           <?php if(isset($commentList) && $commentList !== [] ): ?>
-            <?php foreach ($commentList as $comment) echo $comment["uuid"] ?>
             <?php createComment($commentList) ?>
           <?php else: ?>
             <h4>Keine Kommentare</h4>

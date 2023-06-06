@@ -56,7 +56,7 @@ class DBCommentDAO implements CommentDAO {
 			$sql = "SELECT * FROM Comment WHERE answerTo = '" . $answerTo . "'";
 			$test = $this->db->query($sql);
 			$party = $test->fetchAll();
-			return array_pop($party);
+			return $party;
 		} catch (Exception $ex) {
 			echo "Fehler :" . $ex->getMessage();
 			return null;

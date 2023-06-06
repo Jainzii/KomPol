@@ -5,7 +5,7 @@ main {
     align-items: center;
 }
 
-form {
+main form {
     color: white;
     display: flex;
     flex-wrap: wrap;
@@ -62,7 +62,7 @@ input[type="text"] {
     width: 100%;
 }
 
-input[type="submit"] {
+main input[type="submit"] {
     text-align: center;
     font-size: 1em;
     background-color: #1554b6;
@@ -97,7 +97,7 @@ p a {
 
 @media only screen and (min-width: 800px) {
 
-    form {
+    main form {
         width: 65%;
     }
 
@@ -109,7 +109,7 @@ p a {
 
 @media only screen and (min-width: 1000px) {
 
-    form {
+    main form {
         width: 55%;
     }
 
@@ -121,7 +121,7 @@ p a {
 
 @media only screen and (min-width: 1500px) {
 
-    form {
+    main form {
         width: 35%;
     }
 

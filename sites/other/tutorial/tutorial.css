@@ -9,6 +9,7 @@ main {
     background-color: #FFFFFF;
     border: #1554b6 solid 3px;
     border-radius: 10px;
+    width: 100%;
 }
 
 .infoBox img{

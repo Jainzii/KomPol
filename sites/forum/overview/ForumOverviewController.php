@@ -2,6 +2,7 @@
 //include_once "../FilePostDAO.php";
 include_once "../DBPostDAO.php";
 include_once "../DBRatingDAO.php";
+include_once "../DBRatingDAO.php";
 
 //use posts\FilePostDAO;
 use posts\DBPostDAO;
@@ -34,6 +35,13 @@ if ($searchActive) {
     unset($_GET["search"]);
 }
 
+$ratingDAO = new DBRatingDAO();
 $postList = array_slice($postList, 0, 20);
 
+foreach ($postList as $postKey => $postValue) {
+    $newPost = $postValue;
+    $newPost["likes"] = $ratingDAO->getLikeCount($postValue["uuid"]);
+    $newPost["dislikes"] = $ratingDAO->getDislikeCount($postValue["uuid"]);
+    $postList[$postKey] = $newPost;
+}
 ?>

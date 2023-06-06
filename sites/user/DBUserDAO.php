@@ -29,8 +29,13 @@ class DBUserDAO implements UserDAO {
 		try {
 			// mySQL TRANSACTION ISOLATION LEVEL hinzufügen
 			$this->db->beginTransaction();
-			$sql = 'INSERT INTO User (uuid, email, password)
+            if (isset($user["uuid"])) {
+                $sql = 'UPDATE User SET email = :email, password = :password WHERE uuid = :uuid';
+            } else {
+                $user["uuid"] = uniqid("u_", true);
+                $sql = 'INSERT INTO User (uuid, email, password)
 					VALUES (:uuid, :email, :password)';
+            }
 			$preparedSQL = $this->db->prepare($sql);
 			$preparedSQL->bindValue(":uuid", $user["uuid"]);
 			$preparedSQL->bindValue(":email", $user["email"]);
@@ -54,7 +59,7 @@ class DBUserDAO implements UserDAO {
 			// mySQL TRANSACTION ISOLATION LEVEL hinzufügen
 			$this->db->beginTransaction();
 			$sql = 'UPDATE User SET email = :email, password = :password, firstName = :firstName, lastName = :lastName, 
-                avatar = :avatar, party = :party WHERE uuid = :uuid';
+                avatar = :avatar WHERE uuid = :uuid';
 			$preparedSQL = $this->db->prepare($sql);
 			$preparedSQL->bindValue(":uuid", $user["uuid"]);
 			$preparedSQL->bindValue(":email", $user["email"]);
@@ -62,7 +67,6 @@ class DBUserDAO implements UserDAO {
 			$preparedSQL->bindValue(":firstName", $user["firstName"]);
 			$preparedSQL->bindValue(":lastName", $user["lastName"]);
 			$preparedSQL->bindValue(":avatar", $user["avatar"]);
-			$preparedSQL->bindValue(":party", $user["party"]);
 			if ($preparedSQL->execute()) {
 				$this->db->commit();
 				return true;
@@ -107,8 +111,7 @@ class DBUserDAO implements UserDAO {
 		try {
 			$sql = "SELECT uuid FROM User WHERE registrationCode = '" . $registrationCode . "'";
 			$test = $this->db->query($sql);
-			$ids = $test->fetchAll();
-			return array_pop($ids);
+            return $test->fetchColumn();
 		} catch (Exception $ex) {
 			echo "Fehler :" . $ex->getMessage();
 			return null;

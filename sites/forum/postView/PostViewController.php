@@ -6,11 +6,13 @@
 
 use posts\DBCommentDAO;
 use posts\DBPostDAO;
+use posts\DBRatingDAO;
 use user\DBUserDAO;
 
 include_once "../DBPostDAO.php";
 include_once "../DBCommentDAO.php";
 include_once "../../user/DBUserDAO.php";
+include_once "../DBRatingDAO.php";
 
 if (!isset($_GET["id"])){
     header('Location: '. '../overview/forumOverview.php');
@@ -19,6 +21,7 @@ if (!isset($_GET["id"])){
 $userDAO = new DBUserDAO();
 $postDAO = new DBPostDAO();
 $commentDAO = new DBCommentDAO();
+$ratingDAO = new DBRatingDAO();
 
 $post = $postDAO->getPost($_GET["id"]);
 $author = $userDAO->loadUserById($post["author"]);
@@ -28,12 +31,17 @@ if (!isset($post)) {
 	header('Location: '. '../overview/forumOverview.php');
 }
 
+$post["likes"] = $ratingDAO->getLikeCount($post["uuid"]);
+$post["dislikes"] = $ratingDAO->getDislikeCount($post["uuid"]);
+
 function createComment($commentList) {
+  global $userDAO;
+  global $commentDAO;
+  global $ratingDAO;
   foreach ($commentList as $comment){
-    global $userDAO;
-    global $commentDAO;
+      $comment["likes"] = $ratingDAO->getLikeCount($comment["uuid"]);
+      $comment["dislikes"] = $ratingDAO->getDislikeCount($comment["uuid"]);
 	  $commenter = $userDAO->loadUserById($comment["author"]);
-	// after this next, plain HTML
 	?>
 
   <div class="comment">
@@ -49,7 +57,7 @@ function createComment($commentList) {
       </div>
       <div class="postContent">
         <p><?php echo isset($comment["text"]) ? $comment["text"] : "" ?></p>
-        <p> <?php echo isset($comment["likes"])? count($comment["likes"]) : 0; ?> Likes | <?php echo isset($comment["dislikes"])? count($comment["dislikes"]) : 0; ?> Dislikes</p>
+        <p> <?php echo isset($comment["likes"])? $comment["likes"] : 0; ?> Likes | <?php echo isset($comment["dislikes"])? $comment["dislikes"] : 0; ?> Dislikes</p>
         <button> Antworten </button>
       </div>
     </div>

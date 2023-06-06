@@ -9,6 +9,7 @@ main {
     border-radius: 10px;
     background-color: #FFFFFF;
     padding: 20px 30px;
+    width: 100%;
 }
 
 .partyInfo img {
