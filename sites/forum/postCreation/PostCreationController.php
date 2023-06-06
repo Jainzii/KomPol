@@ -31,6 +31,9 @@ function submitForumPost($title, $category, $content ) {
     $post["author"] = $_SESSION["userId"];
     $post["category"] = $category;
 
-    $postDAO->addPost($post);
-    header('Location: '. '../overview/forumOverview.php');
+    if ($postDAO->addPost($post)){
+		header('Location: '. '../postView/postView.php?id=' . urlencode($post["uuid"]));
+	} else {
+		// Fehlermeldung
+	}
 }
