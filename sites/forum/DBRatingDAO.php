@@ -49,7 +49,6 @@ class DBRatingDAO implements RatingDAO {
 			$preparedSQL = $this->db->prepare($sql);
 			$preparedSQL->bindValue(":uuid", $postId);
 			$preparedSQL->bindValue(":user", $userId);
-			echo $postId . " " . $userId;
 			if ($preparedSQL->execute()) {
 				$this->db->commit();
 				return true;
@@ -68,7 +67,7 @@ class DBRatingDAO implements RatingDAO {
 		try {
 			// mySQL TRANSACTION ISOLATION LEVEL hinzufügen
 			$this->db->beginTransaction();
-			$sql = "DELETE FROM Like WHERE uuid = '" . $postId . "' AND user = '" . $userId . "'";
+			$sql = "DELETE FROM Like WHERE uuid = :uuid AND user = :userId";
 			$preparedSQL = $this->db->prepare($sql);
 			$preparedSQL->bindValue(":uuid", $postId);
 			$preparedSQL->bindValue(":userId", $userId);
@@ -138,7 +137,7 @@ class DBRatingDAO implements RatingDAO {
 		try {
 			// mySQL TRANSACTION ISOLATION LEVEL hinzufügen
 			$this->db->beginTransaction();
-			$sql = "DELETE FROM Dislike WHERE uuid = '" . $postId . "' AND user = '" . $userId . "'";
+			$sql = "DELETE FROM Dislike WHERE uuid = :uuid AND user = :userId";
 			$preparedSQL = $this->db->prepare($sql);
 			$preparedSQL->bindValue(":uuid", $postId);
 			$preparedSQL->bindValue(":userId", $userId);

@@ -15,7 +15,7 @@ include_once "../../user/DBUserDAO.php";
 include_once "../DBRatingDAO.php";
 
 if (!isset($_GET["id"])){
-    header('Location: '. '../overview/forumOverview.php');
+  header('Location: '. '../overview/forumOverview.php');
 }
 
 $userDAO = new DBUserDAO();
@@ -25,11 +25,51 @@ $ratingDAO = new DBRatingDAO();
 
 $post = $postDAO->getPost($_GET["id"]);
 $author = $userDAO->loadUserById($post["author"]);
-$commentList = $commentDAO->getComments($_GET["id"]);
 
 if (!isset($post)) {
 	header('Location: '. '../overview/forumOverview.php');
 }
+
+if (isset($_POST["like"])) {
+  $userId = $_SESSION["userId"];
+  $postId = $_POST["ratedComment"];
+  if ($ratingDAO->hasDisliked($postId,$userId)){
+    $ratingDAO->removeDislike($postId,$userId);
+  }
+	$ratingDAO->hasLiked($postId,$userId)? $ratingDAO->removeLike($postId,$userId) : $ratingDAO->addLike($postId,$userId);
+}
+
+if (isset($_POST["dislike"])) {
+	$userId = $_SESSION["userId"];
+	$postId = $_POST["ratedComment"];
+	if ($ratingDAO->hasLiked($postId,$userId)){
+		$ratingDAO->removeLike($postId,$userId);
+	}
+  $ratingDAO->hasDisliked($postId,$userId)? $ratingDAO->removeDislike($postId,$userId) : $ratingDAO->addDislike($postId,$userId);
+}
+
+if (isset($_POST["activateCommentBox"])) {
+	$_GET["openCommentBox"] = $_POST["answerTo"];
+}
+
+if (isset($_POST["sendComment"])) {
+	$commentContent = $_POST["comment"];
+	$postId = $_POST["answerTo"];
+  $userId = $_SESSION["userId"];
+  $commentId = uniqid("c_", true);
+
+  if (isset($userId) && isset($postId) && isset($commentContent)) {
+    $comment["text"] = htmlentities($commentContent);
+	  $comment["answerTo"] = $postId;
+	  $comment["author"] = $userId;
+	  $comment["uuid"] = $commentId;
+
+	  $commentDAO->addComment($comment);
+  }
+	unset($_GET["openCommentBox"]);
+}
+
+$commentList = $commentDAO->getComments($_GET["id"]);
 
 $post["likes"] = $ratingDAO->getLikeCount($post["uuid"]);
 $post["dislikes"] = $ratingDAO->getDislikeCount($post["uuid"]);
@@ -57,8 +97,31 @@ function createComment($commentList) {
       </div>
       <div class="postContent">
         <p><?php echo isset($comment["text"]) ? $comment["text"] : "" ?></p>
-        <p> <?php echo isset($comment["likes"])? $comment["likes"] : 0; ?> Likes | <?php echo isset($comment["dislikes"])? $comment["dislikes"] : 0; ?> Dislikes</p>
-        <button> Antworten </button>
+		  <?php if (isset($_SESSION["userId"])):?>
+        <form class="rating" action="?id=<?php echo isset($_GET["id"]) ? $_GET["id"] : "" ?>" method="post">
+          <input type="text" name="ratedComment" value="<?php echo isset($comment["uuid"]) ? $comment["uuid"] : "" ?>" hidden>
+          <input type="submit" name="like" value="<?php echo isset($comment["likes"])? $comment["likes"] : 0; ?> Likes">
+          <input type="submit" name="dislike" value="<?php echo isset($comment["dislikes"])? $comment["dislikes"] : 0; ?> Dislikes">
+        </form>
+
+        <form class="answer" action="?id=<?php echo isset($_GET["id"]) ? $_GET["id"] : "" ?>" method="post">
+          <input type="text" name="answerTo" value="<?php echo isset($comment["uuid"]) ? $comment["uuid"] : "" ?>" hidden>
+				<?php if (isset($_GET["openCommentBox"]) && $_GET["openCommentBox"] === $comment["uuid"]): ?>
+          <label>
+            Kommentar erfassen:
+            <textarea rows="10" name="comment" required></textarea>
+          </label>
+          <input type="submit" name="sendComment" value="Kommentar senden">
+        <?php else: ?>
+          <input type="submit" name="activateCommentBox" value="Antworten">
+				<?php endif; ?>
+        </form>
+		  <?php else: ?>
+        <div class="rating">
+          <p><?php echo isset($comment["likes"])? $comment["likes"] : 0; ?> Likes</p>
+          <p><?php echo isset($comment["dislikes"])? $comment["dislikes"] : 0; ?> Dislikes</p>
+        </div>
+		  <?php endif; ?>
       </div>
     </div>
 	  <?php

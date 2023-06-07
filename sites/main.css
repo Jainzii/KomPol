@@ -136,6 +136,18 @@ header nav a:hover {
     text-decoration: underline;
 }
 
+.errorBox {
+    display: flex;
+    border: red solid 3px;
+    background-color: #FF000055;
+    border-radius: 5px;
+    color: black;
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+}
+
 .menu-button-container {
     display: flex;
     height: 100%;

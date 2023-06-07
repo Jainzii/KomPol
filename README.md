@@ -10,5 +10,9 @@ Hinweise:
   - Email: mux@masterman.de Passwort: hallo12 
   - Email: haley@hinkelbottom.com Passwort: Pelikan
   - Email: klarissa@schmied.de Passwort: Amsel
-- Die FileDAO werden zwar nicht mehr genutzt, sind aber trotzdem für die Vollständigkeit noch im Projekt
-- 
+- Die FileDAOs werden zwar nicht mehr genutzt, sind aber trotzdem für die Vollständigkeit noch im Projekt
+
+WARNUNG:
+Aufgrund der kurzen Zeit zwischen den Abgaben und des erhaltenen Feedbacks bestehen in dieser Abgabe zahlreiche technische Schulden aus dem letzten Arbeitsblatt.
+Unser Fokus bestand darin, es zu ermöglichen den aktuellen Aufgabenzettel und die Implementierung der Datenbank vollumfänglich testen zu können.
+Anmerkung: Support-Tickets werden nicht auf der Seite angezeigt und können deshalb nur in der DB gesehen werden

@@ -13,6 +13,76 @@ main .post, .comments {
     padding: 10px 5px;
 }
 
+main .content, .postContent {
+    max-width: 80%;
+}
+
+.post {
+    max-width: 100%;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px 0px;
+}
+
+.rating input[type="submit"] {
+    background-color: #00000000;
+    color: #1554b6;
+    border-radius: 10px;
+    border: solid #1554b6 1px;
+    padding: 3px 5px;
+    height: fit-content;
+    margin: 0px 3px;
+}
+
+.rating p {
+    background-color: #00000000;
+    color: #1554b6;
+    border-radius: 10px;
+    border: solid #1554b6 1px;
+    padding: 3px 5px;
+    font-size: 0.8em !important;
+    height: fit-content;
+    margin: 0px 3px;
+}
+
+.rating input[type="submit"]:hover {
+    background-color: #0000FF33;
+    color: #0000FF;
+}
+
+.answer {
+    display: flex;
+    flex-direction: column;
+}
+
+.answer label {
+    display: flex;
+    flex-direction: column;
+}
+
+.answer textarea {
+    margin: 5px 0px;
+    padding: 5px;
+    border-radius: 10px;
+    max-width: 100%;
+    min-width: 50px;
+}
+
+.answer input[type="submit"] {
+    background-color: #1554b6;
+    border-radius: 10px;
+    padding: 5px 10px;
+    border: none;
+    width: 20%;
+    min-width: 150px;
+    color: white;
+    font-size: 0.8em;
+}
+
 .comments {
     flex-direction: column;
     margin-top: 10px;
@@ -134,5 +204,10 @@ main .comment {
     .partyOpinions {
         margin-top: 0px;
         margin-left: 20px;
+    }
+
+    .answer input[type="submit"] {
+        font-size: 1em;
+        width: 50%;
     }
 }

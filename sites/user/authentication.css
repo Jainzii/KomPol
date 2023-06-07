@@ -18,7 +18,7 @@ main form {
     padding: 45px 25px 25px 25px;
 }
 
-h2 {
+main h2 {
     text-align: center;
     font-size: 1.7em;
     color: white;
@@ -29,7 +29,7 @@ h2 {
     width: 80%;
 }
 
-input[type="email"] {
+main input[type="email"] {
     font-size: 1.5em;
     margin: 10px 0px 10px 0px;
     border-radius: 7px 7px 7px 7px;
@@ -40,7 +40,7 @@ input[type="email"] {
     width: 100%;
 }
 
-input[type="password"] {
+main input[type="password"] {
     font-size: 1.5em;
     margin: 10px 0px 10px 0px;
     border-radius: 7px 7px 7px 7px;
@@ -51,7 +51,7 @@ input[type="password"] {
     width: 100%;
 }
 
-input[type="text"] {
+main input[type="text"] {
     font-size: 1.5em;
     margin: 10px 0px 10px 0px;
     border-radius: 7px 7px 7px 7px;
@@ -75,11 +75,11 @@ main input[type="submit"] {
     border: none;
 }
 
-p {
+main p {
     color: white;
 }
 
-p a {
+main p a {
     color: white;
 }
 
@@ -101,7 +101,7 @@ p a {
         width: 65%;
     }
 
-    h2 {
+    main h2 {
         width: 65%;
     }
 
@@ -113,7 +113,7 @@ p a {
         width: 55%;
     }
 
-    h2 {
+    main h2 {
         width: 55%;
     }
 
@@ -125,7 +125,7 @@ p a {
         width: 35%;
     }
 
-    h2 {
+    main h2 {
         width: 35%;
     }
 

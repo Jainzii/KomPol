@@ -20,7 +20,7 @@
     <!-- main content -->
     <main>
       <!-- post and answers -->
-      <div>
+      <div class="content">
         <!-- post  -->
         <section class="post">
           <div class="userInfo">
@@ -35,8 +35,33 @@
           <div class="postContent">
             <h2><?php echo isset($post["title"]) ? $post["title"] : "Beitragstitel" ?></h2>
             <p><?php echo isset($post["text"]) ? $post["text"] : "Beitrag konnte leider nicht geladen werden." ?></p>
-            <p><?php echo isset($post["likes"])? $post["likes"] : 0; ?> Likes | <?php echo isset($post["dislikes"])? $post["dislikes"] : 0; ?> Dislikes</p>
-            <button>Antworten</button>
+
+            <?php if (isset($_SESSION["userId"])):?>
+            <form class="rating" action="?id=<?php echo isset($post["uuid"]) ? $post["uuid"] : "" ?>" method="post">
+              <input type="hidden" name="ratedComment" value="<?php echo isset($post["uuid"]) ? $post["uuid"] : "" ?>" hidden>
+              <input type="submit" name="like" value="<?php echo isset($post["likes"])? $post["likes"] : 0; ?> Likes">
+              <input type="submit" name="dislike" value="<?php echo isset($post["dislikes"])? $post["dislikes"] : 0; ?> Dislikes">
+            </form>
+
+            <form class="answer" action="?id=<?php echo isset($post["uuid"]) ? $post["uuid"] : "" ?>" method="post">
+              <input id="answerTo" type="hidden" name="answerTo" value="<?php echo isset($post["uuid"]) ? $post["uuid"] : "" ?>" hidden>
+              <?php if (isset($_GET["openCommentBox"]) && $_GET["openCommentBox"] === $post["uuid"]): ?>
+              <label>
+                Kommentar erfassen:
+                <textarea rows="10" name="comment" required></textarea>
+              </label>
+              <input type="submit" name="sendComment" value="Kommentar senden">
+              <?php else: ?>
+              <input type="submit" name="activateCommentBox" value="Antworten">
+              <?php endif; ?>
+            </form>
+
+			      <?php else: ?>
+            <div class="rating">
+              <p><?php echo isset($post["likes"])? $post["likes"] : 0; ?> Likes</p>
+              <p><?php echo isset($post["dislikes"])? $post["dislikes"] : 0; ?> Dislikes</p>
+            </div>
+            <?php endif; ?>
           </div>
         </section>
         <!-- answers  -->
