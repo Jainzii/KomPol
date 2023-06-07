@@ -29,8 +29,7 @@ class DBPartyDAO implements PartyDAO
 			$sql = "SELECT * FROM Party";
 			return $this->db->query($sql)->fetchAll();
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
-			return [];
+			return null;
 		}
 	}
 
@@ -41,7 +40,6 @@ class DBPartyDAO implements PartyDAO
 			$party = $test->fetchAll();
 			return array_pop($party);
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
 			return null;
 		}
 	}

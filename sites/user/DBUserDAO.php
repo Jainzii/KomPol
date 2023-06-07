@@ -44,13 +44,13 @@ class DBUserDAO implements UserDAO {
 				$this->db->commit();
 				return true;
 			} else {
-				echo "Usertabelle nicht aktualisiert";
+				$this->db->rollBack();
+				return null;
 			}
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
+			$this->db->rollBack();
+			return null;
 		}
-		$this->db->rollBack();
-		return false;
 	}
 
 	function updateUser($user)
@@ -71,13 +71,13 @@ class DBUserDAO implements UserDAO {
 				$this->db->commit();
 				return true;
 			} else {
-				echo "Usertabelle nicht aktualisiert";
+				$this->db->rollBack();
+				return null;
 			}
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
+			$this->db->rollBack();
+			return null;
 		}
-		$this->db->rollBack();
-		return false;
 	}
 
 	function loadUserByEmail($email)
@@ -88,7 +88,6 @@ class DBUserDAO implements UserDAO {
 			$user = $test->fetchAll();
 			return array_pop($user);
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
 			return null;
 		}
 	}
@@ -101,7 +100,6 @@ class DBUserDAO implements UserDAO {
 			$user = $test->fetchAll();
 			return array_pop($user);
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
 			return null;
 		}
 	}
@@ -113,7 +111,6 @@ class DBUserDAO implements UserDAO {
 			$test = $this->db->query($sql);
             return $test->fetchColumn();
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
 			return null;
 		}
 	}

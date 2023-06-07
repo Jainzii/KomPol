@@ -2,9 +2,12 @@
 
 //include_once "../FileUserDAO.php";
 include_once "../DBUserDAO.php";
+include_once "../../components/error/ErrorController.php";
 
 //use user\FileUserDAO;
 use user\DBUserDAO;
+
+$errorController = new ErrorController();
 
 if (isset($_GET["login"])) {
     $email = isset($_POST["e-mail"]) ? $_POST["e-mail"] : "";
@@ -20,14 +23,20 @@ if (isset($_GET["login"])) {
             header('Location: '. '../../news/overview/newsOverview.php');
             die();
         } else {
-            $error = true;
+            $errorController->addErrorMessage("LoginError","Email oder Passwort falsch.");
+			return null;
         }
     } else {
-        $error = true;
+		$errorController->addErrorMessage("LoginError","Email oder Passwort falsch.");
+		return null;
     }
 } else {
     $email = "";
     $password = "";
+}
+
+if ($errorController->hasErrors()) {
+	echo $errorController->showErrorBox();
 }
 
 ?>

@@ -2,9 +2,12 @@
 
 //include_once "../FileUserDAO.php";
 include_once "../DBUserDAO.php";
+include_once "../../components/error/ErrorController.php";
 
 //use user\FileUserDAO;
 use user\DBUserDAO;
+
+$errorController = new ErrorController();
 
 /**
  *
@@ -22,8 +25,11 @@ if(isset($_GET["registration"])) {
  *
  */
 function registerWithoutCode($email, $password1, $password2){
+	global $errorController;
+
     if ($password1 !== $password2) {
-        return;
+		$errorController->addErrorMessage("Register Error","Registrierung fehlgeschlagen. Die Passwörter stimmen nicht überein.");
+		return null;
     }
     $userDAO = new DBUserDAO();
 
@@ -31,9 +37,12 @@ function registerWithoutCode($email, $password1, $password2){
     $user["email"] = $email;
     $user["password"] = password_hash($password1, PASSWORD_BCRYPT);
 	$success = $userDAO->addUser($user);
-	if ($success) {
+	if (isset($success)) {
 		$_SESSION["userId"] = $user["uuid"];
 		header('Location: '. '../editProfile/editProfile.php');
+	} else {
+		$errorController->addErrorMessage("Register Error","Registrierung fehlgeschlagen.");
+		return null;
 	}
 }
 
@@ -41,8 +50,11 @@ function registerWithoutCode($email, $password1, $password2){
  *
  */
 function registerWithCode($email, $password1, $password2, $registrationCode){
+	global $errorController;
+
     if ($password1 !== $password2) {
-        return;
+		$errorController->addErrorMessage("RegisterError","Registrierung fehlgeschlagen. Die Passwörter stimmen nicht überein.");
+		return null;
     }
     $userDAO = new DBUserDAO();
     $userId = $userDAO->getIdByRegistrationCode($registrationCode);
@@ -51,11 +63,18 @@ function registerWithCode($email, $password1, $password2, $registrationCode){
         $user["email"] = $email;
         $user["password"] = password_hash($password1, PASSWORD_BCRYPT);
 		$success = $userDAO->addUser($user);
-		if ($success) {
+		if (isset($success)) {
 			$_SESSION["userId"] = $user["uuid"];
 			header('Location: '. '../editProfile/editProfile.php');
+		} else {
+			$errorController->addErrorMessage("Register Error","Registrierung fehlgeschlagen.");
+			return null;
 		}
     }
+}
+
+if ($errorController->hasErrors()) {
+	echo $errorController->showErrorBox();
 }
 
 ?>

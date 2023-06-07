@@ -13,6 +13,9 @@ include_once "../DBPostDAO.php";
 include_once "../DBCommentDAO.php";
 include_once "../../user/DBUserDAO.php";
 include_once "../DBRatingDAO.php";
+include_once "../../components/error/ErrorController.php";
+
+$errorController = new ErrorController();
 
 if (!isset($_GET["id"])){
   header('Location: '. '../overview/forumOverview.php');
@@ -25,6 +28,9 @@ $ratingDAO = new DBRatingDAO();
 
 $post = $postDAO->getPost($_GET["id"]);
 $author = $userDAO->loadUserById($post["author"]);
+if (!isset($author)) {
+	$errorController->addErrorMessage("UserNotFound", "Fehler beim Laden von Nutzerdaten.");
+}
 
 if (!isset($post)) {
 	header('Location: '. '../overview/forumOverview.php');
@@ -71,17 +77,37 @@ if (isset($_POST["sendComment"])) {
 
 $commentList = $commentDAO->getComments($_GET["id"]);
 
+if (!isset($commentList)) {
+  $errorController->addErrorMessage("CommentsNotFound", "Fehler beim Laden der Kommentare.");
+}
+
 $post["likes"] = $ratingDAO->getLikeCount($post["uuid"]);
+if (!isset($post["likes"])) {
+	$errorController->addErrorMessage("RatingsNotFound", "Fehler beim Laden der Bewertung.");
+}
 $post["dislikes"] = $ratingDAO->getDislikeCount($post["uuid"]);
+if (!isset($post["dislikes"])) {
+	$errorController->addErrorMessage("RatingsNotFound", "Fehler beim Laden der Bewertung.");
+}
 
 function createComment($commentList) {
   global $userDAO;
   global $commentDAO;
   global $ratingDAO;
+  global $errorController;
   foreach ($commentList as $comment){
-      $comment["likes"] = $ratingDAO->getLikeCount($comment["uuid"]);
-      $comment["dislikes"] = $ratingDAO->getDislikeCount($comment["uuid"]);
+    $comment["likes"] = $ratingDAO->getLikeCount($comment["uuid"]);
+    if (!isset($comment["likes"])) {
+      $errorController->addErrorMessage("RatingsNotFound", "Fehler beim Laden der Bewertung.");
+    }
+    $comment["dislikes"] = $ratingDAO->getDislikeCount($comment["uuid"]);
+	  if (!isset($comment["dislikes"])) {
+		  $errorController->addErrorMessage("RatingsNotFound", "Fehler beim Laden der Bewertung.");
+	  }
 	  $commenter = $userDAO->loadUserById($comment["author"]);
+	  if (!isset($commenter)) {
+		  $errorController->addErrorMessage("UserNotFound", "Fehler beim Laden von Nutzerdaten.");
+	  }
 	?>
 
   <div class="comment">
@@ -99,13 +125,13 @@ function createComment($commentList) {
         <p><?php echo isset($comment["text"]) ? $comment["text"] : "" ?></p>
 		  <?php if (isset($_SESSION["userId"])):?>
         <form class="rating" action="?id=<?php echo isset($_GET["id"]) ? $_GET["id"] : "" ?>" method="post">
-          <input type="text" name="ratedComment" value="<?php echo isset($comment["uuid"]) ? $comment["uuid"] : "" ?>" hidden>
+          <input type="hidden" name="ratedComment" value="<?php echo isset($comment["uuid"]) ? $comment["uuid"] : "" ?>" hidden>
           <input type="submit" name="like" value="<?php echo isset($comment["likes"])? $comment["likes"] : 0; ?> Likes">
           <input type="submit" name="dislike" value="<?php echo isset($comment["dislikes"])? $comment["dislikes"] : 0; ?> Dislikes">
         </form>
 
         <form class="answer" action="?id=<?php echo isset($_GET["id"]) ? $_GET["id"] : "" ?>" method="post">
-          <input type="text" name="answerTo" value="<?php echo isset($comment["uuid"]) ? $comment["uuid"] : "" ?>" hidden>
+          <input type="hidden" name="answerTo" value="<?php echo isset($comment["uuid"]) ? $comment["uuid"] : "" ?>" hidden>
 				<?php if (isset($_GET["openCommentBox"]) && $_GET["openCommentBox"] === $comment["uuid"]): ?>
           <label>
             Kommentar erfassen:
@@ -134,6 +160,9 @@ function createComment($commentList) {
   }
 }
 
+if ($errorController->hasErrors()) {
+	echo $errorController->showErrorBox();
+}
 
 ?>
 

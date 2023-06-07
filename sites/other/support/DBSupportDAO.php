@@ -41,14 +41,13 @@ class DBSupportDAO implements SupportDAO {
 				$this->db->commit();
 				return true;
 			} else {
-				echo "Supporttabelle nicht aktualisiert";
+				$this->db->rollBack();
+				return null;
 			}
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
+			$this->db->rollBack();
+			return null;
 		}
-		$this->db->rollBack();
-		return false;
 	}
-
 
 }

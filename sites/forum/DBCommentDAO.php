@@ -42,23 +42,21 @@ class DBCommentDAO implements CommentDAO {
 				$this->db->commit();
 				return true;
 			} else {
-				echo "Posttabelle nicht aktualisiert";
+				$this->db->rollBack();
+				return null;
 			}
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
+			$this->db->rollBack();
+			return null;
 		}
-		$this->db->rollBack();
-		return false;
 	}
 
 	function getComments($answerTo) {
 		try {
 			$sql = "SELECT * FROM Comment WHERE answerTo = '" . $answerTo . "'";
 			$test = $this->db->query($sql);
-			$party = $test->fetchAll();
-			return $party;
+			return $test->fetchAll();
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
 			return null;
 		}
 	}

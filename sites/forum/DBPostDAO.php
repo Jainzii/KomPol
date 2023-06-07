@@ -40,13 +40,13 @@ class DBPostDAO implements PostDAO {
 				$this->db->commit();
 				return true;
 			} else {
-				echo "Posttabelle nicht aktualisiert";
+				$this->db->rollBack();
+				return null;
 			}
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
+			$this->db->rollBack();
+			return null;
 		}
-		$this->db->rollBack();
-		return false;
 	}
 
 	function getPost($uuid) {
@@ -56,7 +56,6 @@ class DBPostDAO implements PostDAO {
 			$party = $test->fetchAll();
 			return array_pop($party);
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
 			return null;
 		}
 	}
@@ -66,8 +65,7 @@ class DBPostDAO implements PostDAO {
 			$sql = "SELECT * FROM Post";
 			return $this->db->query($sql)->fetchAll();
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
-			return [];
+			return null;
 		}
 	}
 }

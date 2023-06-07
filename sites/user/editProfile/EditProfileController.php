@@ -2,9 +2,12 @@
 
 //include_once "../FileUserDAO.php";
 include_once "../DBUserDAO.php";
+include_once "../../components/error/ErrorController.php";
 
 //use user\FileUserDAO;
 use user\DBUserDAO;
+
+$errorController = new ErrorController();
 
 if (!isset($_SESSION["userId"])){
     header('Location: '. '../login/login.php');
@@ -28,6 +31,7 @@ if(isset($_GET["changeDetails"])) {
 function changeDetails($avatarName, $email, $firstName, $lastName) {
 	global $user;
 	global $userDAO;
+	global $errorController;
 	if (isset($avatarName)){
 		$target_file = "../media/" . $avatarName;
 		if (file_exists($target_file)) {
@@ -40,7 +44,10 @@ function changeDetails($avatarName, $email, $firstName, $lastName) {
     $user["firstName"] = $firstName;
     $user["lastName"] = $lastName;
     $user["email"] = $email;
-    $userDAO->updateUser($user);
+    $success = $userDAO->updateUser($user);
+	if (!isset($success)) {
+		$errorController->addErrorMessage("UserUpdateError", "Fehler beim Aktualisieren der Nutzerdaten.");
+	}
 }
 
 if(isset($_GET["changePassword"])) {
@@ -52,19 +59,29 @@ if(isset($_GET["changePassword"])) {
 
 
 function changePassword($oldPassword, $newPassword1, $newPassword2) {
+	global $errorController;
     if ($newPassword1 !== $newPassword2) {
-        return;
+		$errorController->addErrorMessage("EditProfileError","Änderung fehlgeschlagen. Die Passwörter stimmen nicht überein.");
+        return null;
     }
 	global $user;
 	global $userDAO;
 
     if(password_verify($oldPassword, $user["password"])) {
         $user["password"] = password_hash($newPassword1, PASSWORD_BCRYPT);
-        $userDAO->updateUser($user);
-    }
+		$success = $userDAO->updateUser($user);
+		if (!isset($success)) {
+			$errorController->addErrorMessage("UserUpdateError", "Fehler beim Aktualisieren der Nutzerdaten.");
+		}
+    } else {
+		$errorController->addErrorMessage("EditProfileError","Änderung fehlgeschlagen. Das alte Passwort ist falsch.");
+		return null;
+	}
 
 }
 
-
+if ($errorController->hasErrors()) {
+	echo $errorController->showErrorBox();
+}
 
 ?>

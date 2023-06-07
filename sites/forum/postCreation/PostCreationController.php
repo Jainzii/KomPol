@@ -2,9 +2,12 @@
 
 //include_once "../FilePostDAO.php";
 include_once "../DBPostDAO.php";
+include_once "../../components/error/ErrorController.php";
+include_once "../../components/error/ErrorController.php";
 
 //use posts\FilePostDAO;
 use posts\DBPostDAO;
+$errorController = new ErrorController();
 
 if (!isset($_SESSION["userId"])){
     header('Location: '. '../overview/forumOverview.php');
@@ -18,6 +21,7 @@ if (isset($_GET["postCreation"])) {
 }
 
 function submitForumPost($title, $category, $content ) {
+	global $errorController;
 
     $postDAO = new DBPostDAO();
 
@@ -34,6 +38,12 @@ function submitForumPost($title, $category, $content ) {
     if ($postDAO->addPost($post)){
 		header('Location: '. '../postView/postView.php?id=' . urlencode($post["uuid"]));
 	} else {
-		// Fehlermeldung
+		$errorController->addErrorMessage("PostCreationError", "Es ist ein Fehler beim Erstellen des Beitrags aufgetreten.");
 	}
 }
+
+if ($errorController->hasErrors()) {
+	echo $errorController->showErrorBox();
+}
+
+?>

@@ -31,7 +31,6 @@ class DBArticleDAO implements ArticleDAO
 			$article= $test->fetchAll();
 			return array_pop($article);
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
 			return null;
 		}
 	}
@@ -41,8 +40,7 @@ class DBArticleDAO implements ArticleDAO
 			$sql = "SELECT * FROM Article";
 			return $this->db->query($sql)->fetchAll();
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
-			return [];
+			return null;
 		}
 	}
 }

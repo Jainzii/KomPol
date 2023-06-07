@@ -34,8 +34,7 @@ class DBRatingDAO implements RatingDAO {
 			$ids = $test->fetchAll();
 			return !empty($ids);
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
-			return false;
+			return null;
 		}
 	}
 
@@ -53,13 +52,13 @@ class DBRatingDAO implements RatingDAO {
 				$this->db->commit();
 				return true;
 			} else {
-				echo "Posttabelle nicht aktualisiert";
+				$this->db->rollBack();
+				return null;
 			}
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
+			$this->db->rollBack();
+			return null;
 		}
-		$this->db->rollBack();
-		return false;
 	}
 
 	function removeLike($postId,$userId)
@@ -75,13 +74,13 @@ class DBRatingDAO implements RatingDAO {
 				$this->db->commit();
 				return true;
 			} else {
-				echo "Posttabelle nicht aktualisiert";
+				$this->db->rollBack();
+				return null;
 			}
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
+			$this->db->rollBack();
+			return null;
 		}
-		$this->db->rollBack();
-		return false;
 	}
 
 	function getLikeCount($postId)
@@ -91,8 +90,7 @@ class DBRatingDAO implements RatingDAO {
 			$test = $this->db->query($sql);
             return $test->fetchColumn();
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
-			return 0;
+			return null;
 		}
 	}
 
@@ -104,8 +102,7 @@ class DBRatingDAO implements RatingDAO {
 			$ids = $test->fetch();
 			return !empty($ids);
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
-			return false;
+			return null;
 		}
 	}
 
@@ -123,13 +120,13 @@ class DBRatingDAO implements RatingDAO {
 				$this->db->commit();
 				return true;
 			} else {
-				echo "Posttabelle nicht aktualisiert";
+				$this->db->rollBack();
+				return null;
 			}
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
+			$this->db->rollBack();
+			return null;
 		}
-		$this->db->rollBack();
-		return false;
 	}
 
 	function removeDislike($postId,$userId)
@@ -145,13 +142,13 @@ class DBRatingDAO implements RatingDAO {
 				$this->db->commit();
 				return true;
 			} else {
-				echo "Posttabelle nicht aktualisiert";
+				$this->db->rollBack();
+				return null;
 			}
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
+			$this->db->rollBack();
+			return null;
 		}
-		$this->db->rollBack();
-		return false;
 	}
 
 	function getDislikeCount($postId)
@@ -161,8 +158,7 @@ class DBRatingDAO implements RatingDAO {
 			$test = $this->db->query($sql);
             return $test->fetchColumn();
 		} catch (Exception $ex) {
-			echo "Fehler :" . $ex->getMessage();
-			return 0;
+			return null;
 		}
 	}
 }
