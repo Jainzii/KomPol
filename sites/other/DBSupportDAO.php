@@ -1,18 +1,21 @@
 <?php
 
-namespace support;
-use Exception;
-use PDO;
-use SQLHelper;
+namespace sites\other;
 
 include_once "../../SQLHelper.php";
 include_once "SupportDAO.php";
 
-class DBSupportDAO implements SupportDAO {
+use Exception;
+use PDO;
+use SQLHelper;
+
+class DBSupportDAO implements SupportDAO
+{
 
 	private $db;
 
-	public function __construct() {
+	public function __construct()
+	{
 		$user = 'root';
 		$pw = null;
 		// SQLITE
@@ -24,7 +27,8 @@ class DBSupportDAO implements SupportDAO {
 		$this->db = new PDO($dsn, $user, $pw);
 	}
 
-	function addSupportTicket($supportTicket) {
+	function addSupportTicket($supportTicket)
+	{
 		try {
 			// mySQL TRANSACTION ISOLATION LEVEL hinzufügen
 			$this->db->beginTransaction();

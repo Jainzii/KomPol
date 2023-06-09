@@ -1,6 +1,6 @@
 <?php
 
-namespace posts;
+namespace sites\forum;
 
 interface RatingDAO
 {

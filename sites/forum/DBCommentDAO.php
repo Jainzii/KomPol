@@ -1,5 +1,7 @@
 <?php
-namespace posts;
+
+namespace sites\forum;
+
 include_once "CommentDAO.php";
 include_once "../../SQLHelper.php";
 use PDO;

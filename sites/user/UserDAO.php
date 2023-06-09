@@ -1,6 +1,6 @@
 <?php
 
-namespace user;
+namespace sites\user;
 
 interface UserDAO
 {

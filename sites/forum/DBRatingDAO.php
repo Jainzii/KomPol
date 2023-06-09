@@ -1,6 +1,7 @@
 <?php
 
-namespace posts;
+namespace sites\forum;
+
 use Exception;
 use PDO;
 use SQLHelper;

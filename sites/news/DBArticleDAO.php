@@ -1,5 +1,6 @@
 <?php
-namespace news;
+namespace sites\news;
+
 include_once "ArticleDAO.php";
 include_once "../../SQLHelper.php";
 

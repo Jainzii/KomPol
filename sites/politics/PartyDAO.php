@@ -1,6 +1,6 @@
 <?php
 
-namespace party;
+namespace sites\politics;
 
 interface PartyDAO
 {

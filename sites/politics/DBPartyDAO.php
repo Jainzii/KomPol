@@ -1,6 +1,7 @@
 <?php
 
-namespace party;
+namespace sites\politics;
+
 use Exception;
 use PDO;
 use SQLHelper;
