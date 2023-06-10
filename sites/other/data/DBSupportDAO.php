@@ -1,13 +1,13 @@
 <?php
 
-namespace sites\other;
+namespace sites\other\data;
 
-include_once "../../SQLHelper.php";
+include_once "sites/SQLHelper.php";
 include_once "SupportDAO.php";
 
 use Exception;
 use PDO;
-use SQLHelper;
+use sites\SQLHelper;
 
 class DBSupportDAO implements SupportDAO
 {
@@ -19,7 +19,7 @@ class DBSupportDAO implements SupportDAO
 		$user = 'root';
 		$pw = null;
 		// SQLITE
-		$dsn = 'sqlite:..\..\kompol.db';
+		$dsn = 'sqlite:sites/kompol.db';
 		// MYSQL
 		// $dsn = 'mysql:dbname=kompol;host=localhost';
 		$helper = new SQLHelper();
@@ -32,25 +32,23 @@ class DBSupportDAO implements SupportDAO
 		try {
 			// mySQL TRANSACTION ISOLATION LEVEL hinzufügen
 			$this->db->beginTransaction();
-			$sql = 'INSERT INTO Support (uuid, firstName, lastName, email, issue, text)
-					VALUES (:uuid, :firstName, :lastName, :email, :issue, :text)';
+			$sql = 'INSERT INTO Support (uuid, email, issue, text)
+					VALUES (:uuid, :email, :issue, :text)';
 			$preparedSQL = $this->db->prepare($sql);
 			$preparedSQL->bindValue(":uuid", $supportTicket["uuid"]);
-			$preparedSQL->bindValue(":firstName", $supportTicket["firstName"]);
-			$preparedSQL->bindValue(":lastName", $supportTicket["lastName"]);
 			$preparedSQL->bindValue(":email", $supportTicket["email"]);
 			$preparedSQL->bindValue(":issue", $supportTicket["issue"]);
 			$preparedSQL->bindValue(":text", $supportTicket["text"]);
 			if ($preparedSQL->execute()) {
 				$this->db->commit();
-				return true;
+				return false;
 			} else {
 				$this->db->rollBack();
-				return null;
+				return false;
 			}
 		} catch (Exception $ex) {
 			$this->db->rollBack();
-			return null;
+			return false;
 		}
 	}
 

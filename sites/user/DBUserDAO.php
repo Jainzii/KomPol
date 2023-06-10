@@ -2,11 +2,11 @@
 
 namespace sites\user;
 include_once "UserDAO.php";
-include_once "../../SQLHelper.php";
+include_once "sites/SQLHelper.php";
 
 use Exception;
 use PDO;
-use SQLHelper;
+use sites\SQLHelper;
 
 class DBUserDAO implements UserDAO {
 	private $db;

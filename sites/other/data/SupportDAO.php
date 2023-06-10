@@ -1,6 +1,6 @@
 <?php
 
-namespace sites\other;
+namespace sites\other\data;
 
 interface SupportDAO
 {
