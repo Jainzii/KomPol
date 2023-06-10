@@ -144,8 +144,18 @@ header nav a:hover {
     color: black;
     justify-content: center;
     width: 70%;
-    margin: auto;
-    margin-top: 20px;
+    margin: 20px auto auto;
+}
+
+.infoBox {
+    display: flex;
+    border: gray solid 3px;
+    background-color: #00000011;
+    border-radius: 5px;
+    color: black;
+    justify-content: center;
+    width: 70%;
+    margin: 20px auto auto;
 }
 
 .menu-button-container {

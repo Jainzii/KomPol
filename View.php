@@ -6,6 +6,7 @@ class View {
 	private $data = [];
 	private $stylesheets = ["sites/main.css"];
 	private $errors;
+	private $info;
 
 	public function assign($key, $value) {
 		$this->data[$key] = $value;
@@ -22,11 +23,15 @@ class View {
 	public function loadTemplate() {
 		if (file_exists($this->template)) {
 			$this->errors = isset($_SESSION["errors"]) ? $_SESSION["errors"] : null;
+			$this->info = isset($_SESSION["info"]) ? $_SESSION["info"] : null;
 			ob_start();
 
 			include_once "sites/components/header/header.php";
 			if (isset($this->errors)) {
 				include_once "sites/components/error/error.php";
+			}
+			if (isset($this->info)) {
+				include_once "sites/components/info/info.php";
 			}
 			include_once $this->template;
 			include_once "sites/components/footer/footer.php";

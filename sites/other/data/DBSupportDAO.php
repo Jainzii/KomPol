@@ -41,7 +41,7 @@ class DBSupportDAO implements SupportDAO
 			$preparedSQL->bindValue(":text", $supportTicket["text"]);
 			if ($preparedSQL->execute()) {
 				$this->db->commit();
-				return false;
+				return true;
 			} else {
 				$this->db->rollBack();
 				return false;
