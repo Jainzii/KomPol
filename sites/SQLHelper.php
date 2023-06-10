@@ -1,5 +1,9 @@
 <?php
 
+namespace sites;
+
+use PDO;
+
 class SQLHelper {
 
 	private $db;
@@ -8,7 +12,7 @@ class SQLHelper {
 		$user = 'root';
 		$pw = null;
 		// SQLITE
-		$dsn = 'sqlite:..\..\kompol.db';
+		$dsn = 'sqlite:sites\kompol.db';
 		// MYSQL
 		// $dsn = 'mysql:dbname=kompol;host=localhost';
 		$this->db = new PDO($dsn, $user, $pw);
@@ -130,8 +134,6 @@ class SQLHelper {
 	function createSupportTable() {
 		$sql = "CREATE TABLE IF NOT EXISTS Support (
     		uuid VARCHAR(255) PRIMARY KEY,
-    		firstName VARCHAR,
-    		lastName VARCHAR,
     		email VARCHAR,
     		issue VARCHAR,
     		text VARCHAR

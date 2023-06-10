@@ -1,6 +1,5 @@
 <?php
 session_start();
-if (!isset($projectPath)) $projectPath = "../../../";
 
 if (isset($_GET["logout"])) {
   unset($_SESSION["userId"]);
@@ -8,11 +7,24 @@ if (isset($_GET["logout"])) {
 
 ?>
 
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>KomPol</title>
+  <?php foreach ($this->stylesheets as $path):?>
+  <link rel="stylesheet" type="text/css" href="<?php echo $path ?>">
+  <?php endforeach; ?>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
 <header>
     <div class="header">
         <div class="cityName">
-            <a href="<?php echo $projectPath ?>sites/news/overview/newsOverview.php">
-                <img width="80" height="80" src = "<?php echo $projectPath ?>sites/components/header/neuDoriasLogo.png" alt = "Wappen von XXX">
+            <a href="?view=newsOverview">
+                <img width="80" height="80"
+                     src = "sites/components/header/neuDoriasLogo.png"
+                     alt = "Wappen von Neu Dorias">
                 <h1>Neu Dorias</h1>
             </a>
         </div>
@@ -25,23 +37,24 @@ if (isset($_GET["logout"])) {
             <form action="?logout=true" method="post">
               <input type="submit" id="logoutButton" value="Abmelden">
             </form>
-            <a href="../../user/editProfile/editProfile.php">
-                <img width="24" height="24" src="<?php echo $projectPath ?>sites/components/header/login.svg" alt = "Anmeldungs-Icon">
+            <a href="?view=editProfile">
+                <img width="24" height="24" src="sites/components/header/login.svg" alt = "Anmeldungs-Icon">
                 <p>Nutzer bearbeiten</p>
             </a>
             <?php else: ?>
-            <a href="../../user/login/login.php">
-                <img width="24" height="24" src="<?php echo $projectPath ?>sites/components/header/login.svg" alt = "Anmeldungs-Icon">
+            <a href="?view=login">
+                <img width="24" height="24" src="sites/components/header/login.svg" alt = "Anmeldungs-Icon">
                 <p>Anmelden</p>
             </a>
 
             <?php endif; ?>
         </div>
         <nav>
-            <a href="<?php echo $projectPath ?>sites/news/overview/newsOverview.php"> Neuigkeiten </a>
-            <a href="<?php echo $projectPath ?>sites/forum/overview/forumOverview.php"> Forum </a>
-            <a href="<?php echo $projectPath ?>sites/politics/overview/politicsOverview.php"> Kommunalpolitik </a>
-            <a href="<?php echo $projectPath ?>sites/other/tutorial/tutorial.php"> Hilfe </a>
+            <a href="?view=newsOverview"> Neuigkeiten </a>
+            <a href="?view=forumOverview"> Forum </a>
+            <a href="?view=politics"> Kommunalpolitik </a>
+            <a href="?view=tutorial"> Hilfe </a>
         </nav>
     </div>
 </header>
+<body>

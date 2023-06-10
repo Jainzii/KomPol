@@ -1,11 +1,10 @@
-<?php
-if (!isset($projectPath)) $projectPath = "../../../"
-?>
 <footer>
   <nav>
-    <a href="<?php echo $projectPath ?>sites/footer/imprint/imprint.php"> Impressum </a>
-    <a href="<?php echo $projectPath ?>sites/footer/privacyPolicy/privacyPolicy.php"> Datenschutz </a>
-    <a href="<?php echo $projectPath ?>sites/footer/termsOfUse/termsOfUse.php"> Nutzungsbedingungen </a>
-    <a href="<?php echo $projectPath ?>sites/other/support/support.php"> Support </a>
+    <a href="?view=imprint"> Impressum </a>
+    <a href="?view=privacyPolicy"> Datenschutz </a>
+    <a href="?view=termsOfUse"> Nutzungsbedingungen </a>
+    <a href="?view=support"> Support </a>
   </nav>
 </footer>
+</body>
+</html>

@@ -37,36 +37,30 @@ class MainController {
 	}
 
 	public function work() {
-		global $footerController;
-		global $forumController;
-		global $newsController;
-		global $userController;
-		global $politicsController;
-		global $otherController;
 		switch ($this->template){
 			case 'imprint':
 			case 'privacyPolicy':
 			case 'termsOfUse':
-				return $footerController->work();
+				return $this->footerController->work();
 			case 'forumOverview':
 			case 'createForumPost':
 			case 'forumPost':
-				return $forumController->work();
+				return $this->forumController->work();
 			case 'article':
 			case 'newsOverview':
-				return $newsController->work();
+				return $this->newsController->work();
 			case 'politics':
 			case 'party':
-				return $politicsController->work();
+				return $this->politicsController->work();
 			case 'login':
 			case 'registration':
 			case 'editProfile':
-				return $userController->work();
+				return $this->userController->work();
 			case 'support':
 			case 'tutorial':
 			case 'home':
 			default:
-				return $otherController->work();
+				return $this->otherController->work();
 		}
 	}
 
