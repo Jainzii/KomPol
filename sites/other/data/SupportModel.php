@@ -3,9 +3,9 @@
 namespace sites\other\data;
 
 include_once "sites/other/data/DBSupportDAO.php";
-include_once "sites/user/DBUserDAO.php";
+include_once "sites/user/data/DBUserDAO.php";
 
-use sites\user\DBUserDAO;
+use sites\user\data\DBUserDAO;
 
 class SupportModel {
 

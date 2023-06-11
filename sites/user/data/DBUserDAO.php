@@ -1,6 +1,6 @@
 <?php
 
-namespace sites\user;
+namespace sites\user\data;
 include_once "UserDAO.php";
 include_once "sites/SQLHelper.php";
 
@@ -15,47 +15,66 @@ class DBUserDAO implements UserDAO {
 		$user = 'root';
 		$pw = null;
 		// SQLITE
-		$dsn = 'sqlite:..\..\kompol.db';
+		$dsn = 'sqlite:sites\kompol.db';
 		// MYSQL
 		// $dsn = 'mysql:dbname=kompol;host=localhost';
 		$helper = new SQLHelper();
+		$helper->createUserTable();
 		$helper->closeConnection();
 		$this->db = new PDO($dsn, $user, $pw);
 	}
 
-	function addUser($user)
-	{
+	function registerUserWithCode($user) {
 		try {
-			// mySQL TRANSACTION ISOLATION LEVEL hinzufügen
+			// TODO: mySQL TRANSACTION ISOLATION LEVEL hinzufügen
 			$this->db->beginTransaction();
-            if (isset($user["uuid"])) {
-                $sql = 'UPDATE User SET email = :email, password = :password WHERE uuid = :uuid';
-            } else {
-                $user["uuid"] = uniqid("u_", true);
-                $sql = 'INSERT INTO User (uuid, email, password)
-					VALUES (:uuid, :email, :password)';
-            }
+			$sql = 'UPDATE User SET email = :email, password = :password, registrationCode = :registrationCode WHERE uuid = :uuid';
 			$preparedSQL = $this->db->prepare($sql);
-			$preparedSQL->bindValue(":uuid", $user["uuid"]);
 			$preparedSQL->bindValue(":email", $user["email"]);
 			$preparedSQL->bindValue(":password", $user["password"]);
+			$preparedSQL->bindValue(":registrationCode", null);
 			if ($preparedSQL->execute()) {
 				$this->db->commit();
 				return true;
 			} else {
 				$this->db->rollBack();
-				return null;
+				return false;
 			}
 		} catch (Exception $ex) {
 			$this->db->rollBack();
-			return null;
+			return false;
+		}
+	}
+
+	function registerUserWithoutCode($user) {
+		try {
+			// TODO: mySQL TRANSACTION ISOLATION LEVEL hinzufügen
+			$this->db->beginTransaction();
+			$sql = 'INSERT INTO User (uuid, email, password, firstName, lastName)
+				VALUES (:uuid, :email, :password, :firstName, :lastName)';
+			$preparedSQL = $this->db->prepare($sql);
+			$preparedSQL->bindValue(":uuid", $user["uuid"]);
+			$preparedSQL->bindValue(":email", $user["email"]);
+			$preparedSQL->bindValue(":password", $user["password"]);
+			$preparedSQL->bindValue(":firstName", $user["firstName"]);
+			$preparedSQL->bindValue(":lastName", $user["lastName"]);
+			if ($preparedSQL->execute()) {
+				$this->db->commit();
+				return true;
+			} else {
+				$this->db->rollBack();
+				return false;
+			}
+		} catch (Exception $ex) {
+			$this->db->rollBack();
+			return false;
 		}
 	}
 
 	function updateUser($user)
 	{
 		try {
-			// mySQL TRANSACTION ISOLATION LEVEL hinzufügen
+			// TODO: mySQL TRANSACTION ISOLATION LEVEL hinzufügen
 			$this->db->beginTransaction();
 			$sql = 'UPDATE User SET email = :email, password = :password, firstName = :firstName, lastName = :lastName, 
                 avatar = :avatar WHERE uuid = :uuid';
@@ -71,22 +90,27 @@ class DBUserDAO implements UserDAO {
 				return true;
 			} else {
 				$this->db->rollBack();
-				return null;
+				return false;
 			}
 		} catch (Exception $ex) {
 			$this->db->rollBack();
-			return null;
+			return false;
 		}
 	}
 
 	function loadUserByEmail($email)
 	{
 		try {
+			// TODO: mySQL TRANSACTION ISOLATION LEVEL hinzufügen
+			$this->db->beginTransaction();
 			$sql = "SELECT * FROM User WHERE email = '" . $email . "'";
-			$test = $this->db->query($sql);
-			$user = $test->fetchAll();
+			$query = $this->db->query($sql);
+			$user = $query->fetchAll();
+
+			$this->db->commit();
 			return array_pop($user);
 		} catch (Exception $ex) {
+			$this->db->rollBack();
 			return null;
 		}
 	}
@@ -94,22 +118,33 @@ class DBUserDAO implements UserDAO {
 	function loadUserById($uuid)
 	{
 		try {
+			// TODO: mySQL TRANSACTION ISOLATION LEVEL hinzufügen
+			$this->db->beginTransaction();
 			$sql = "SELECT * FROM User WHERE uuid = '" . $uuid . "'";
-			$test = $this->db->query($sql);
-			$user = $test->fetchAll();
+			$query = $this->db->query($sql);
+			$user = $query->fetchAll();
+
+			$this->db->commit();
 			return array_pop($user);
 		} catch (Exception $ex) {
+			$this->db->rollBack();
 			return null;
 		}
 	}
 
-	function getIdByRegistrationCode($registrationCode)
+	function getUserByRegistrationCode($registrationCode)
 	{
 		try {
-			$sql = "SELECT uuid FROM User WHERE registrationCode = '" . $registrationCode . "'";
-			$test = $this->db->query($sql);
-            return $test->fetchColumn();
+			// TODO: mySQL TRANSACTION ISOLATION LEVEL hinzufügen
+			$this->db->beginTransaction();
+			$sql = "SELECT * FROM User WHERE registrationCode = '" . $registrationCode . "'";
+			$query = $this->db->query($sql);
+			$user = $query->fetchAll();
+
+			$this->db->commit();
+            return array_pop($user);
 		} catch (Exception $ex) {
+			$this->db->rollBack();
 			return null;
 		}
 	}
