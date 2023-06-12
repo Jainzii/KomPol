@@ -24,14 +24,16 @@ class View {
 		if (file_exists($this->template)) {
 			$this->errors = isset($_SESSION["errors"]) ? $_SESSION["errors"] : null;
 			$this->info = isset($_SESSION["info"]) ? $_SESSION["info"] : null;
-			ob_start();
 
+			ob_start();
 			include_once "sites/components/header/header.php";
 			if (isset($this->errors)) {
 				include_once "sites/components/error/error.php";
+				unset($_SESSION["errors"]);
 			}
 			if (isset($this->info)) {
 				include_once "sites/components/info/info.php";
+				unset($_SESSION["info"]);
 			}
 			include_once $this->template;
 			include_once "sites/components/footer/footer.php";

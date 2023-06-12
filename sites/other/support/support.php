@@ -25,8 +25,3 @@
     <input type="submit" value="Nachricht abschicken">
   </form>
 </main>
-
-<!-- footer -->
-<?php
-include_once "sites/components/footer/footer.php"
-?>

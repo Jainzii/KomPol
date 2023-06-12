@@ -30,6 +30,7 @@ class OtherController {
 				$view->setTemplate("sites/other/support/support.php");
 				break;
 			case 'tutorial':
+				$view->addStylesheet("sites/other/tutorial/tutorial.css");
 				$view->setTemplate("sites/other/tutorial/tutorial.php");
 				break;
 			case 'home':
