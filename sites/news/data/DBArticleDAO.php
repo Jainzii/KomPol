@@ -1,22 +1,21 @@
 <?php
-namespace sites\news;
 
+namespace sites\news\data;
 include_once "ArticleDAO.php";
-include_once "../../SQLHelper.php";
+include_once "sites/SQLHelper.php";
 
 use Exception;
 use PDO;
-use SQLHelper;
+use sites\SQLHelper;
 
-class DBArticleDAO implements ArticleDAO
-{
+class DBArticleDAO implements ArticleDAO {
 	private $db;
 
-	function __construct(){
+	public function __construct(){
 		$user = 'root';
 		$pw = null;
 		// SQLITE
-		$dsn = 'sqlite:..\..\kompol.db';
+		$dsn = 'sqlite:sites\kompol.db';
 		// MYSQL
 		// $dsn = 'mysql:dbname=kompol;host=localhost';
 		$helper = new SQLHelper();
@@ -27,20 +26,29 @@ class DBArticleDAO implements ArticleDAO
 
 	function getArticle($uuid) {
 		try {
+			$this->db->beginTransaction();
 			$sql = "SELECT * FROM Article WHERE uuid = '" . $uuid . "'";
 			$test = $this->db->query($sql);
 			$article= $test->fetchAll();
+
+			$this->db->commit();
 			return array_pop($article);
 		} catch (Exception $ex) {
+			$this->db->rollBack();
 			return null;
 		}
 	}
 
 	function getArticles() {
 		try {
+			$this->db->beginTransaction();
 			$sql = "SELECT * FROM Article";
-			return $this->db->query($sql)->fetchAll();
+			$query = $this->db->query($sql);
+			$articleList = $query->fetchAll();
+			$this->db->commit();
+			return $articleList;
 		} catch (Exception $ex) {
+			$this->db->rollBack();
 			return null;
 		}
 	}

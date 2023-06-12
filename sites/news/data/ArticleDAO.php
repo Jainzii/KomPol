@@ -1,6 +1,6 @@
 <?php
 
-namespace sites\news;
+namespace sites\news\data;
 
 interface ArticleDAO
 {

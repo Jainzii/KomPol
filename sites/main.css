@@ -147,7 +147,7 @@ header nav a:hover {
     margin: 20px auto auto;
 }
 
-.infoBox {
+.informationBox {
     display: flex;
     border: gray solid 3px;
     background-color: #00000011;
