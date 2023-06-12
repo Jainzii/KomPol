@@ -1,13 +1,13 @@
 <?php
 
-namespace sites\politics;
+namespace sites\politics\data;
 
 use Exception;
 use PDO;
-use SQLHelper;
+use sites\SQLHelper;
 
 include_once "PartyDAO.php";
-include_once "../../SQLHelper.php";
+include_once "sites/SQLHelper.php";
 
 class DBPartyDAO implements PartyDAO
 {
@@ -17,7 +17,7 @@ class DBPartyDAO implements PartyDAO
 		$user = 'root';
 		$pw = null;
 		// SQLITE
-		$dsn = 'sqlite:..\..\kompol.db';
+		$dsn = 'sqlite:sites\kompol.db';
 		// MYSQL
 		// $dsn = 'mysql:dbname=kompol;host=localhost';
 		$helper = new SQLHelper();
@@ -27,20 +27,26 @@ class DBPartyDAO implements PartyDAO
 
 	function getParties() {
 		try {
+			$this->db->beginTransaction();
 			$sql = "SELECT * FROM Party";
+			$this->db->commit();
 			return $this->db->query($sql)->fetchAll();
 		} catch (Exception $ex) {
+			$this->db->rollBack();
 			return null;
 		}
 	}
 
 	function getParty($name) {
 		try {
+			$this->db->beginTransaction();
 			$sql = "SELECT * FROM Party WHERE name = '" . $name . "'";
 			$test = $this->db->query($sql);
 			$party = $test->fetchAll();
+			$this->db->commit();
 			return array_pop($party);
 		} catch (Exception $ex) {
+			$this->db->rollBack();
 			return null;
 		}
 	}
