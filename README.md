@@ -18,3 +18,7 @@ Anmekungen:
   - Drag-And-Drop für das Hochladen vom Profilbild
   - Ein Countdown auf der Kommunalpolitik-Seite zur nächsten Wahl
   - Eine Live-Eingabe-Validierung für die Registrierung
+  - Eine Benutzernamen-Validierung, welche mit der AJAX-Technologie implementiert wurde. Benutzernamen haben in unsererem Projekt aktuelle keine Verwendung, könnten aber bspw. für anonyme Beiträge verwendet werden.
+
+Für das Testen der Benutzernamen-Validierung: Existierende Nutzernamen: derde, maxmu, tester
+  

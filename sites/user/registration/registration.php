@@ -25,7 +25,8 @@
         <label>
           Benutzername:
           <input class="usernameInput" type="text" name="username" required>
-            <script src="../usernameValidation.js" ></script>
+            <script src="../usernameValidation/usernameValidation.js" ></script>
+          <div id="feedbackContainer"></div>
         </label>
         <label>
           E-Mail:

@@ -70,6 +70,10 @@
     width: 100%;
 }
 
+main #feedback {
+    margin-top: 0;
+}
+
 .changeDetails input[type="submit"] {
     text-align: center;
     font-size: 1em;

@@ -5,6 +5,7 @@
   <title>KomPol</title>
   <link rel="stylesheet" type="text/css" href="../../main.css">
   <link rel="stylesheet" type="text/css" href="editProfile.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
   <body>
@@ -42,7 +43,8 @@
               <label>
                   Benutzername:
                   <input type="text" name="username" class="usernameInput" value="<?php echo isset($user["username"])? $user["username"] : "" ?>" required>
-                  <script src="../usernameValidation.js" ></script>
+                  <script src="../usernameValidation/usernameValidation.js" ></script>
+                  <div id="feedbackContainer"></div>
               </label>
             <label>
               Vorname:

@@ -1,6 +1,6 @@
 <?php
 
-include_once "DBUserDAO.php";
+include_once "../DBUserDAO.php";
 
 use user\DBUserDAO;
 

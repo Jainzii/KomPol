@@ -125,6 +125,10 @@ main p a {
     color: white;
 }
 
+main #feedback {
+    margin-top: 0;
+}
+
 .hinweis {
     background-color: #FFFFFF;
     border: red solid 3px;

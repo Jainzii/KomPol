@@ -33,6 +33,12 @@ function changeDetails($avatarName, $email, $username, $firstName, $lastName) {
 	global $user;
 	global $userDAO;
 	global $errorController;
+
+	if (!empty($userDAO->checkIfUsernameIsTaken($username))) {
+		$errorController->addErrorMessage("UsernameTaken", "Benutzername bereist vergeben.");
+		return;
+	}
+
 	if (isset($avatarName)){
 		$target_file = "../media/" . $avatarName;
 		if (file_exists($target_file)) {

@@ -32,6 +32,11 @@ function registerWithoutCode($email, $username, $password1, $password2){
 
     $userDAO = new DBUserDAO();
 
+	if (!empty($userDAO->checkIfUsernameIsTaken($username))) {
+		$errorController->addErrorMessage("UsernameTaken", "Benutzername bereist vergeben.");
+		return;
+	}
+
     $user = [];
     $user["email"] = $email;
     $user["username"] = $username;
@@ -56,6 +61,12 @@ function registerWithCode($email, $username, $password1, $password2, $registrati
 	}
 
     $userDAO = new DBUserDAO();
+
+	if (!empty($userDAO->checkIfUsernameIsTaken($username))) {
+		$errorController->addErrorMessage("UsernameTaken", "Benutzername bereist vergeben.");
+		return;
+	}
+
     $userId = $userDAO->getIdByRegistrationCode($registrationCode);
     if (isset($userId)) {
         $user = $userDAO->loadUserById($userId);
