@@ -90,10 +90,9 @@ header .authentication a p {
 
 header .authentication a:hover {
     background-color: cornflowerblue;
-    border-radius: 5px;
 }
 
-header .authentication button:hover {
+header .authentication #logoutButton:hover {
     background-color: cornflowerblue;
 }
 

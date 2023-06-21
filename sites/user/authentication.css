@@ -74,6 +74,37 @@ main input[type="submit"] {
     border-radius: 10px 10px 10px 10px;
     border: none;
 }
+main input[type="submit"]:disabled{
+     background-color: #888;
+     color: white;
+ }
+
+main .validationBox {
+    background-color: #EEE;
+    color: black;
+    border: rgb(20,102,173) 4px solid;
+    padding: 5px 10px;
+    border-radius: 7px;
+    margin: 20px 0px;
+}
+
+main .validationBox img{
+    position: relative;
+    bottom: -5px;
+    width: 24px;
+    height: 24px;
+    margin-right: 0.4em;
+}
+
+main .validationBox p {
+    color: black;
+    font-size: 1.1em;
+}
+
+main .validationBox ul {
+    list-style-type: none;
+    padding-left: 1em;
+}
 
 main p {
     color: white;
