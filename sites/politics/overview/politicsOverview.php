@@ -21,6 +21,8 @@
     <main>
       <!-- container for parliament and party information -->
       <section class="parties">
+        <p class="countdown" id="countdown">Nächste Wahl: 05. August 2024</p>
+        <script src="countdown.js"></script>
         <h2>Aktuelles Parlament</h2>
         <!-- parliament -->
         <section class="parliament">

@@ -1,3 +1,11 @@
+.countdown {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 0px;
+    background-color: #1554b6;
+    color: white;
+}
+
 .parties, .informations {
     background-color: #FFFFFF;
     display: flex;
@@ -53,3 +61,22 @@ main img {
 .informations div {
 
 }
+
+/* media queries */
+
+
+@media only screen and (min-width: 600px) {
+
+    .countdown {
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+
+    .countdown {
+        font-size: 2rem;
+    }
+}
+
+

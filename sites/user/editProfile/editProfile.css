@@ -83,7 +83,7 @@
     border: none;
 }
 
-.active img {
+.active img[id="userAvatar"] {
     border: 0.2em dashed #025bee;
 }
 

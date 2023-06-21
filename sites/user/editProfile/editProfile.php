@@ -24,6 +24,7 @@
           <h2>Daten ändern</h2>
           <form action="?changeDetails=1" method="post" enctype="multipart/form-data">
             <img
+              id="userAvatar"
               width="100"
               height="100"
               src="<?php echo isset($user["avatar"])? $user["avatar"] : "../media/avatarDummy.png" ?>"
