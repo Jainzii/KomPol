@@ -29,10 +29,11 @@
               src="<?php echo isset($user["avatar"])? $user["avatar"] : "../media/avatarDummy.png" ?>"
               alt = "Jetziger Avatar">
 
-            <input
+            <input id="avatarInput"
               type="file"
               name="avatar"
               accept="image/png, image/jpeg">
+            <script src="dragAndDropAvatar.js"></script>
             <label>
               E-Mail:
               <input type="email" name="email" value="<?php echo isset($user["email"])? $user["email"] : "" ?>" required>
