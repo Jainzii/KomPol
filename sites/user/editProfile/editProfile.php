@@ -35,10 +35,15 @@
               name="avatar"
               accept="image/png, image/jpeg">
             <script src="dragAndDropAvatar.js"></script>
-            <label>
-              E-Mail:
-              <input type="email" name="email" value="<?php echo isset($user["email"])? $user["email"] : "" ?>" required>
-            </label>
+              <label>
+                  E-Mail:
+                  <input type="email" name="email" value="<?php echo isset($user["email"])? $user["email"] : "" ?>" required>
+              </label>
+              <label>
+                  Benutzername:
+                  <input type="text" name="username" class="usernameInput" value="<?php echo isset($user["username"])? $user["username"] : "" ?>" required>
+                  <script src="../usernameValidation.js" ></script>
+              </label>
             <label>
               Vorname:
               <input type="text" name="firstName" value="<?php echo isset($user["firstName"])? $user["firstName"] : "" ?>" required>

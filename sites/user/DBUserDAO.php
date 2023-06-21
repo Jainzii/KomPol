@@ -30,15 +30,16 @@ class DBUserDAO implements UserDAO {
 			// mySQL TRANSACTION ISOLATION LEVEL hinzufügen
 			$this->db->beginTransaction();
             if (isset($user["uuid"])) {
-                $sql = 'UPDATE User SET email = :email, password = :password WHERE uuid = :uuid';
+                $sql = 'UPDATE User SET email = :email, username= :username, password = :password WHERE uuid = :uuid';
             } else {
                 $user["uuid"] = uniqid("u_", true);
-                $sql = 'INSERT INTO User (uuid, email, password)
-					VALUES (:uuid, :email, :password)';
+                $sql = 'INSERT INTO User (uuid, email, username, password)
+					VALUES (:uuid, :email, :username, :password)';
             }
 			$preparedSQL = $this->db->prepare($sql);
 			$preparedSQL->bindValue(":uuid", $user["uuid"]);
 			$preparedSQL->bindValue(":email", $user["email"]);
+			$preparedSQL->bindValue(":username", $user["username"]);
 			$preparedSQL->bindValue(":password", $user["password"]);
 			if ($preparedSQL->execute()) {
 				$this->db->commit();
@@ -58,13 +59,14 @@ class DBUserDAO implements UserDAO {
 		try {
 			// mySQL TRANSACTION ISOLATION LEVEL hinzufügen
 			$this->db->beginTransaction();
-			$sql = 'UPDATE User SET email = :email, password = :password, firstName = :firstName, lastName = :lastName, 
+			$sql = 'UPDATE User SET email = :email, password = :password, username = :username, firstName = :firstName, lastName = :lastName, 
                 avatar = :avatar WHERE uuid = :uuid';
 			$preparedSQL = $this->db->prepare($sql);
 			$preparedSQL->bindValue(":uuid", $user["uuid"]);
 			$preparedSQL->bindValue(":email", $user["email"]);
 			$preparedSQL->bindValue(":password", $user["password"]);
 			$preparedSQL->bindValue(":firstName", $user["firstName"]);
+			$preparedSQL->bindValue(":username", $user["username"]);
 			$preparedSQL->bindValue(":lastName", $user["lastName"]);
 			$preparedSQL->bindValue(":avatar", $user["avatar"]);
 			if ($preparedSQL->execute()) {
@@ -114,5 +116,15 @@ class DBUserDAO implements UserDAO {
 			return null;
 		}
 	}
+
+    function checkIfUsernameIsTaken($username) {
+        try {
+            $sql = "SELECT uuid FROM User WHERE username = '" . $username . "'";
+            $test = $this->db->query($sql);
+            return $test->fetchColumn();
+        } catch (Exception $ex) {
+            return null;
+        }
+    }
 }
 ?>

@@ -23,6 +23,11 @@
       <h2>Registrieren</h2>
       <form action="?registration=1" method="post">
         <label>
+          Benutzername:
+          <input class="usernameInput" type="text" name="username" required>
+            <script src="../usernameValidation.js" ></script>
+        </label>
+        <label>
           E-Mail:
           <input type="email" name="email" id="registrationEmail" required>
         </label>

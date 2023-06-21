@@ -12,7 +12,9 @@ Hinweise:
   - Email: klarissa@schmied.de Passwort: Amsel
 - Die FileDAOs werden zwar nicht mehr genutzt, sind aber trotzdem für die Vollständigkeit noch im Projekt
 
-WARNUNG:
-Aufgrund der kurzen Zeit zwischen den Abgaben und des erhaltenen Feedbacks bestehen in dieser Abgabe zahlreiche technische Schulden aus dem letzten Arbeitsblatt.
-Unser Fokus bestand darin, es zu ermöglichen den aktuellen Aufgabenzettel und die Implementierung der Datenbank vollumfänglich testen zu können.
-Anmerkung: Support-Tickets werden nicht auf der Seite angezeigt und können deshalb nur in der DB gesehen werden
+Anmekungen:
+- Es bestehen nach wie vor noch einige technische Schulden, die zum letzten Arbeitsblatt behoben sein sollten
+- Unsere JavaScript-Features sind:
+  - Drag-And-Drop für das Hochladen vom Profilbild
+  - Ein Countdown auf der Kommunalpolitik-Seite zur nächsten Wahl
+  - Eine Live-Eingabe-Validierung für die Registrierung

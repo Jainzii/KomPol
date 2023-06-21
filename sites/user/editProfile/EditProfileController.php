@@ -23,12 +23,13 @@ if (!isset($user)){
 if(isset($_GET["changeDetails"])) {
 	$avatarName = basename($_FILES["avatar"]["name"]) !== "" ? basename($_FILES["avatar"]["name"]) . "_" . $_SESSION["userId"] : null;
     $email = isset($_POST["email"]) ? $_POST["email"] : "";
+    $username = isset($_POST["username"]) ? $_POST["username"] : "";
     $firstName = isset($_POST["firstName"]) ? $_POST["firstName"] : "";
     $lastName = isset($_POST["lastName"]) ? $_POST["lastName"] : "";
-    changeDetails($avatarName,$_POST["email"], $_POST["firstName"], $_POST["lastName"]);
+    changeDetails($avatarName,$email, $username, $firstName, $lastName);
 }
 
-function changeDetails($avatarName, $email, $firstName, $lastName) {
+function changeDetails($avatarName, $email, $username, $firstName, $lastName) {
 	global $user;
 	global $userDAO;
 	global $errorController;
@@ -44,6 +45,7 @@ function changeDetails($avatarName, $email, $firstName, $lastName) {
     $user["firstName"] = $firstName;
     $user["lastName"] = $lastName;
     $user["email"] = $email;
+    $user["username"] = $username;
     $success = $userDAO->updateUser($user);
 	if (!isset($success)) {
 		$errorController->addErrorMessage("UserUpdateError", "Fehler beim Aktualisieren der Nutzerdaten.");

@@ -14,9 +14,9 @@ $errorController = new ErrorController();
  */
 if(isset($_GET["registration"])) {
     if ($_POST["registrationCode"] !== "") {
-        registerWithCode($_POST["email"], $_POST["password1"], $_POST["password2"], $_POST["registrationCode"]);
+        registerWithCode($_POST["email"], $_POST["username"] ,$_POST["password1"], $_POST["password2"], $_POST["registrationCode"]);
     } else {
-        registerWithoutCode($_POST["email"], $_POST["password1"], $_POST["password2"]);
+        registerWithoutCode($_POST["email"], $_POST["username"], $_POST["password1"], $_POST["password2"]);
     }
     unset($_GET["registration"]);
 }
@@ -24,7 +24,7 @@ if(isset($_GET["registration"])) {
 /**
  *
  */
-function registerWithoutCode($email, $password1, $password2){
+function registerWithoutCode($email, $username, $password1, $password2){
 	global $errorController;
 	if (!validatePassword($password1, $password2) || !validateEmail($email)) {
 		return null;
@@ -34,6 +34,7 @@ function registerWithoutCode($email, $password1, $password2){
 
     $user = [];
     $user["email"] = $email;
+    $user["username"] = $username;
     $user["password"] = password_hash($password1, PASSWORD_BCRYPT);
 	$success = $userDAO->addUser($user);
 	if (isset($success)) {
@@ -48,7 +49,7 @@ function registerWithoutCode($email, $password1, $password2){
 /**
  *
  */
-function registerWithCode($email, $password1, $password2, $registrationCode){
+function registerWithCode($email, $username, $password1, $password2, $registrationCode){
 	global $errorController;
 	if (!validateEmail($email) || !validatePassword($password1, $password2) || !validateCode($registrationCode)) {
 		return null;
@@ -59,6 +60,7 @@ function registerWithCode($email, $password1, $password2, $registrationCode){
     if (isset($userId)) {
         $user = $userDAO->loadUserById($userId);
         $user["email"] = $email;
+        $user["username"] = $username;
         $user["password"] = password_hash($password1, PASSWORD_BCRYPT);
 		$success = $userDAO->addUser($user);
 		if (isset($success)) {

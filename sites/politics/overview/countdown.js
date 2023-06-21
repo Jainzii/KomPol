@@ -49,7 +49,7 @@ function addDays() {
     }
 
     for(let i = thisYear; i <= countdownYear; i++) {
-        if(i % 4 === 0 || i % 1000 === 0 ) {
+        if(i % 4 === 0) {
             daysToAdd++;
         }
     }

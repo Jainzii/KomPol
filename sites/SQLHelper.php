@@ -22,6 +22,7 @@ class SQLHelper {
     		email VARCHAR(255) UNIQUE,
     		password VARCHAR,
     		avatar VARCHAR,
+        username VARCHAR,
     		firstName VARCHAR(255),
     		lastName VARCHAR(255),
     		party VARCHAR(255),

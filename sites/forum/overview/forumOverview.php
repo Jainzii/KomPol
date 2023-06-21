@@ -24,7 +24,8 @@
           <div class="formOptions">
             <label class="userInput">
               Titel:
-              <input type="text" name="name" value="<?php echo isset($_GET["name"])? $_GET["name"] : ""?>">
+              <input type="text" name="name" id="titleSearch" value="<?php echo isset($_GET["name"])? $_GET["name"] : ""?>">
+              <script src="liveSearch.js"></script>
             </label>
             <label class="userInput">
               Vor:
