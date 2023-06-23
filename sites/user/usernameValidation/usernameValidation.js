@@ -8,7 +8,7 @@ async function compareResults() {
             url: "../usernameValidation/usernameValidation.php?username=" + input,
             success: function(data) {
                 let feedbackField = document.getElementById("feedback");
-                console.log(feedbackField);
+
                 if (feedbackField === null || feedbackField === undefined) {
                     feedbackField = document.createElement("p");
                     feedbackField.id = "feedback";
