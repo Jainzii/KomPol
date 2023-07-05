@@ -44,6 +44,10 @@
           Registrierungscode:
           <input type="text" name="registrationCode" id="registrationCode">
         </label>
+        <label>
+          <input type="checkbox" name="legalCheckBox" id="legalCheckBox" required>
+          Ich stimme den Nutzungsbedingungen und der Datenschutzerklärung zu.
+        </label>
         <input type="submit" name="submit" id="registerButton" value="Registrieren" disabled>
         <p>Bereits einen Account? <a href="../login/login.php">Hier anmelden</a></p>
       </form>

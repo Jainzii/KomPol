@@ -44,6 +44,8 @@ $postList = array_slice($postList, 0, 20);
 
 foreach ($postList as $postKey => $postValue) {
     $newPost = $postValue;
+    $newPost["title"] = htmlentities($newPost["title"]);
+    $newPost["text"] = htmlentities($newPost["text"]);
     $newPost["likes"] = $ratingDAO->getLikeCount($postValue["uuid"]);
     if (!isset($newPost["likes"])) {
         $newPost["likes"] = 0;

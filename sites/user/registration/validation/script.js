@@ -123,7 +123,7 @@ const hideValidationBox = (box) => {
 }
 
 const checkIfInputValid = () => {
-    if (passwordValid && emailValid && codeValid) {
+    if (passwordValid && emailValid) {
         document.getElementById("registerButton").disabled = false;
     }
 }

@@ -36,6 +36,10 @@
           Beitrag:
           <textarea name="content" rows="20" cols="50" required></textarea>
         </label>
+        <label hidden class="token">
+          Token:
+          <input type="text" value="<?php echo isset($csrfToken)? $csrfToken : "" ?>" name="csrfToken">
+        </label>
         <input type="submit" value="Beitrag erstellen">
       </form>
     </main>

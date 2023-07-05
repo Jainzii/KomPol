@@ -26,10 +26,14 @@ class DBArticleDAO implements ArticleDAO
 
 	function getArticle($uuid) {
 		try {
-			$sql = "SELECT * FROM Article WHERE uuid = '" . $uuid . "'";
-			$test = $this->db->query($sql);
-			$article= $test->fetchAll();
-			return array_pop($article);
+			$sql = "SELECT * FROM Article WHERE uuid = :uuid";
+      $preparedSQL = $this->db->prepare($sql);
+      $preparedSQL->bindValue(":uuid", $uuid);
+      $preparedSQL->execute();
+      foreach ($preparedSQL as $row) {
+        return $row;
+      }
+      return null;
 		} catch (Exception $ex) {
 			return null;
 		}

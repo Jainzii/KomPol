@@ -28,6 +28,10 @@ main .content, .postContent {
     padding: 10px 0px;
 }
 
+.answer .token {
+    display: none;
+}
+
 .rating input[type="submit"] {
     background-color: #00000000;
     color: #1554b6;

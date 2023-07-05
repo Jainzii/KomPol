@@ -9,6 +9,11 @@ if (isset($_GET["logout"])) {
 ?>
 
 <header>
+    <!-- Einbinden Hilfsdateien -->
+    <link rel="stylesheet" href="<?php echo $projectPath ?>/sites/components/cookieManager/css/drdsgvo.css">
+    <!-- Falls bereits jQuery eingesetzt wird, kann die folgende Zeile ggfs. entfallen -->
+    <script src="<?php echo $projectPath ?>/sites/components/cookieManager/js/jquery-2.2.0.min.js"></script>
+    <script data-src="<?php echo $projectPath ?>/sites/components/cookieManager/successfulConsent.js" id="drdsgvo_script"></script>
     <div class="header">
         <div class="cityName">
             <a href="<?php echo $projectPath ?>sites/news/overview/newsOverview.php">

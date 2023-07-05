@@ -8,6 +8,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
   <body>
+
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v17.0" nonce="EurVMpmB"></script>
+
     <!-- header -->
     <?php
     include_once "../../components/header/header.php"
@@ -47,8 +51,12 @@
               <input id="answerTo" type="hidden" name="answerTo" value="<?php echo isset($post["uuid"]) ? $post["uuid"] : "" ?>" hidden>
               <?php if (isset($_GET["openCommentBox"]) && $_GET["openCommentBox"] === $post["uuid"]): ?>
               <label>
-                Kommentar erfassen:
+                Kommentar verfassen:
                 <textarea rows="10" name="comment" required></textarea>
+              </label>
+              <label hidden class="token">
+                Token:
+                <input type="text" value="<?php echo isset($csrfToken)? $csrfToken : "" ?>" name="csrfToken">
               </label>
               <input type="submit" name="sendComment" value="Kommentar senden">
               <?php else: ?>
@@ -62,6 +70,41 @@
               <p><?php echo isset($post["dislikes"])? $post["dislikes"] : 0; ?> Dislikes</p>
             </div>
             <?php endif; ?>
+            <div id="shareButtonContainer">
+              <div id="jsDependantShareButtonContainer" hidden>
+                <!-- Twitter share button -->
+                <?php $shortenedTitle = isset($post["title"]) ? $post["title"] : "";
+                  $shortenedTitle = strlen($shortenedTitle) > 126 ? substr($shortenedTitle, 0, 126) . "..." : $shortenedTitle
+                ?>
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                   id="twitterShareButton"
+                   class="twitter-share-button"
+                   data-size="large"
+                   data-text="Schau dir den Beitrag von Neu Dorias an: <?php echo $shortenedTitle ?>"
+                   data-dtn=true
+                   data-hashtags="NeuDorias"
+                   data-show-count="false">
+                  Teilen!
+                </a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+                <!-- Facebook share button -->
+                <div class="fb-share-button"
+                     id="facebookShareButton"
+                     data-href="https://www.neuDorias.de/KomPol/sites/forum/postView/postView.php?id=<?php echo isset($post["uuid"]) ? $post["uuid"] : "" ?>"
+                     data-layout="button"
+                     data-size="large">
+                  <?php $facebookLink = "https://www.facebook.com/sharer/sharer.php?u=" . "https://www.neuDorias.de/KomPol/sites/forum/postView/postView.php?id=" . isset($post["uuid"]) ? $post["uuid"] : "" . "&amp;src=sdkpreparse"?>
+                  <a target="_blank"
+                     href="<?php echo $facebookLink ?>"
+                     class="fb-xfbml-parse-ignore">
+                    Teilen
+                  </a>
+                </div>
+              </div>
+              <script src="ShareButtons.js"></script>
+            </div>
+
           </div>
         </section>
         <!-- answers  -->

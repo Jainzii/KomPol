@@ -39,6 +39,11 @@ function changeDetails($avatarName, $email, $username, $firstName, $lastName) {
 		return;
 	}
 
+  if (!$userDAO->checkCSRFToken($user["uuid"], $_POST["csrfToken"])) {
+    $errorController->addErrorMessage("CSRFToken", "Es ist ein Fehler aufgetreten. Bitte kontaktieren Sie den Support.");
+    return;
+  }
+
 	if (isset($avatarName)){
 		$target_file = "../media/" . $avatarName;
 		if (file_exists($target_file)) {
@@ -48,10 +53,10 @@ function changeDetails($avatarName, $email, $username, $firstName, $lastName) {
 		unset($_FILES["avatar"]);
 		$user["avatar"] = $target_file;
 	}
-    $user["firstName"] = $firstName;
-    $user["lastName"] = $lastName;
-    $user["email"] = $email;
-    $user["username"] = $username;
+    $user["email"] = htmlentities($email);
+    $user["firstName"] = htmlentities($firstName);
+    $user["lastName"] = htmlentities($lastName);
+    $user["username"] = htmlentities($username);
     $success = $userDAO->updateUser($user);
 	if (!isset($success)) {
 		$errorController->addErrorMessage("UserUpdateError", "Fehler beim Aktualisieren der Nutzerdaten.");
@@ -68,12 +73,17 @@ if(isset($_GET["changePassword"])) {
 
 function changePassword($oldPassword, $newPassword1, $newPassword2) {
 	global $errorController;
+  global $user;
+  global $userDAO;
+
     if ($newPassword1 !== $newPassword2) {
 		$errorController->addErrorMessage("EditProfileError","Änderung fehlgeschlagen. Die Passwörter stimmen nicht überein.");
         return null;
     }
-	global $user;
-	global $userDAO;
+    if (!$userDAO->checkCSRFToken($user["uuid"], $_POST["csrfToken"])) {
+      $errorController->addErrorMessage("CSRFToken", "Es ist ein Fehler aufgetreten. Bitte kontaktieren Sie den Support.");
+      return;
+    }
 
     if(password_verify($oldPassword, $user["password"])) {
         $user["password"] = password_hash($newPassword1, PASSWORD_BCRYPT);
@@ -87,6 +97,7 @@ function changePassword($oldPassword, $newPassword1, $newPassword2) {
 	}
 
 }
+$csrfToken = $userDAO->generateCSRFToken($user["uuid"]);
 
 if ($errorController->hasErrors()) {
 	echo $errorController->showErrorBox();

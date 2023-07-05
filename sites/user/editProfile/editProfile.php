@@ -54,6 +54,10 @@
               Nachname:
               <input type="text" name="lastName" value="<?php echo isset($user["lastName"])? $user["lastName"] : "" ?>" required>
             </label>
+            <label hidden>
+              Token:
+              <input type="text" value="<?php echo isset($csrfToken)? $csrfToken : "" ?>" name="csrfToken">
+            </label>
             <input type="submit" value="Daten ändern">
           </form>
         </section>
@@ -73,6 +77,10 @@
             <label>
               Neues Passwort wiederholen:
               <input type="password" name="newPassword2" required>
+            </label>
+            <label hidden>
+              Token:
+              <input type="text" value="<?php echo isset($csrfToken)? $csrfToken : "" ?>" name="csrfToken">
             </label>
             <input type="submit" value="Passwort ändern">
           </form>

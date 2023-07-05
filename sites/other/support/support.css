@@ -29,6 +29,10 @@ select {
     width: 118px;
 }
 
+.token {
+    display: none;
+}
+
 label {
     display: flex;
     vertical-align: top;

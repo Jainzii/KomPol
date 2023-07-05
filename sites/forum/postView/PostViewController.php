@@ -27,7 +27,12 @@ $commentDAO = new DBCommentDAO();
 $ratingDAO = new DBRatingDAO();
 
 $post = $postDAO->getPost($_GET["id"]);
+$post["title"] = htmlentities($post["title"]);
+$post["text"] = htmlentities($post["text"]);
+
 $author = $userDAO->loadUserById($post["author"]);
+$author["firstName"] = htmlentities($author["firstName"]);
+$author["lastName"] = htmlentities($author["lastName"]);
 if (!isset($author)) {
 	$errorController->addErrorMessage("UserNotFound", "Fehler beim Laden von Nutzerdaten.");
 }
@@ -64,6 +69,11 @@ if (isset($_POST["sendComment"])) {
   $userId = $_SESSION["userId"];
   $commentId = uniqid("c_", true);
 
+  if (!$userDAO->checkCSRFToken($_SESSION["userId"], $_POST["csrfToken"])) {
+    $errorController->addErrorMessage("CSRFToken", "Es ist ein Fehler aufgetreten. Bitte kontaktieren Sie den Support.");
+    return;
+  }
+
   if (isset($userId) && isset($postId) && isset($commentContent)) {
     $comment["text"] = htmlentities($commentContent);
 	  $comment["answerTo"] = $postId;
@@ -96,6 +106,7 @@ function createComment($commentList) {
   global $ratingDAO;
   global $errorController;
   foreach ($commentList as $comment){
+    $comment["text"] = htmlentities($comment["text"]);
     $comment["likes"] = $ratingDAO->getLikeCount($comment["uuid"]);
     if (!isset($comment["likes"])) {
       $errorController->addErrorMessage("RatingsNotFound", "Fehler beim Laden der Bewertung.");
@@ -105,6 +116,8 @@ function createComment($commentList) {
 		  $errorController->addErrorMessage("RatingsNotFound", "Fehler beim Laden der Bewertung.");
 	  }
 	  $commenter = $userDAO->loadUserById($comment["author"]);
+    $commenter["firstName"] = htmlentities($commenter["firstName"]);
+    $commenter["lastName"] = htmlentities($commenter["lastName"]);
 	  if (!isset($commenter)) {
 		  $errorController->addErrorMessage("UserNotFound", "Fehler beim Laden von Nutzerdaten.");
 	  }
@@ -158,6 +171,9 @@ function createComment($commentList) {
 
 	<?php
   }
+}
+if (isset($_SESSION["userId"])) {
+  $csrfToken = $userDAO->generateCSRFToken($_SESSION["userId"]);
 }
 
 if ($errorController->hasErrors()) {

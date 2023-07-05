@@ -129,6 +129,29 @@ main #feedback {
     margin-top: 0;
 }
 
+.infoBox {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    border: blue solid 3px;
+    background-color: #0000FF55;
+    border-radius: 5px;
+    color: white;
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+    padding: 20px;
+}
+
+.infoBox p {
+    color: white;
+    margin-top: 0;
+}
+
+.infoBox a {
+    text-decoration: underline;
+}
+
 .hinweis {
     background-color: #FFFFFF;
     border: red solid 3px;

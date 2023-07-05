@@ -35,10 +35,14 @@ class DBPartyDAO implements PartyDAO
 
 	function getParty($name) {
 		try {
-			$sql = "SELECT * FROM Party WHERE name = '" . $name . "'";
-			$test = $this->db->query($sql);
-			$party = $test->fetchAll();
-			return array_pop($party);
+			$sql = "SELECT * FROM Party WHERE name = :name";
+      $preparedSQL = $this->db->prepare($sql);
+      $preparedSQL->bindValue(":name", $name);
+      $preparedSQL->execute();
+      foreach ($preparedSQL as $row) {
+        return $row;
+      }
+      return null;
 		} catch (Exception $ex) {
 			return null;
 		}

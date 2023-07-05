@@ -86,9 +86,14 @@ class DBRatingDAO implements RatingDAO {
 	function getLikeCount($postId)
 	{
 		try {
-			$sql = "SELECT COUNT(uuid) FROM Like WHERE uuid = '" . $postId . "'";
-			$test = $this->db->query($sql);
-            return $test->fetchColumn();
+			$sql = "SELECT COUNT(uuid) FROM Like WHERE uuid = :uuid";
+      $preparedSQL = $this->db->prepare($sql);
+      $preparedSQL->bindValue(":uuid", $postId);
+      $preparedSQL->execute();
+      foreach ($preparedSQL as $row) {
+        return $row[0];
+      }
+      return null;
 		} catch (Exception $ex) {
 			return null;
 		}
@@ -154,9 +159,14 @@ class DBRatingDAO implements RatingDAO {
 	function getDislikeCount($postId)
 	{
 		try {
-			$sql = "SELECT COUNT(uuid) FROM Dislike WHERE uuid = '" . $postId . "'";
-			$test = $this->db->query($sql);
-            return $test->fetchColumn();
+			$sql = "SELECT COUNT(uuid) FROM Dislike WHERE uuid = :uuid";
+      $preparedSQL = $this->db->prepare($sql);
+      $preparedSQL->bindValue(":uuid", $postId);
+      $preparedSQL->execute();
+      foreach ($preparedSQL as $row) {
+        return $row[0];
+      }
+      return null;
 		} catch (Exception $ex) {
 			return null;
 		}

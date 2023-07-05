@@ -30,7 +30,7 @@ function registerWithoutCode($email, $username, $password1, $password2){
 		return null;
 	}
 
-    $userDAO = new DBUserDAO();
+  $userDAO = new DBUserDAO();
 
 	if (!empty($userDAO->checkIfUsernameIsTaken($username))) {
 		$errorController->addErrorMessage("UsernameTaken", "Benutzername bereist vergeben.");
@@ -38,17 +38,16 @@ function registerWithoutCode($email, $username, $password1, $password2){
 	}
 
     $user = [];
-    $user["email"] = $email;
     $user["username"] = $username;
     $user["password"] = password_hash($password1, PASSWORD_BCRYPT);
-	$success = $userDAO->addUser($user);
-	if (isset($success)) {
-		$_SESSION["userId"] = $user["uuid"];
-		header('Location: '. '../editProfile/editProfile.php');
-	} else {
-		$errorController->addErrorMessage("Register Error","Registrierung fehlgeschlagen.");
-		return null;
-	}
+    $success = $userDAO->addUser($user);
+    if (isset($success)) {
+      $userId = $userDAO->getIdByUsername($username)[0];
+      sendEmail($email, $userId);
+    } else {
+      $errorController->addErrorMessage("Register Error","Registrierung fehlgeschlagen.");
+      return null;
+    }
 }
 
 /**
@@ -59,29 +58,26 @@ function registerWithCode($email, $username, $password1, $password2, $registrati
 	if (!validateEmail($email) || !validatePassword($password1, $password2) || !validateCode($registrationCode)) {
 		return null;
 	}
-
-    $userDAO = new DBUserDAO();
+  $userDAO = new DBUserDAO();
 
 	if (!empty($userDAO->checkIfUsernameIsTaken($username))) {
 		$errorController->addErrorMessage("UsernameTaken", "Benutzername bereist vergeben.");
 		return;
 	}
 
-    $userId = $userDAO->getIdByRegistrationCode($registrationCode);
-    if (isset($userId)) {
-        $user = $userDAO->loadUserById($userId);
-        $user["email"] = $email;
-        $user["username"] = $username;
-        $user["password"] = password_hash($password1, PASSWORD_BCRYPT);
-		$success = $userDAO->addUser($user);
-		if (isset($success)) {
-			$_SESSION["userId"] = $user["uuid"];
-			header('Location: '. '../editProfile/editProfile.php');
-		} else {
-			$errorController->addErrorMessage("Register Error","Registrierung fehlgeschlagen.");
-			return null;
-		}
+  $userId = $userDAO->getIdByRegistrationCode($registrationCode);
+  if (isset($userId)) {
+      $user = $userDAO->loadUserById($userId);
+      $user["username"] = $username;
+      $user["password"] = password_hash($password1, PASSWORD_BCRYPT);
+    $success = $userDAO->addUser($user);
+    if (isset($success)) {
+      sendEmail($email, $userId);
+    } else {
+      $errorController->addErrorMessage("Register Error","Registrierung fehlgeschlagen.");
+      return null;
     }
+  }
 }
 
 function validatePassword($password1, $password2) {
@@ -128,6 +124,32 @@ function validateCode($code) {
 		$errorController->addErrorMessage("Register Error","Registrierung fehlgeschlagen. Das Code-Format ist nicht valide.");
 	}
 	return $valid;
+}
+
+function sendEmail($email, $uuid) {
+  $userDAO = new DBUserDAO();
+  $filePath = $email . "-example.html";
+
+  $file = fopen($filePath, "w");
+  $text = "";
+  $doesExist = $userDAO->loadUserByEmail($email);
+
+  if (empty($doesExist)) {
+    $text = "„Bitte ignoriere die E-Mail, wenn du es nicht warst, der sich versucht hat zu registrieren. Ansonsten
+      klicke auf folgenden Link, um die Registrierung abzuschließen: <a href='registrationValidation.php?email=". urlencode($email) . "&id=" . urlencode($uuid) . "'> Registrierung bestätigen </a>";
+  } else {
+    $text = "„Bitte ignoriere die E-Mail,
+      wenn du es nicht warst, der sich versucht hat zu registrieren. Du bist aber bereits
+      registriert. Wir empfehlen Ihnen Ihr Passwort zu ändern.";
+  }
+  fwrite($file, $text);
+
+  ob_start();
+  include "registrationInfo.php";
+  $infoBox = ob_get_contents();
+  ob_end_clean();
+
+  echo $infoBox;
 }
 
 if ($errorController->hasErrors()) {
