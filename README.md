@@ -20,7 +20,7 @@ Anmekungen:
   - Eine Live-Eingabe-Validierung für die Registrierung
   - Eine Benutzernamen-Validierung, welche mit der AJAX-Technologie implementiert wurde. Benutzernamen haben in unsererem Projekt aktuelle keine Verwendung, könnten aber bspw. für anonyme Beiträge verwendet werden.
 - Bei dem Feature zum Teilen von Beiträgen auf Facebook benutzen wir eine richtige URL (https://www.neuDorias.de/...), da Facebook sonstige Links (zumindest localhost) für das Teilen nicht akzeptiert.
-
+- Cookie Consent Manager fehlt aktuell noch, wird aber zeitnah ergänzt.
 
 Für das Testen der Benutzernamen-Validierung: Existierende Nutzernamen: derde, maxmu, tester
   
